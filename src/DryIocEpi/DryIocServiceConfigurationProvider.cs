@@ -22,14 +22,14 @@ namespace DryIocEpi
 
         public IRegisteredService Add(Type serviceType, Func<IServiceLocator, object> implementationFactory, ServiceInstanceScope lifetime)
         {
-            Container.RegisterDelegate(serviceType, r => implementationFactory(r.Resolve<IServiceLocator>()), ConvertLifeTime(lifetime));
+            Container.RegisterDelegate(serviceType, r => implementationFactory(new DryIocServiceLocator(r)), ConvertLifeTime(lifetime));
             _latestType = serviceType;
             return this;
         }
 
         public IRegisteredService Add(Type serviceType, object instance)
         {
-            Container.RegisterDelegate(resolver => instance, ConvertLifeTime(ServiceInstanceScope.Singleton));
+            Container.RegisterInstance(serviceType, instance);
             _latestType = serviceType;
 
             return this;
@@ -45,10 +45,8 @@ namespace DryIocEpi
 
         public bool Contains(Type serviceType) => Container.IsRegistered(serviceType);
 
-        public void Intercept<T>(Func<IServiceLocator, T, T> interceptorFactory) where T : class
-        {
-            Container.RegisterDelegateDecorator<T>(r => (t) => interceptorFactory(r.Resolve<IServiceLocator>(), r.Resolve<T>()));
-        }
+        public void Intercept<T>(Func<IServiceLocator, T, T> interceptorFactory) where T : class => 
+            Container.RegisterDelegateDecorator<T>(r => (t) => interceptorFactory(new DryIocServiceLocator(r), r.Resolve<T>()));
 
         public IServiceConfigurationProvider RemoveAll(Type serviceType)
         {
@@ -65,6 +63,10 @@ namespace DryIocEpi
                     return Reuse.Singleton;
                 case ServiceInstanceScope.Transient:
                     return Reuse.Transient;
+                case ServiceInstanceScope.ThreadLocal:
+                    return Reuse.Scoped;
+                case ServiceInstanceScope.HttpContext:
+                    return Reuse.InWebRequest;
                 case ServiceInstanceScope.Hybrid:
                     return Reuse.ScopedOrSingleton;
             }
