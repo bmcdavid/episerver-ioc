@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryIocEpi.Tests", "tests\DryIocEpi.Tests\DryIocEpi.Tests.csproj", "{9A3738A9-0D8A-4131-A28B-E15179373C77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DryIocEpi.Tests", "tests\DryIocEpi.Tests\DryIocEpi.Tests.csproj", "{9A3738A9-0D8A-4131-A28B-E15179373C77}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DryIocEpi", "src\DryIocEpi\DryIocEpi.csproj", "{C1529C1A-E2DB-4908-BD3F-4D2667FFCB9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpiserverSite1", "EpiserverSite1\EpiserverSite1.csproj", "{0A09F273-B981-495C-AB6F-7C2EEBAA1A9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C1529C1A-E2DB-4908-BD3F-4D2667FFCB9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1529C1A-E2DB-4908-BD3F-4D2667FFCB9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1529C1A-E2DB-4908-BD3F-4D2667FFCB9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A09F273-B981-495C-AB6F-7C2EEBAA1A9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A09F273-B981-495C-AB6F-7C2EEBAA1A9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A09F273-B981-495C-AB6F-7C2EEBAA1A9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A09F273-B981-495C-AB6F-7C2EEBAA1A9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

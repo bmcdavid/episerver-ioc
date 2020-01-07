@@ -88,3 +88,7 @@ src/Foundation.CommerceManager/connectionStrings.config
 src/Foundation.CommerceManager/App_Data/ImportExport/*
 rebuild.cmd
 resetup.cmd
+/EpiserverSite1/App_Data/blobs
+/EpiserverSite1/App_Data/EPiServerDB_b15bf188.mdf
+*.ldf
+*.log

@@ -15,6 +15,8 @@ namespace DryIocEpi
 
         public IRegisteredService Add(Type serviceType, Type implementationType, ServiceInstanceScope lifetime)
         {
+            CheckType(serviceType);
+
             Container.Register(serviceType, implementationType, ConvertLifeTime(lifetime));
             _latestType = serviceType;
             return this;
@@ -22,6 +24,8 @@ namespace DryIocEpi
 
         public IRegisteredService Add(Type serviceType, Func<IServiceLocator, object> implementationFactory, ServiceInstanceScope lifetime)
         {
+            CheckType(serviceType);
+
             Container.RegisterDelegate(serviceType, r => implementationFactory(new DryIocServiceLocator(r)), ConvertLifeTime(lifetime));
             _latestType = serviceType;
             return this;
@@ -29,10 +33,25 @@ namespace DryIocEpi
 
         public IRegisteredService Add(Type serviceType, object instance)
         {
+            CheckType(serviceType);
             Container.RegisterInstance(serviceType, instance);
             _latestType = serviceType;
 
             return this;
+        }
+
+        private void CheckType(Type serviceType)
+        {
+            if (serviceType.FullName.StartsWith("EPiServer.Web.ITemplateResolver"))
+            {
+                Container
+                    .RegisterMapping(Type.GetType("EPiServer.Web.ITemplateResolverEvents"), serviceType);
+                //                EPiServer.Web.Internal.DefaultTemplateResolver
+
+                //container.RegisterMapping<IBar, IFoo>(); // maps to the IBar registration
+
+                //.ITemplateResolverEvents
+            }
         }
 
         public IServiceConfigurationProvider AddServiceAccessor()
@@ -45,8 +64,8 @@ namespace DryIocEpi
 
         public bool Contains(Type serviceType) => Container.IsRegistered(serviceType);
 
-        public void Intercept<T>(Func<IServiceLocator, T, T> interceptorFactory) where T : class => 
-            Container.RegisterDelegateDecorator<T>(r => (t) => interceptorFactory(new DryIocServiceLocator(r), r.Resolve<T>()));
+        public void Intercept<T>(Func<IServiceLocator, T, T> interceptorFactory) where T : class =>
+            Container.RegisterDelegateDecorator<T>(r => (t) => interceptorFactory(new DryIocServiceLocator(r), t));
 
         public IServiceConfigurationProvider RemoveAll(Type serviceType)
         {

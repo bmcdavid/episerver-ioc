@@ -16,9 +16,11 @@ namespace DryIocEpi
         {
             var rules = Rules.Default
                 .With(propertiesAndFields: InjectedProperties)
+                .With(FactoryMethod.ConstructorWithResolvableArguments)
                 .WithoutThrowIfDependencyHasShorterReuseLifespan()
                 .WithFactorySelector(Rules.SelectLastRegisteredFactory())
-                .WithTrackingDisposableTransients(); //used in transient delegate cases
+                .WithTrackingDisposableTransients()
+                ; //used in transient delegate cases
 
             _container = new Container(rules);
         }
