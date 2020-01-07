@@ -2,6 +2,7 @@
 using EPiServer.ServiceLocation;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 [assembly: EPiServer.ServiceLocation.AutoDiscovery.ServiceLocatorFactory(typeof(DryIocEpi.DryIocLocatorFactory))]
 
@@ -26,6 +27,11 @@ namespace DryIocEpi
 
         public TService GetInstance<TService>() =>
             (TService)_resolveContext.Resolve<TService>(ifUnresolvedReturnDefault: true);
+
+        public ICollection<string> Debug => (_resolveContext as Container)?
+            .GetServiceRegistrations()
+            .Select(x => x.ToString())
+            .ToList();
 
         public object GetService(Type serviceType) => _resolveContext.Resolve(serviceType);
 

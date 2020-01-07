@@ -1,3 +1,4 @@
+using System;
 using System.Web.Optimization;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
@@ -7,6 +8,25 @@ namespace EpiserverSite1.Business.Initialization
     [InitializableModule]
     public class BundleConfig : IInitializableModule
     {
+        public BundleConfig()
+        {
+            DryIocEpi.DryIocServiceConfigurationProvider.ExtendedCheck += CheckType; 
+        }
+
+        private Type CheckType(Type serviceType)
+        {
+            if (serviceType == typeof(EPiServer.Web.ITemplateResolver))
+            {
+                return typeof(EPiServer.Web.ITemplateResolverEvents);
+                //                EPiServer.Web.Internal.DefaultTemplateResolver
+
+                //container.RegisterMapping<IBar, IFoo>(); // maps to the IBar registration
+
+                //.ITemplateResolverEvents
+            }
+            return null;
+        }
+
         public void Initialize(InitializationEngine context)
         {
             if (context.HostType == HostType.WebApplication)

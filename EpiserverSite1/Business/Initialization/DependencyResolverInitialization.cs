@@ -20,8 +20,8 @@ namespace EpiserverSite1.Business.Initialization
             {
                 //Register custom implementations that should be used in favour of the default implementations
                 context.Services
-                    .AddSingleton<DisplayChannel,Channels.WebChannel>()
-                    .AddSingleton<DisplayChannel,Channels.MobileChannel>()
+                    //.AddSingleton<DisplayChannel,Channels.WebChannel>()
+                    //.AddSingleton<DisplayChannel,Channels.MobileChannel>()
                     .AddTransient<IContentRenderer, ErrorHandlingContentRenderer>()
                     .AddTransient<ContentAreaRenderer, AlloyContentAreaRenderer>();
             };
