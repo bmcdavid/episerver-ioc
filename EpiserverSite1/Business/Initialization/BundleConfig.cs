@@ -1,30 +1,66 @@
-using System;
-using System.Web.Optimization;
+using DryIocEpi;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
+using EPiServer.ServiceLocation;
+using System;
+using System.Web;
+using System.Web.Optimization;
 
 namespace EpiserverSite1.Business.Initialization
 {
+    [InitializableModule]
+    public class HttpIoc : IInitializableHttpModule
+    {
+        private IServiceLocator serviceLocator;
+
+        public void Initialize(InitializationEngine context)
+        {
+            serviceLocator = context.Locate.Advanced;
+        }
+
+        public void InitializeHttpEvents(HttpApplication application)
+        {
+            application.BeginRequest += Application_BeginRequest;
+            application.EndRequest += Application_EndRequest;
+        }
+
+        private void Application_EndRequest(object sender, EventArgs e)
+        {
+            var app = sender as HttpApplication;
+            var context = app.Context;
+            (app.Context.Items[nameof(HttpIoc)] as IDisposable)?.Dispose();
+        }
+
+        private void Application_BeginRequest(object sender, EventArgs e)
+        {
+            var app = sender as HttpApplication;
+            var context = app.Context;
+            app.Context.Items[nameof(HttpIoc)] = (serviceLocator as IServiceLocatorCreateScope).CreateScope();
+        }
+
+        public void Uninitialize(InitializationEngine context)
+        {
+        }
+    }
+
     [InitializableModule]
     public class BundleConfig : IInitializableModule
     {
         public BundleConfig()
         {
-            DryIocEpi.DryIocServiceConfigurationProvider.ExtendedCheck += CheckType; 
+            DryIocEpi.DryIocServiceLocator.CheckType += CheckType;
         }
-
-        private Type CheckType(Type serviceType)
+        private void CheckType(string serviceType)
         {
-            if (serviceType == typeof(EPiServer.Web.ITemplateResolver))
-            {
-                return typeof(EPiServer.Web.ITemplateResolverEvents);
-                //                EPiServer.Web.Internal.DefaultTemplateResolver
+            var file = System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/log.txt");
+            if (System.IO.File.Exists(file)) { System.IO.File.Delete(file); }
+            System.IO.File.WriteAllText(file, serviceType);
 
+            //if (serviceType == typeof(EPiServer.Web.ITemplateResolver))
+            {
                 //container.RegisterMapping<IBar, IFoo>(); // maps to the IBar registration
 
-                //.ITemplateResolverEvents
             }
-            return null;
         }
 
         public void Initialize(InitializationEngine context)

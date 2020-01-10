@@ -1,15 +1,12 @@
 ﻿using DryIoc;
 using EPiServer.ServiceLocation;
-using EPiServer.ServiceLocation.Internal;
 using System;
 
 namespace DryIocEpi
 {
-    public class DryIocServiceConfigurationProvider : IServiceConfigurationProvider, IRegisteredService, IInterceptorRegister
+    public class DryIocServiceConfigurationProvider : IServiceConfigurationProvider, IRegisteredService, EPiServer.ServiceLocation.Internal.IInterceptorRegister // todo: internal
     {
         private Type _latestType;
-
-        public static Func<Type,Type> ExtendedCheck;
 
         public DryIocServiceConfigurationProvider(IContainer container) => Container = container;
 
@@ -17,6 +14,8 @@ namespace DryIocEpi
 
         public IRegisteredService Add(Type serviceType, Type implementationType, ServiceInstanceScope lifetime)
         {
+            if (serviceType is null) { throw new ArgumentNullException(nameof(serviceType)); }
+            if (implementationType is null) { throw new ArgumentNullException(nameof(implementationType), $"{serviceType?.FullName ?? "no service type"} was not given an implementation type!"); }
             Container.Register(serviceType, implementationType, ConvertLifeTime(lifetime));
             _latestType = serviceType;
             return this;
@@ -24,14 +23,7 @@ namespace DryIocEpi
 
         public IRegisteredService Add(Type serviceType, Func<IServiceLocator, object> implementationFactory, ServiceInstanceScope lifetime)
         {
-
             Container.RegisterDelegate(serviceType, r => implementationFactory(new DryIocServiceLocator(r)), ConvertLifeTime(lifetime));
-
-            var check = ExtendedCheck?.Invoke(serviceType);
-            if(check is Type)
-            {
-                Container.RegisterMapping(check, serviceType);
-            }
 
             _latestType = serviceType;
             return this;
@@ -44,13 +36,19 @@ namespace DryIocEpi
 
             return this;
         }
-        
+
         public IServiceConfigurationProvider AddServiceAccessor()
         {
             // todo: internal
-            ReflectiveServiceConfigurationHelper.RegisterServiceAccessorDelegates(this, _latestType);
+            EPiServer.ServiceLocation.Internal.
+                ReflectiveServiceConfigurationHelper.RegisterServiceAccessorDelegates(this, _latestType);
 
             return this;
+        }
+
+        public void Verify()
+        {
+            (Container as Container).Validate();
         }
 
         public bool Contains(Type serviceType) => Container.IsRegistered(serviceType);
@@ -71,17 +69,16 @@ namespace DryIocEpi
             {
                 case ServiceInstanceScope.Singleton:
                     return Reuse.Singleton;
+                case ServiceInstanceScope.PerRequest:
                 case ServiceInstanceScope.Transient:
                     return Reuse.Transient;
-                case ServiceInstanceScope.ThreadLocal:
-                    return Reuse.Scoped;
                 case ServiceInstanceScope.HttpContext:
                     return Reuse.InWebRequest;
                 case ServiceInstanceScope.Hybrid:
-                    return Reuse.ScopedOrSingleton;
+                    return Reuse.Scoped;
             }
 
-            return Reuse.Transient;
+            throw new NotSupportedException(lifetime.ToString() + " is not supported!");
         }
     }
 }
