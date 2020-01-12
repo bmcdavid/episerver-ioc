@@ -25,16 +25,14 @@ namespace DryIocEpi
             _container = new Container(rules);
         }
 
-        public DryIocLocatorFactory(IContainer container)
-        {
-            _container = container
-                .With(rules => rules
-                    .WithFactorySelector(Rules.SelectLastRegisteredFactory())
-                    .With(propertiesAndFields: InjectedProperties));
-        }
+        public DryIocLocatorFactory(IContainer container) => _container = container;
+
+        private static readonly Dictionary<Type, List<PropertyOrFieldServiceInfo>> _props = new Dictionary<Type, List<PropertyOrFieldServiceInfo>>();
 
         public static IEnumerable<PropertyOrFieldServiceInfo> InjectedProperties(Type type)
         {
+            if (_props.TryGetValue(type, out var list)) { return list; }
+
             const BindingFlags flags = BindingFlags.Instance
                 | BindingFlags.Public
                 | BindingFlags.NonPublic
@@ -53,10 +51,13 @@ namespace DryIocEpi
                 .Select(PropertyOrFieldServiceInfo.Of)
                 .ToList();
 
+            _props[type] = all;// todo: dupe key
+
             return all;
         }
 
-        public IServiceLocator CreateLocator() => new DryIocServiceLocator(_container);
+        public IServiceLocator CreateLocator() =>
+            new DryIocServiceLocator(_container);
 
         public IServiceConfigurationProvider CreateProvider() =>
             new DryIocServiceConfigurationProvider(_container);

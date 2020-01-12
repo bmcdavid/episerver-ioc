@@ -23,7 +23,7 @@ namespace DryIocEpi
 
         public IRegisteredService Add(Type serviceType, Func<IServiceLocator, object> implementationFactory, ServiceInstanceScope lifetime)
         {
-            Container.RegisterDelegate(serviceType, r => implementationFactory(new DryIocServiceLocator(r)), ConvertLifeTime(lifetime));
+            Container.RegisterDelegate(serviceType, r => implementationFactory(r.Resolve<IServiceLocator>()), ConvertLifeTime(lifetime));
 
             _latestType = serviceType;
             return this;
@@ -54,7 +54,7 @@ namespace DryIocEpi
         public bool Contains(Type serviceType) => Container.IsRegistered(serviceType);
 
         public void Intercept<T>(Func<IServiceLocator, T, T> interceptorFactory) where T : class =>
-            Container.RegisterDelegateDecorator<T>(r => (t) => interceptorFactory(new DryIocServiceLocator(r), t));
+            Container.RegisterDelegateDecorator<T>(r => (t) => interceptorFactory(r.Resolve<IServiceLocator>(), t));
 
         public IServiceConfigurationProvider RemoveAll(Type serviceType)
         {
@@ -73,7 +73,6 @@ namespace DryIocEpi
                 case ServiceInstanceScope.Transient:
                     return Reuse.Transient;
                 case ServiceInstanceScope.HttpContext:
-                    return Reuse.InWebRequest;
                 case ServiceInstanceScope.Hybrid:
                     return Reuse.Scoped;
             }

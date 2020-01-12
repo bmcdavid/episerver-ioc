@@ -8,14 +8,27 @@ using System.Linq;
 
 namespace DryIocEpi
 {
+    public interface IServiceLocatorCreateScope
+    {
+        IServiceLocator CreateScope();
+    }
+
     public class DryIocServiceLocator : IServiceLocator, IDisposable, IServiceLocatorCreateScope
     {
+        public static Action<string, string> CheckType;
         private readonly IResolverContext _resolveContext;
-        private int count = 0;
 
-        public static Action<String> CheckType;
+        public DryIocServiceLocator(IResolverContext context)
+        {
+            _resolveContext = context;
+        }
 
-        public DryIocServiceLocator(IResolverContext context) => _resolveContext = context;
+        public ICollection<string> Debug => (_resolveContext as Container)?
+            .GetServiceRegistrations()
+            .Select(x => x.ToString())
+            .ToList();
+
+        public IServiceLocator CreateScope() => new DryIocServiceLocator(_resolveContext.OpenScope());
 
         public void Dispose()
         {
@@ -23,22 +36,17 @@ namespace DryIocEpi
             _resolveContext.Dispose();
         }
 
-        public void Verify()
-        {
-            (_resolveContext as IContainer)?.Validate();
-        }
-
         public IEnumerable<object> GetAllInstances(Type serviceType) =>
             _resolveContext.ResolveMany(serviceType);
 
-        public object GetInstance(Type serviceType) => _resolveContext.Resolve(serviceType, ifUnresolvedReturnDefault: true);
-
-        public TService GetInstance<TService>()
+        private static Type IServiceLocatorType = typeof(IServiceLocator);
+        public object GetInstance(Type serviceType)
         {
             try
             {
-                count++;
-                return (TService)_resolveContext.Resolve<TService>(ifUnresolvedReturnDefault: true);
+                if (IServiceLocatorType.IsAssignableFrom(serviceType)) { return this; }
+
+                return _resolveContext.Resolve(serviceType, ifUnresolvedReturnDefault: true);
             }
             catch (Exception e)
             {
@@ -48,32 +56,23 @@ namespace DryIocEpi
                     .Select(kvp => kvp.Key.ToString() + " = " + kvp.Value.ToString())
                     .ToList();
 
+                CheckType?.Invoke(string.Join(Environment.NewLine, Debug), "registrations.txt");
+                CheckType?.Invoke(string.Join(Environment.NewLine, issueList), "issues.txt");
 
-                CheckType?.Invoke(string.Join(Environment.NewLine,issues));
-
-                throw new Exception("Unable to resolve: " + typeof(TService).FullName, e);
+                throw new Exception("Unable to resolve: " + serviceType.FullName, e);
             }
         }
 
-        public ICollection<string> Debug => (_resolveContext as Container)?
-            .GetServiceRegistrations()
-            .Select(x => x.ToString())
-            .ToList();
+        public TService GetInstance<TService>() =>
+            (TService)GetInstance(typeof(TService));
 
         public object GetService(Type serviceType) => _resolveContext.Resolve(serviceType);
 
         public bool TryGetExistingInstance(Type serviceType, out object instance)
-        {   
+        {
             instance = _resolveContext.Resolve(serviceType, ifUnresolvedReturnDefault: true);
 
             return instance is object;
         }
-
-        public IServiceLocator CreateScope() => new DryIocServiceLocator(_resolveContext.OpenScope());
-    }
-
-    public interface IServiceLocatorCreateScope
-    {
-        IServiceLocator CreateScope();
     }
 }

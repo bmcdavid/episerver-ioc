@@ -52,7 +52,7 @@ namespace EpiserverSite1.Business
 
         private IServiceLocator ResolveLocator()
         {
-            return HttpContext.Current.Items[nameof(HttpIoc)] as IServiceLocator ??
+            return HttpContext.Current.Items[nameof(HttpIocModule)] as IServiceLocator ??
                 _serviceLocator;
         }
     }
