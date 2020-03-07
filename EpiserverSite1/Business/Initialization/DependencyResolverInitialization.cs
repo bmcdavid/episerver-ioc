@@ -1,3 +1,5 @@
+using EPiServer;
+using EPiServer.Core;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
@@ -65,10 +67,10 @@ namespace EpiserverSite1.Business.Initialization
 
     internal static class BuildExtensions
     {
-        public static IRegisteredService AddEpiInternalType(this IServiceConfigurationProvider p, ServiceInstanceScope scope, string typeString)
+        public static IRegisteredService AddEpiInternalType(this IServiceConfigurationProvider p, ServiceInstanceScope scope, string typeString, Type serviceType = null)
         {
             var type = GetEpiInternalType(typeString);
-            return p.Add(type, type, lifetime: scope);
+            return p.Add(serviceType ?? type, type, lifetime: scope);
         }
 
         private static Type GetEpiInternalType(string typeString)

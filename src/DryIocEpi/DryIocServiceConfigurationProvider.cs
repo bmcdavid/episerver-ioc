@@ -8,7 +8,7 @@ namespace DryIocEpi
     {
         private Type _latestType;
 
-        public static Action<Type,Type,ServiceInstanceScope> Inspector { get; set; }
+        public static Action<Type, Type, ServiceInstanceScope> Inspector { get; set; }
         public DryIocServiceConfigurationProvider(IContainer container) => Container = container;
 
         public IContainer Container { get; }
@@ -20,7 +20,7 @@ namespace DryIocEpi
 
             Inspector?.Invoke(serviceType, implementationType, lifetime);
             Container.Register(serviceType, implementationType, ConvertLifeTime(lifetime));
-            
+
             //if (implementationType.GetInterfaces() is Type[] interfaces && interfaces.Length > 1)
             //{
             //    foreach (var t in interfaces)
@@ -44,8 +44,33 @@ namespace DryIocEpi
         public IRegisteredService Add(Type serviceType, Func<IServiceLocator, object> implementationFactory, ServiceInstanceScope lifetime)
         {
 
-            Inspector?.Invoke(serviceType, null, lifetime);
-            Container.RegisterDelegate(serviceType, r => implementationFactory(r.Resolve<IServiceLocator>()), ConvertLifeTime(lifetime));
+            Inspector?.Invoke(serviceType, implementationFactory.GetType(), lifetime);
+
+            object checkedDelegate(IResolverContext r)
+            {
+                var obj = implementationFactory(r.Resolve<IServiceLocator>());
+                // todo: how do Forwards work..... Brad
+                return obj
+                    .ThrowIfNotInstanceOf(serviceType, Error.RegisteredDelegateResultIsNotOfServiceType, r);
+            }
+                
+
+            var factory = new DelegateFactory(checkedDelegate, ConvertLifeTime(lifetime), null);
+
+            Container.Register(factory, serviceType, null, IfAlreadyRegistered.Replace, isStaticallyChecked: false);
+
+            //Container.RegisterDelegate(serviceType, r =>
+            //{
+            //    try
+            //    {
+            //        return implementationFactory(r.Resolve<IServiceLocator>());
+            //    }
+            //    catch(Exception e)
+            //    {
+            //        throw new Exception("brad", e);
+            //    }
+            //},
+            //ConvertLifeTime(lifetime));
 
             _latestType = serviceType;
             return this;
@@ -55,7 +80,7 @@ namespace DryIocEpi
         {
 
             Inspector?.Invoke(serviceType, instance.GetType(), ServiceInstanceScope.Singleton);
-            Container.RegisterInstance(serviceType, instance);            
+            Container.RegisterInstance(serviceType, instance);
             _latestType = serviceType;
 
             return this;

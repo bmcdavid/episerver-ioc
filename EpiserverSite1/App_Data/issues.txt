@@ -1,305 +1,692 @@
-EPiServer.Core.Transfer.Internal.ContentNameTransform = DryIoc.ContainerException: Unable to find most resolvable constructor also including passed input arguments `` 
- when resolving: EPiServer.Web.Internal.SimpleAddress: EPiServer.Web.ISimpleAddressResolver {ServiceKey=DefaultKey(0), DryIoc.IfUnresolved.ReturnDefault} FactoryId=1356 IsSingletonOrDependencyOfSingleton
-  in wrapper IEnumerable<EPiServer.Web.ISimpleAddressResolver> as parameter "simpleAddressResolvers" FactoryId=1 IsSingletonOrDependencyOfSingleton
-  in EPiServer.Web.Internal.DefaultAggregatedSimpleAddressResolver: EPiServer.Web.IAggregatedSimpleAddressResolver as parameter "simpleAddressResolver" FactoryId=1330 IsSingletonOrDependencyOfSingleton
-  in EPiServer.Web.Internal.DefaultUrlSegmentLocator: EPiServer.Web.Internal.IUrlSegmentLocator as parameter "urlSegmentLocator" FactoryId=1342 IsSingletonOrDependencyOfSingleton
-  in EPiServer.Web.Internal.DefaultUniqueIdentityCreator: EPiServer.Web.Internal.IUniqueIdentityCreator as parameter "uniqueIdentityCreator" FactoryId=1339 IsSingletonOrDependencyOfSingleton
-  in singleton EPiServer.Core.Transfer.Internal.ContentNameTransform FactoryId=2503 IsSingletonOrDependencyOfSingleton, IsResolutionCall
+PersonalizedViewSettingsManager = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387 (IsSingletonOrDependencyOfSingleton)
+  in singleton ProjectService: IProjectService as parameter "projectService" FactoryId=1466 (IsSingletonOrDependencyOfSingleton)
+  in ProjectModeViewTransformer: IViewTransformer {ServiceKey=DefaultKey(4), IfUnresolved.ReturnDefaultIfNotRegistered} FactoryId=1324 (IsSingletonOrDependencyOfSingleton)
+  in wrapper IEnumerable<IViewTransformer> as parameter "viewTransformers" ExpressionFactory  FactoryId=1 (IsSingletonOrDependencyOfSingleton)
+  in singleton DefaultViewManager: IViewManager as parameter "viewManager" FactoryId=169 (IsSingletonOrDependencyOfSingleton)
+  in Resolution root PersonalizedViewSettingsManager FactoryId=184 (IsResolutionCall)
   from Container without Scope
- with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
- with Made={FactoryMethod=ConstructorWithResolvableArguments, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 10698
-   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 4748
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8349
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3713
-   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 9050
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3183
-EPiServer.Shell.UI.Rest.ComponentCategoryStore = DryIoc.ContainerException: Unable to resolve EPiServer.Shell.UI.Rest.Translator as parameter "translator"
-  in EPiServer.Shell.UI.Rest.ComponentCategoryStore FactoryId=1231 IsResolutionCall
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4805
+   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 10512
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ProjectItemStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387 (IsSingletonOrDependencyOfSingleton)
+  in singleton ProjectService as parameter "projectService" FactoryId=1463 (IsSingletonOrDependencyOfSingleton)
+  in Resolution root ProjectItemStore FactoryId=1457 (IsResolutionCall)
   from Container without Scope
- with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
- with Made={FactoryMethod=ConstructorWithResolvableArguments, PropertiesAndFields=<custom>}
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ApprovalStore = DryIoc.ContainerException: code: UnableToResolveUnknownService, message: Unable to resolve ApprovalMapper as parameter "approvalMapper"
+  in Resolution root ApprovalStore FactoryId=1661 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}
 Where no service registrations found
   and no dynamic registrations found in 0 of Rules.DynamicServiceProviders
   and nothing found in 0 of Rules.UnknownServiceResolvers
-   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 10684
-   at DryIoc.Container.TryThrowUnableToResolve(Request request)
-   at DryIoc.Container.DryIoc.IContainer.ResolveFactory(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 916
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8454
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3183
-EPiServer.Web.Internal.IUrlSegmentLocator = DryIoc.ContainerException: Unable to find most resolvable constructor also including passed input arguments `` 
- when resolving: EPiServer.Web.Internal.SimpleAddress: EPiServer.Web.ISimpleAddressResolver {ServiceKey=DefaultKey(0), DryIoc.IfUnresolved.ReturnDefault} FactoryId=1356
-  in wrapper IEnumerable<EPiServer.Web.ISimpleAddressResolver> as parameter "simpleAddressResolvers" FactoryId=1
-  in EPiServer.Web.Internal.DefaultAggregatedSimpleAddressResolver: EPiServer.Web.IAggregatedSimpleAddressResolver as parameter "simpleAddressResolver" FactoryId=1330
-  in EPiServer.Web.Internal.DefaultUrlSegmentLocator: EPiServer.Web.Internal.IUrlSegmentLocator FactoryId=1342 IsResolutionCall
+   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12357
+   at DryIoc.Container.TryThrowUnableToResolve(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1061
+   at DryIoc.Container.DryIoc.IContainer.ResolveFactory(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1041
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ComponentCategoryStore = DryIoc.ContainerException: code: UnableToResolveUnknownService, message: Unable to resolve Translator as parameter "translator"
+  in Resolution root ComponentCategoryStore FactoryId=91 (IsResolutionCall)
   from Container without Scope
- with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
- with Made={FactoryMethod=ConstructorWithResolvableArguments, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 10698
-   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 4748
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8349
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3713
-   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 9050
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3183
-EPiServer.Web.ISimpleAddressResolver = DryIoc.ContainerException: Unable to find most resolvable constructor also including passed input arguments `` 
- when resolving: EPiServer.Web.Internal.SimpleAddress: EPiServer.Web.ISimpleAddressResolver {DryIoc.IfUnresolved.ReturnDefault} FactoryId=1356 IsResolutionCall
-  from Container without Scope
- with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
- with FactorySelector=SelectLastRegisteredFactory
- with Made={FactoryMethod=ConstructorWithResolvableArguments, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 10698
-   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 4748
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8349
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3183
-EPiServer.Cms.Shell.UI.Rest.Approvals.ApprovalDefinitionStore = DryIoc.ContainerException: Unable to resolve EPiServer.Cms.Shell.UI.Rest.Approvals.ApprovalDefinitionMapper as parameter "definitionMapper"
-  in EPiServer.Cms.Shell.UI.Rest.Approvals.ApprovalDefinitionStore FactoryId=441 IsResolutionCall
-  from Container without Scope
- with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
- with FactorySelector=SelectLastRegisteredFactory
- with Made={FactoryMethod=ConstructorWithResolvableArguments, PropertiesAndFields=<custom>}
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}
 Where no service registrations found
   and no dynamic registrations found in 0 of Rules.DynamicServiceProviders
   and nothing found in 0 of Rules.UnknownServiceResolvers
-   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 10684
-   at DryIoc.Container.TryThrowUnableToResolve(Request request)
-   at DryIoc.Container.DryIoc.IContainer.ResolveFactory(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 916
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8454
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3183
-Newtonsoft.Json.JsonConverter {ServiceKey=DefaultKey(1)} = DryIoc.ContainerException: Unable to resolve EPiServer.DataAbstraction.IContentTypeRepository<EPiServer.DataAbstraction.BlockType> as parameter "blockTypeRepository"
-  in EPiServer.Cms.Shell.Json.Internal.BlockDataConverter: Newtonsoft.Json.JsonConverter {ServiceKey=DefaultKey(1)} FactoryId=785 IsResolutionCall
+   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12357
+   at DryIoc.Container.TryThrowUnableToResolve(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1061
+   at DryIoc.Container.DryIoc.IContainer.ResolveFactory(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1041
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ProjectService = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387 (IsSingletonOrDependencyOfSingleton)
+  in Resolution root singleton ProjectService FactoryId=1463 (IsSingletonOrDependencyOfSingleton, IsResolutionCall)
   from Container without Scope
- with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
- with Made={FactoryMethod=ConstructorWithResolvableArguments, PropertiesAndFields=<custom>}
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ProjectStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387 (IsSingletonOrDependencyOfSingleton)
+  in singleton ProjectService as parameter "projectService" FactoryId=1463 (IsSingletonOrDependencyOfSingleton)
+  in Resolution root ProjectStore FactoryId=1469 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+SimpleAddress = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: Resolution root SimpleAddress {IfUnresolved.ReturnDefault} FactoryId=430 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+IProjectService = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387 (IsSingletonOrDependencyOfSingleton)
+  in Resolution root singleton ProjectService: IProjectService FactoryId=1466 (IsSingletonOrDependencyOfSingleton, IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ISimpleAddressResolver = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: Resolution root SimpleAddress: ISimpleAddressResolver {IfUnresolved.ReturnDefault} FactoryId=431 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ContentReferenceStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: Resolution root ContentReferenceStore {IfUnresolved.ReturnDefault} FactoryId=1529 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+IUniqueIdentityCreator = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: SimpleAddress: ISimpleAddressResolver {ServiceKey=DefaultKey(0), IfUnresolved.ReturnDefault} FactoryId=431
+  in wrapper IEnumerable<ISimpleAddressResolver> as parameter "simpleAddressResolvers" ExpressionFactory  FactoryId=1
+  in DefaultAggregatedSimpleAddressResolver: IAggregatedSimpleAddressResolver as parameter "simpleAddressResolver" FactoryId=405
+  in DefaultUrlSegmentLocator: IUrlSegmentLocator as parameter "urlSegmentLocator" FactoryId=417
+  in Resolution root DefaultUniqueIdentityCreator: IUniqueIdentityCreator FactoryId=414 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4805
+   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 10512
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ContentDataStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387
+  in Resolution root ContentDataStore FactoryId=1520 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ContentNameTransform = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: SimpleAddress: ISimpleAddressResolver {ServiceKey=DefaultKey(0), IfUnresolved.ReturnDefault} FactoryId=431 (IsSingletonOrDependencyOfSingleton)
+  in wrapper IEnumerable<ISimpleAddressResolver> as parameter "simpleAddressResolvers" ExpressionFactory  FactoryId=1 (IsSingletonOrDependencyOfSingleton)
+  in DefaultAggregatedSimpleAddressResolver: IAggregatedSimpleAddressResolver as parameter "simpleAddressResolver" FactoryId=405 (IsSingletonOrDependencyOfSingleton)
+  in DefaultUrlSegmentLocator: IUrlSegmentLocator as parameter "urlSegmentLocator" FactoryId=417 (IsSingletonOrDependencyOfSingleton)
+  in DefaultUniqueIdentityCreator: IUniqueIdentityCreator as parameter "uniqueIdentityCreator" FactoryId=414 (IsSingletonOrDependencyOfSingleton)
+  in Resolution root singleton ContentNameTransform FactoryId=2505 (IsSingletonOrDependencyOfSingleton, IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4805
+   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 10512
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+UrlSegmentUniquenessHandler = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: SimpleAddress: ISimpleAddressResolver {ServiceKey=DefaultKey(0), IfUnresolved.ReturnDefault} FactoryId=431 (IsSingletonOrDependencyOfSingleton)
+  in wrapper IEnumerable<ISimpleAddressResolver> as parameter "simpleAddressResolvers" ExpressionFactory  FactoryId=1 (IsSingletonOrDependencyOfSingleton)
+  in DefaultAggregatedSimpleAddressResolver: IAggregatedSimpleAddressResolver as parameter "simpleAddressResolver" FactoryId=405 (IsSingletonOrDependencyOfSingleton)
+  in DefaultUrlSegmentLocator: IUrlSegmentLocator as parameter "urlSegmentLocator" FactoryId=417 (IsSingletonOrDependencyOfSingleton)
+  in Resolution root singleton UrlSegmentUniquenessHandler FactoryId=1205 (IsSingletonOrDependencyOfSingleton, IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4805
+   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 10512
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ContentStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387
+  in Resolution root ContentStore FactoryId=1532 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+IViewManager = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387 (IsSingletonOrDependencyOfSingleton)
+  in singleton ProjectService: IProjectService as parameter "projectService" FactoryId=1466 (IsSingletonOrDependencyOfSingleton)
+  in ProjectModeViewTransformer: IViewTransformer {ServiceKey=DefaultKey(4), IfUnresolved.ReturnDefaultIfNotRegistered} FactoryId=1324 (IsSingletonOrDependencyOfSingleton)
+  in wrapper IEnumerable<IViewTransformer> as parameter "viewTransformers" ExpressionFactory  FactoryId=1 (IsSingletonOrDependencyOfSingleton)
+  in Resolution root singleton DefaultViewManager: IViewManager FactoryId=169 (IsSingletonOrDependencyOfSingleton, IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4805
+   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 10512
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ApprovalDefinitionStore = DryIoc.ContainerException: code: UnableToResolveUnknownService, message: Unable to resolve ApprovalDefinitionMapper as parameter "definitionMapper"
+  in Resolution root ApprovalDefinitionStore FactoryId=1657 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}
 Where no service registrations found
   and no dynamic registrations found in 0 of Rules.DynamicServiceProviders
   and nothing found in 0 of Rules.UnknownServiceResolvers
-   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 10684
-   at DryIoc.Container.TryThrowUnableToResolve(Request request)
-   at DryIoc.Container.DryIoc.IContainer.ResolveFactory(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 916
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8454
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3183
-EPiServer.Cms.Shell.UI.Rest.Approvals.ApprovalStore = DryIoc.ContainerException: Unable to resolve EPiServer.Cms.Shell.UI.Rest.Approvals.ApprovalMapper as parameter "approvalMapper"
-  in EPiServer.Cms.Shell.UI.Rest.Approvals.ApprovalStore FactoryId=445 IsResolutionCall
+   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12357
+   at DryIoc.Container.TryThrowUnableToResolve(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1061
+   at DryIoc.Container.DryIoc.IContainer.ResolveFactory(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1041
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ISimpleAddressRouteHandler = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: SimpleAddress: ISimpleAddressResolver {ServiceKey=DefaultKey(0), IfUnresolved.ReturnDefault} FactoryId=431
+  in wrapper IEnumerable<ISimpleAddressResolver> as parameter "simpleAddressResolvers" ExpressionFactory  FactoryId=1
+  in DefaultAggregatedSimpleAddressResolver: IAggregatedSimpleAddressResolver as parameter "simpleAddressResolver" FactoryId=405
+  in Resolution root DefaultSimpleAddressRouteHandler: ISimpleAddressRouteHandler FactoryId=2161 (IsResolutionCall)
   from Container without Scope
- with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
- with Made={FactoryMethod=ConstructorWithResolvableArguments, PropertiesAndFields=<custom>}
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4805
+   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 10512
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+IEventListener {ServiceKey=DefaultKey(2)} = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387 (IsSingletonOrDependencyOfSingleton)
+  in singleton ProjectService as parameter "projectService" FactoryId=1463 (IsSingletonOrDependencyOfSingleton)
+  in Resolution root singleton ProjectMessageNotifier: IEventListener {ServiceKey=DefaultKey(2)} FactoryId=1433 (IsSingletonOrDependencyOfSingleton, IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+IEventListener {ServiceKey=DefaultKey(5)} = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387 (IsSingletonOrDependencyOfSingleton)
+  in singleton ProjectService as parameter "projectService" FactoryId=1463 (IsSingletonOrDependencyOfSingleton)
+  in Resolution root singleton ProjectEventListener: IEventListener {ServiceKey=DefaultKey(5)} FactoryId=1454 (IsSingletonOrDependencyOfSingleton, IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+IUriContextResolver {ServiceKey=DefaultKey(0)} = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387 (IsSingletonOrDependencyOfSingleton)
+  in singleton ProjectService as parameter "projectService" FactoryId=1463 (IsSingletonOrDependencyOfSingleton)
+  in Resolution root ProjectContextResolver: IUriContextResolver {ServiceKey=DefaultKey(0)} FactoryId=1451 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+RoutingSegmentValidator = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: SimpleAddress: ISimpleAddressResolver {ServiceKey=DefaultKey(0), IfUnresolved.ReturnDefault} FactoryId=431
+  in wrapper IEnumerable<ISimpleAddressResolver> as parameter "simpleAddressResolvers" ExpressionFactory  FactoryId=1
+  in DefaultAggregatedSimpleAddressResolver: IAggregatedSimpleAddressResolver as parameter "simpleAddressResolver" FactoryId=405
+  in DefaultUrlSegmentLocator: IUrlSegmentLocator as parameter "urlSegmentLocator" FactoryId=417
+  in Resolution root RoutingSegmentValidator FactoryId=478 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4805
+   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 10512
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ContentVersionStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: Resolution root ContentVersionStore {IfUnresolved.ReturnDefault} FactoryId=1541 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+IUrlSegmentCreator = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: SimpleAddress: ISimpleAddressResolver {ServiceKey=DefaultKey(0), IfUnresolved.ReturnDefault} FactoryId=431 (IsSingletonOrDependencyOfSingleton)
+  in wrapper IEnumerable<ISimpleAddressResolver> as parameter "simpleAddressResolvers" ExpressionFactory  FactoryId=1 (IsSingletonOrDependencyOfSingleton)
+  in DefaultAggregatedSimpleAddressResolver: IAggregatedSimpleAddressResolver as parameter "simpleAddressResolver" FactoryId=405 (IsSingletonOrDependencyOfSingleton)
+  in DefaultUrlSegmentLocator: IUrlSegmentLocator as parameter "urlSegmentLocator" FactoryId=417 (IsSingletonOrDependencyOfSingleton)
+  in DefaultUniqueIdentityCreator: IUniqueIdentityCreator as parameter "uniqueIdentityCreator" FactoryId=414 (IsSingletonOrDependencyOfSingleton)
+  in Resolution root singleton DefaultUrlSegmentCreator: IUrlSegmentCreator FactoryId=415 (IsSingletonOrDependencyOfSingleton, IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4805
+   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 10512
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ContextStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387 (IsSingletonOrDependencyOfSingleton)
+  in singleton ProjectService as parameter "projectService" FactoryId=1463 (IsSingletonOrDependencyOfSingleton)
+  in ProjectContextResolver: IUriContextResolver {ServiceKey=DefaultKey(0), IfUnresolved.ReturnDefaultIfNotRegistered} FactoryId=1451
+  in wrapper IEnumerable<IUriContextResolver> as parameter "uriResolvers" ExpressionFactory  FactoryId=1
+  in Resolution root ContextStore FactoryId=103 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4805
+   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 10512
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ViewModelConverter<ProjectItem, ProjectItemViewModel> = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387 (IsSingletonOrDependencyOfSingleton)
+  in singleton ProjectService as parameter "projectService" FactoryId=1463 (IsSingletonOrDependencyOfSingleton)
+  in Resolution root ProjectItemConverter: ViewModelConverter<ProjectItem, ProjectItemViewModel> FactoryId=1475 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+IUrlSegmentLocator = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: SimpleAddress: ISimpleAddressResolver {ServiceKey=DefaultKey(0), IfUnresolved.ReturnDefault} FactoryId=431
+  in wrapper IEnumerable<ISimpleAddressResolver> as parameter "simpleAddressResolvers" ExpressionFactory  FactoryId=1
+  in DefaultAggregatedSimpleAddressResolver: IAggregatedSimpleAddressResolver as parameter "simpleAddressResolver" FactoryId=405
+  in Resolution root DefaultUrlSegmentLocator: IUrlSegmentLocator FactoryId=417 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4805
+   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 10512
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+IContentChangeManager = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: Resolution root ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} FactoryId=1387 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+SimpleAddressValidator = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: SimpleAddress: ISimpleAddressResolver {ServiceKey=DefaultKey(0), IfUnresolved.ReturnDefault} FactoryId=431
+  in wrapper IEnumerable<ISimpleAddressResolver> as parameter "simpleAddressResolvers" ExpressionFactory  FactoryId=1
+  in DefaultAggregatedSimpleAddressResolver: IAggregatedSimpleAddressResolver as parameter "simpleAddressResolver" FactoryId=405
+  in DefaultUrlSegmentLocator: IUrlSegmentLocator as parameter "urlSegmentLocator" FactoryId=417
+  in Resolution root SimpleAddressValidator FactoryId=481 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4805
+   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 10512
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+JsonConverter {ServiceKey=DefaultKey(5)} = DryIoc.ContainerException: code: UnableToResolveUnknownService, message: Unable to resolve IContentTypeRepository<BlockType> as parameter "blockTypeRepository"
+  in Resolution root BlockDataConverter: JsonConverter {ServiceKey=DefaultKey(5)} FactoryId=2001 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}
 Where no service registrations found
   and no dynamic registrations found in 0 of Rules.DynamicServiceProviders
   and nothing found in 0 of Rules.UnknownServiceResolvers
-   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 10684
-   at DryIoc.Container.TryThrowUnableToResolve(Request request)
-   at DryIoc.Container.DryIoc.IContainer.ResolveFactory(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 916
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8454
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3183
-EPiServer.Cms.Shell.UI.Rest.IContentChangeManager = DryIoc.ContainerException: Unable to find most resolvable constructor also including passed input arguments `` 
- when resolving: EPiServer.Cms.Shell.UI.Rest.ContentChangeManager: EPiServer.Cms.Shell.UI.Rest.IContentChangeManager {DryIoc.IfUnresolved.ReturnDefault} FactoryId=171 IsResolutionCall
+   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12357
+   at DryIoc.Container.TryThrowUnableToResolve(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1061
+   at DryIoc.Container.DryIoc.IContainer.ResolveFactory(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1041
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ComponentSortOrderStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387 (IsSingletonOrDependencyOfSingleton)
+  in singleton ProjectService: IProjectService as parameter "projectService" FactoryId=1466 (IsSingletonOrDependencyOfSingleton)
+  in ProjectModeViewTransformer: IViewTransformer {ServiceKey=DefaultKey(4), IfUnresolved.ReturnDefaultIfNotRegistered} FactoryId=1324 (IsSingletonOrDependencyOfSingleton)
+  in wrapper IEnumerable<IViewTransformer> as parameter "viewTransformers" ExpressionFactory  FactoryId=1 (IsSingletonOrDependencyOfSingleton)
+  in singleton DefaultViewManager: IViewManager as parameter "viewManager" FactoryId=169 (IsSingletonOrDependencyOfSingleton)
+  in PersonalizedViewSettingsManager as parameter "personalizedViewSettingsManager" FactoryId=184
+  in Resolution root ComponentSortOrderStore FactoryId=97 (IsResolutionCall)
   from Container without Scope
- with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
- with Made={FactoryMethod=ConstructorWithResolvableArguments, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 10698
-   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 4748
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8349
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3183
-EPiServer.Cms.Shell.UI.Rest.Internal.ContentReferenceStore = DryIoc.ContainerException: Unable to find most resolvable constructor also including passed input arguments `` 
- when resolving: EPiServer.Cms.Shell.UI.Rest.Internal.ContentReferenceStore {DryIoc.IfUnresolved.ReturnDefault} FactoryId=313 IsResolutionCall
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4805
+   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 10512
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+IAggregatedSimpleAddressResolver = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: SimpleAddress: ISimpleAddressResolver {ServiceKey=DefaultKey(0), IfUnresolved.ReturnDefault} FactoryId=431
+  in wrapper IEnumerable<ISimpleAddressResolver> as parameter "simpleAddressResolvers" ExpressionFactory  FactoryId=1
+  in Resolution root DefaultAggregatedSimpleAddressResolver: IAggregatedSimpleAddressResolver FactoryId=405 (IsResolutionCall)
   from Container without Scope
- with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
- with Made={FactoryMethod=ConstructorWithResolvableArguments, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 10698
-   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 4748
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8349
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3183
-EPiServer.Cms.Shell.UI.Rest.Internal.ReferencedContentStore = DryIoc.ContainerException: Unable to resolve EPiServer.Cms.Shell.UI.Rest.Internal.ReferencedContentResolver as parameter "referencedContentResolver"
-  in EPiServer.Cms.Shell.UI.Rest.Internal.ReferencedContentStore FactoryId=351 IsResolutionCall
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4805
+   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 10512
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+IViewTransformer {ServiceKey=DefaultKey(4)} = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387 (IsSingletonOrDependencyOfSingleton)
+  in singleton ProjectService: IProjectService as parameter "projectService" FactoryId=1466 (IsSingletonOrDependencyOfSingleton)
+  in Resolution root ProjectModeViewTransformer: IViewTransformer {ServiceKey=DefaultKey(4)} FactoryId=1324 (IsResolutionCall)
   from Container without Scope
- with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
- with Made={FactoryMethod=ConstructorWithResolvableArguments, PropertiesAndFields=<custom>}
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ViewModelConverter<Project, ProjectViewModel> = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387 (IsSingletonOrDependencyOfSingleton)
+  in singleton ProjectService as parameter "projectService" FactoryId=1463 (IsSingletonOrDependencyOfSingleton)
+  in Resolution root ProjectConverter: ViewModelConverter<Project, ProjectViewModel> FactoryId=1472 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+WasteBasketStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: Resolution root WasteBasketStore {IfUnresolved.ReturnDefault} FactoryId=1576 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ActivityStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387 (IsSingletonOrDependencyOfSingleton)
+  in singleton ProjectService as parameter "projectService" FactoryId=1463 (IsSingletonOrDependencyOfSingleton)
+  in Resolution root ActivityStore FactoryId=1679 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ComponentStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvableArgs, message: Unable to find most resolvable constructor also including passed input arguments `` 
+ when resolving: ContentChangeManager: IContentChangeManager {IfUnresolved.ReturnDefault} as parameter "contentChangeManager" FactoryId=1387 (IsSingletonOrDependencyOfSingleton)
+  in singleton ProjectService: IProjectService as parameter "projectService" FactoryId=1466 (IsSingletonOrDependencyOfSingleton)
+  in ProjectModeViewTransformer: IViewTransformer {ServiceKey=DefaultKey(4), IfUnresolved.ReturnDefaultIfNotRegistered} FactoryId=1324 (IsSingletonOrDependencyOfSingleton)
+  in wrapper IEnumerable<IViewTransformer> as parameter "viewTransformers" ExpressionFactory  FactoryId=1 (IsSingletonOrDependencyOfSingleton)
+  in singleton DefaultViewManager: IViewManager as parameter "viewManager" FactoryId=169 (IsSingletonOrDependencyOfSingleton)
+  in Resolution root ComponentStore FactoryId=100 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4805
+   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 10512
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263
+ReferencedContentStore = DryIoc.ContainerException: code: UnableToResolveUnknownService, message: Unable to resolve ReferencedContentResolver as parameter "referencedContentResolver"
+  in Resolution root ReferencedContentStore FactoryId=1567 (IsResolutionCall)
+  from Container without Scope
+ with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
+ with FactorySelector=SelectLastRegisteredFactory
+ with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}
 Where no service registrations found
   and no dynamic registrations found in 0 of Rules.DynamicServiceProviders
   and nothing found in 0 of Rules.UnknownServiceResolvers
-   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 10684
-   at DryIoc.Container.TryThrowUnableToResolve(Request request)
-   at DryIoc.Container.DryIoc.IContainer.ResolveFactory(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 916
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8454
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3183
-EPiServer.Web.IAggregatedSimpleAddressResolver = DryIoc.ContainerException: Unable to find most resolvable constructor also including passed input arguments `` 
- when resolving: EPiServer.Web.Internal.SimpleAddress: EPiServer.Web.ISimpleAddressResolver {ServiceKey=DefaultKey(0), DryIoc.IfUnresolved.ReturnDefault} FactoryId=1356
-  in wrapper IEnumerable<EPiServer.Web.ISimpleAddressResolver> as parameter "simpleAddressResolvers" FactoryId=1
-  in EPiServer.Web.Internal.DefaultAggregatedSimpleAddressResolver: EPiServer.Web.IAggregatedSimpleAddressResolver FactoryId=1330 IsResolutionCall
-  from Container without Scope
- with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
- with FactorySelector=SelectLastRegisteredFactory
- with Made={FactoryMethod=ConstructorWithResolvableArguments, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 10698
-   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 4748
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8349
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3713
-   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 9050
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3183
-EPiServer.Web.Internal.SimpleAddress = DryIoc.ContainerException: Unable to find most resolvable constructor also including passed input arguments `` 
- when resolving: EPiServer.Web.Internal.SimpleAddress {DryIoc.IfUnresolved.ReturnDefault} FactoryId=1355 IsResolutionCall
-  from Container without Scope
- with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
- with FactorySelector=SelectLastRegisteredFactory
- with Made={FactoryMethod=ConstructorWithResolvableArguments, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 10698
-   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 4748
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8349
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3183
-EPiServer.Web.Internal.IUniqueIdentityCreator = DryIoc.ContainerException: Unable to find most resolvable constructor also including passed input arguments `` 
- when resolving: EPiServer.Web.Internal.SimpleAddress: EPiServer.Web.ISimpleAddressResolver {ServiceKey=DefaultKey(0), DryIoc.IfUnresolved.ReturnDefault} FactoryId=1356
-  in wrapper IEnumerable<EPiServer.Web.ISimpleAddressResolver> as parameter "simpleAddressResolvers" FactoryId=1
-  in EPiServer.Web.Internal.DefaultAggregatedSimpleAddressResolver: EPiServer.Web.IAggregatedSimpleAddressResolver as parameter "simpleAddressResolver" FactoryId=1330
-  in EPiServer.Web.Internal.DefaultUrlSegmentLocator: EPiServer.Web.Internal.IUrlSegmentLocator as parameter "urlSegmentLocator" FactoryId=1342
-  in EPiServer.Web.Internal.DefaultUniqueIdentityCreator: EPiServer.Web.Internal.IUniqueIdentityCreator FactoryId=1339 IsResolutionCall
-  from Container without Scope
- with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
- with FactorySelector=SelectLastRegisteredFactory
- with Made={FactoryMethod=ConstructorWithResolvableArguments, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 10698
-   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 4748
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8349
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3713
-   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 9050
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3183
-EPiServer.Validation.Internal.RoutingSegmentValidator = DryIoc.ContainerException: Unable to find most resolvable constructor also including passed input arguments `` 
- when resolving: EPiServer.Web.Internal.SimpleAddress: EPiServer.Web.ISimpleAddressResolver {ServiceKey=DefaultKey(0), DryIoc.IfUnresolved.ReturnDefault} FactoryId=1356
-  in wrapper IEnumerable<EPiServer.Web.ISimpleAddressResolver> as parameter "simpleAddressResolvers" FactoryId=1
-  in EPiServer.Web.Internal.DefaultAggregatedSimpleAddressResolver: EPiServer.Web.IAggregatedSimpleAddressResolver as parameter "simpleAddressResolver" FactoryId=1330
-  in EPiServer.Web.Internal.DefaultUrlSegmentLocator: EPiServer.Web.Internal.IUrlSegmentLocator as parameter "urlSegmentLocator" FactoryId=1342
-  in EPiServer.Validation.Internal.RoutingSegmentValidator FactoryId=1403 IsResolutionCall
-  from Container without Scope
- with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
- with FactorySelector=SelectLastRegisteredFactory
- with Made={FactoryMethod=ConstructorWithResolvableArguments, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 10698
-   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 4748
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8349
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3713
-   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 9050
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3183
-EPiServer.Web.IUrlSegmentCreator = DryIoc.ContainerException: Unable to find most resolvable constructor also including passed input arguments `` 
- when resolving: EPiServer.Web.Internal.SimpleAddress: EPiServer.Web.ISimpleAddressResolver {ServiceKey=DefaultKey(0), DryIoc.IfUnresolved.ReturnDefault} FactoryId=1356 IsSingletonOrDependencyOfSingleton
-  in wrapper IEnumerable<EPiServer.Web.ISimpleAddressResolver> as parameter "simpleAddressResolvers" FactoryId=1 IsSingletonOrDependencyOfSingleton
-  in EPiServer.Web.Internal.DefaultAggregatedSimpleAddressResolver: EPiServer.Web.IAggregatedSimpleAddressResolver as parameter "simpleAddressResolver" FactoryId=1330 IsSingletonOrDependencyOfSingleton
-  in EPiServer.Web.Internal.DefaultUrlSegmentLocator: EPiServer.Web.Internal.IUrlSegmentLocator as parameter "urlSegmentLocator" FactoryId=1342 IsSingletonOrDependencyOfSingleton
-  in EPiServer.Web.Internal.DefaultUniqueIdentityCreator: EPiServer.Web.Internal.IUniqueIdentityCreator as parameter "uniqueIdentityCreator" FactoryId=1339 IsSingletonOrDependencyOfSingleton
-  in singleton EPiServer.Web.Internal.DefaultUrlSegmentCreator: EPiServer.Web.IUrlSegmentCreator FactoryId=1340 IsSingletonOrDependencyOfSingleton, IsResolutionCall
-  from Container without Scope
- with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
- with FactorySelector=SelectLastRegisteredFactory
- with Made={FactoryMethod=ConstructorWithResolvableArguments, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 10698
-   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 4748
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8349
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3713
-   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 9050
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3183
-EPiServer.Web.Routing.ISimpleAddressRouteHandler = DryIoc.ContainerException: Unable to find most resolvable constructor also including passed input arguments `` 
- when resolving: EPiServer.Web.Internal.SimpleAddress: EPiServer.Web.ISimpleAddressResolver {ServiceKey=DefaultKey(0), DryIoc.IfUnresolved.ReturnDefault} FactoryId=1356
-  in wrapper IEnumerable<EPiServer.Web.ISimpleAddressResolver> as parameter "simpleAddressResolvers" FactoryId=1
-  in EPiServer.Web.Internal.DefaultAggregatedSimpleAddressResolver: EPiServer.Web.IAggregatedSimpleAddressResolver as parameter "simpleAddressResolver" FactoryId=1330
-  in EPiServer.Web.Routing.Internal.DefaultSimpleAddressRouteHandler: EPiServer.Web.Routing.ISimpleAddressRouteHandler FactoryId=945 IsResolutionCall
-  from Container without Scope
- with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
- with FactorySelector=SelectLastRegisteredFactory
- with Made={FactoryMethod=ConstructorWithResolvableArguments, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 10698
-   at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 4748
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8349
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.WrappersSupport.GetArrayExpression(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3713
-   at DryIoc.ExpressionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 9050
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ReflectionFactory.TryResolveParameterExpressions(ParameterInfo[] parameters, Func`2 parameterServiceInfoSelector, Request request, Int32& usedInputArgAndCustomValueCount) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8455
-   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 8384
-   at DryIoc.Factory.GetExpressionOrDefault(Request request) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 7869
-   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in D:\Dev\DryIoc\src\DryIoc\Container.cs:line 3183
+   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12357
+   at DryIoc.Container.TryThrowUnableToResolve(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1061
+   at DryIoc.Container.DryIoc.IContainer.ResolveFactory(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1041
+   at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
+   at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
+   at DryIoc.ContainerTools.Validate(IContainer container, ServiceInfo[] roots) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 4263

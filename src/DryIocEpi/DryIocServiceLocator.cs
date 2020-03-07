@@ -45,7 +45,7 @@ namespace DryIocEpi
         {
             try
             {
-                if (_iServiceLocatorType.IsAssignableFrom(serviceType)) { return this; }
+                //if (_iServiceLocatorType.IsAssignableFrom(serviceType)) { return this; }
 
                 return _resolveContext.Resolve(serviceType, ifUnresolvedReturnDefault: true);
             }
@@ -67,7 +67,7 @@ namespace DryIocEpi
         public TService GetInstance<TService>() =>
             (TService)GetInstance(typeof(TService));
 
-        public object GetService(Type serviceType) => _resolveContext.Resolve(serviceType);
+        public object GetService(Type serviceType) => _resolveContext.Resolve(serviceType, IfUnresolved.ReturnDefault);
 
         public bool TryGetExistingInstance(Type serviceType, out object instance)
         {

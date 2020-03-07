@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EPiServer.ServiceLocation;
+using System;
 using System.Web;
 using System.Web.Mvc;
 
@@ -6,19 +7,20 @@ namespace EpiserverSite1
 {
     public class EPiServerApplication : HttpApplication// EPiServer.Global
     {
-        private readonly EPiServer.Global _g;
+        private readonly EPiServer.Global _;
         public EPiServerApplication()
         {
             DryIocEpi.DryIocServiceConfigurationProvider.Inspector =
                 (service, concrete, lifetime) =>
                 {
-                    if (service is EPiServer.Core.IContentCacheVersion)
+
+                    if (service == typeof(EPiServer.Web.ITemplateResolverEvents))
                     {
 
                     }
                 };
 
-            _g = new EPiServer.Global();
+            _ = new EPiServer.Global();           
         }
 
         protected void Application_Start()
