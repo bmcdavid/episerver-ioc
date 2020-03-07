@@ -25,7 +25,7 @@ namespace DryIocEpi
 
         public ICollection<string> Debug => (_resolveContext as Container)?
             .GetServiceRegistrations()
-            .Select(x => x.ToString())
+            .Select(x => x.ServiceType.FullName + " " + x.ImplementationType?.FullName ?? "n/a" + " " + x.Factory.Reuse.GetType().FullName)
             .ToList();
 
         public IServiceLocator CreateScope() => new DryIocServiceLocator(_resolveContext.OpenScope());
@@ -39,12 +39,13 @@ namespace DryIocEpi
         public IEnumerable<object> GetAllInstances(Type serviceType) =>
             _resolveContext.ResolveMany(serviceType);
 
-        private static Type IServiceLocatorType = typeof(IServiceLocator);
+        private static Type _iServiceLocatorType = typeof(IServiceLocator);
+
         public object GetInstance(Type serviceType)
         {
             try
             {
-                if (IServiceLocatorType.IsAssignableFrom(serviceType)) { return this; }
+                if (_iServiceLocatorType.IsAssignableFrom(serviceType)) { return this; }
 
                 return _resolveContext.Resolve(serviceType, ifUnresolvedReturnDefault: true);
             }

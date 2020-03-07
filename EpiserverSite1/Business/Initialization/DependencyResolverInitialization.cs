@@ -16,6 +16,8 @@ namespace EpiserverSite1.Business.Initialization
     {
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
+            context.ConfigurationComplete += Context_ConfigurationComplete;
+
             context.Services
                 // project specific
                 .AddSingleton<StandardResolution>()
@@ -26,10 +28,11 @@ namespace EpiserverSite1.Business.Initialization
                 .AddSingleton<PageViewContextFactory>()
                 .AddSingleton<WebChannel>()
                 .AddSingleton<MobileChannel>()
+
                 // Epi specific
-                .AddEpiInternalType(ServiceInstanceScope.Singleton,                "EPiServer.Cms.Shell.UI.Approvals.Notifications.UserNotificationFormatter")
-                .AddEpiInternalType(ServiceInstanceScope.Singleton,("EPiServer.Cms.Shell.UI.Approvals.Notifications.ApprovalViewModelFactory"))
-                .AddEpiInternalType(ServiceInstanceScope.Singleton,("EPiServer.Cms.Shell.UI.Approvals.Notifications.EmailViewModelFactory"))
+                .AddEpiInternalType(ServiceInstanceScope.Singleton, "EPiServer.Cms.Shell.UI.Approvals.Notifications.UserNotificationFormatter")
+                .AddEpiInternalType(ServiceInstanceScope.Singleton, ("EPiServer.Cms.Shell.UI.Approvals.Notifications.ApprovalViewModelFactory"))
+                .AddEpiInternalType(ServiceInstanceScope.Singleton, ("EPiServer.Cms.Shell.UI.Approvals.Notifications.EmailViewModelFactory"))
                 .AddEpiInternalType(ServiceInstanceScope.Singleton, "EPiServer.Cms.Shell.PropertyListItemsDefinitionsLoader")
                 .AddTransient<EPiServer.Cms.Shell.UI.ObjectEditing.Internal.FileExtensionsResolver>()
                 .AddTransient<EPiServer.Security.CreatorRole>()
@@ -44,7 +47,12 @@ namespace EpiserverSite1.Business.Initialization
                     .AddTransient<ContentAreaRenderer, AlloyContentAreaRenderer>();
             };
         }
-        
+
+        private void Context_ConfigurationComplete(object sender, ServiceConfigurationEventArgs e)
+        {
+
+        }
+
         public void Initialize(InitializationEngine context)
         {
             DependencyResolver.SetResolver(new ServiceLocatorDependencyResolver(context.Locate.Advanced));

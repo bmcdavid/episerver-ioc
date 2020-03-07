@@ -10,24 +10,25 @@ namespace DryIocEpi
 {
     public class DryIocLocatorFactory : IServiceLocatorFactory
     {
-        private IContainer _container;
+        private static readonly Dictionary<Type, List<PropertyOrFieldServiceInfo>> _props = new Dictionary<Type, List<PropertyOrFieldServiceInfo>>();
+        private readonly IContainer _container;
 
         public DryIocLocatorFactory()
         {
             var rules = Rules.Default
                 .With(propertiesAndFields: InjectedProperties)
                 .With(FactoryMethod.ConstructorWithResolvableArguments)
-                //.WithoutThrowIfDependencyHasShorterReuseLifespan()
+                .WithoutThrowIfDependencyHasShorterReuseLifespan()
                 .WithFactorySelector(Rules.SelectLastRegisteredFactory())
                 .WithTrackingDisposableTransients()
+                .WithFuncAndLazyWithoutRegistration()
+
                 ; //used in transient delegate cases
 
             _container = new Container(rules);
         }
 
         public DryIocLocatorFactory(IContainer container) => _container = container;
-
-        private static readonly Dictionary<Type, List<PropertyOrFieldServiceInfo>> _props = new Dictionary<Type, List<PropertyOrFieldServiceInfo>>();
 
         public static IEnumerable<PropertyOrFieldServiceInfo> InjectedProperties(Type type)
         {
