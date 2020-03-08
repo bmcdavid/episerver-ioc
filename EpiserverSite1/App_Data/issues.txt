@@ -9,7 +9,7 @@ PersonalizedViewSettingsManager = DryIoc.ContainerException: code: UnableToFindC
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -33,7 +33,7 @@ ProjectItemStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResol
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -51,7 +51,7 @@ ApprovalStore = DryIoc.ContainerException: code: UnableToResolveUnknownService, 
 Where no service registrations found
   and no dynamic registrations found in 0 of Rules.DynamicServiceProviders
   and nothing found in 0 of Rules.UnknownServiceResolvers
-   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12357
+   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12358
    at DryIoc.Container.TryThrowUnableToResolve(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1061
    at DryIoc.Container.DryIoc.IContainer.ResolveFactory(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1041
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
@@ -66,7 +66,7 @@ ComponentCategoryStore = DryIoc.ContainerException: code: UnableToResolveUnknown
 Where no service registrations found
   and no dynamic registrations found in 0 of Rules.DynamicServiceProviders
   and nothing found in 0 of Rules.UnknownServiceResolvers
-   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12357
+   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12358
    at DryIoc.Container.TryThrowUnableToResolve(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1061
    at DryIoc.Container.DryIoc.IContainer.ResolveFactory(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1041
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
@@ -79,7 +79,7 @@ ProjectService = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolva
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -94,7 +94,7 @@ ProjectStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvabl
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -109,7 +109,7 @@ SimpleAddress = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvab
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -121,7 +121,7 @@ IProjectService = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolv
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -134,7 +134,7 @@ ISimpleAddressResolver = DryIoc.ContainerException: code: UnableToFindCtorWithAl
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -145,7 +145,7 @@ ContentReferenceStore = DryIoc.ContainerException: code: UnableToFindCtorWithAll
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -160,7 +160,7 @@ IUniqueIdentityCreator = DryIoc.ContainerException: code: UnableToFindCtorWithAl
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -181,7 +181,7 @@ ContentDataStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResol
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -199,7 +199,7 @@ ContentNameTransform = DryIoc.ContainerException: code: UnableToFindCtorWithAllR
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -225,7 +225,7 @@ UrlSegmentUniquenessHandler = DryIoc.ContainerException: code: UnableToFindCtorW
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -246,7 +246,7 @@ ContentStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvabl
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -263,7 +263,7 @@ IViewManager = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvabl
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -286,7 +286,7 @@ ApprovalDefinitionStore = DryIoc.ContainerException: code: UnableToResolveUnknow
 Where no service registrations found
   and no dynamic registrations found in 0 of Rules.DynamicServiceProviders
   and nothing found in 0 of Rules.UnknownServiceResolvers
-   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12357
+   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12358
    at DryIoc.Container.TryThrowUnableToResolve(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1061
    at DryIoc.Container.DryIoc.IContainer.ResolveFactory(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1041
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
@@ -301,7 +301,7 @@ ISimpleAddressRouteHandler = DryIoc.ContainerException: code: UnableToFindCtorWi
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -321,7 +321,7 @@ IEventListener {ServiceKey=DefaultKey(2)} = DryIoc.ContainerException: code: Una
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -338,7 +338,7 @@ IEventListener {ServiceKey=DefaultKey(5)} = DryIoc.ContainerException: code: Una
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -355,7 +355,7 @@ IUriContextResolver {ServiceKey=DefaultKey(0)} = DryIoc.ContainerException: code
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -374,7 +374,7 @@ RoutingSegmentValidator = DryIoc.ContainerException: code: UnableToFindCtorWithA
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -394,7 +394,7 @@ ContentVersionStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllRe
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -410,7 +410,7 @@ IUrlSegmentCreator = DryIoc.ContainerException: code: UnableToFindCtorWithAllRes
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -436,7 +436,7 @@ ContextStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvabl
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -458,7 +458,7 @@ ViewModelConverter<ProjectItem, ProjectItemViewModel> = DryIoc.ContainerExceptio
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -476,7 +476,7 @@ IUrlSegmentLocator = DryIoc.ContainerException: code: UnableToFindCtorWithAllRes
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -494,7 +494,7 @@ IContentChangeManager = DryIoc.ContainerException: code: UnableToFindCtorWithAll
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -509,7 +509,7 @@ SimpleAddressValidator = DryIoc.ContainerException: code: UnableToFindCtorWithAl
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -532,7 +532,7 @@ JsonConverter {ServiceKey=DefaultKey(5)} = DryIoc.ContainerException: code: Unab
 Where no service registrations found
   and no dynamic registrations found in 0 of Rules.DynamicServiceProviders
   and nothing found in 0 of Rules.UnknownServiceResolvers
-   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12357
+   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12358
    at DryIoc.Container.TryThrowUnableToResolve(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1061
    at DryIoc.Container.DryIoc.IContainer.ResolveFactory(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1041
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877
@@ -550,7 +550,7 @@ ComponentSortOrderStore = DryIoc.ContainerException: code: UnableToFindCtorWithA
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -576,7 +576,7 @@ IAggregatedSimpleAddressResolver = DryIoc.ContainerException: code: UnableToFind
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -594,7 +594,7 @@ IViewTransformer {ServiceKey=DefaultKey(4)} = DryIoc.ContainerException: code: U
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -611,7 +611,7 @@ ViewModelConverter<Project, ProjectViewModel> = DryIoc.ContainerException: code:
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -626,7 +626,7 @@ WasteBasketStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResol
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -639,7 +639,7 @@ ActivityStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolvab
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -659,7 +659,7 @@ ComponentStore = DryIoc.ContainerException: code: UnableToFindCtorWithAllResolva
  with Rules with {TrackingDisposableTransients, FuncAndLazyWithoutRegistration, SelectLastRegisteredFactory, UsedForExpressionGeneration, UsedForValidation} and without {ThrowIfDependencyHasShorterReuseLifespan, ThrowOnRegisteringDisposableTransient, ImplicitCheckForReuseMatchingScope, EagerCachingSingletonForFasterAccess, UseInterpretationForTheFirstResolution}
  with FactorySelector=SelectLastRegisteredFactory
  with Made={FactoryMethod=ConstructorWithResolvableArgumentsIncludingNonPublic, PropertiesAndFields=<custom>}.
-   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12372
+   at DryIoc.Throw.For[T](Boolean throwCondition, Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12373
    at DryIoc.FactoryMethod.<>c__DisplayClass8_0.<Constructor>b__0(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 5947
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9790
    at DryIoc.Factory.GetExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9284
@@ -684,7 +684,7 @@ ReferencedContentStore = DryIoc.ContainerException: code: UnableToResolveUnknown
 Where no service registrations found
   and no dynamic registrations found in 0 of Rules.DynamicServiceProviders
   and nothing found in 0 of Rules.UnknownServiceResolvers
-   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12357
+   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 12358
    at DryIoc.Container.TryThrowUnableToResolve(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1061
    at DryIoc.Container.DryIoc.IContainer.ResolveFactory(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 1041
    at DryIoc.ReflectionFactory.CreateExpressionOrDefault(Request request) in C:\Users\bradm\.nuget\packages\dryioc\4.1.1\contentFiles\cs\net45\DryIoc\Container.cs:line 9877

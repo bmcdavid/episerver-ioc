@@ -47,17 +47,21 @@ namespace DryIocEpi
             Inspector?.Invoke(serviceType, implementationFactory.GetType(), lifetime);
 
             object checkedDelegate(IResolverContext r)
-            {
+            {                
                 var obj = implementationFactory(r.Resolve<IServiceLocator>());
+                if (obj == null)
+                {
+                    var lf = lifetime;
+                }
                 // todo: how do Forwards work..... Brad
                 return obj
                     .ThrowIfNotInstanceOf(serviceType, Error.RegisteredDelegateResultIsNotOfServiceType, r);
             }
-                
+
 
             var factory = new DelegateFactory(checkedDelegate, ConvertLifeTime(lifetime), null);
 
-            Container.Register(factory, serviceType, null, IfAlreadyRegistered.Replace, isStaticallyChecked: false);
+            Container.Register(factory, serviceType, null, null, isStaticallyChecked: false);
 
             //Container.RegisterDelegate(serviceType, r =>
             //{
