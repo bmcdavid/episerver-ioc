@@ -18,10 +18,9 @@ namespace DryIocEpi
     public class DryIocServiceLocator : IServiceLocator, IDisposable, IServiceLocatorCreateScope
     {
         public static Action<string, string> CheckType;
-        private static readonly AsyncLocal<Stack<IResolverContext>> _stack = new AsyncLocal<Stack<IResolverContext>>();
+        private static readonly AsyncLocal<StackHolder> _stack = new AsyncLocal<StackHolder>();
 
-        [JsonIgnore]
-        private readonly IResolverContext _resolveContext;
+        private IResolverContext _resolveContext;
 
         public DryIocServiceLocator(IResolverContext context) => _resolveContext = context;
 
@@ -46,9 +45,31 @@ namespace DryIocEpi
 
         public void Dispose()
         {
-            if (_resolveContext.IsDisposed) { return; }
-            _resolveContext.Dispose();
-            SetStack(null);
+            Dispose(true);
+            // Suppress finalization.
+            GC.SuppressFinalize(this);
+        }
+
+        private bool _isDisposed = false;
+
+        private void Dispose(bool isDisposing)
+        {
+            if (_isDisposed) { return; }
+
+            if (isDisposing)
+            {
+                if (_resolveContext is null || _resolveContext.IsDisposed) { return; }
+                _resolveContext.Dispose();
+                _resolveContext = null;
+                SetStack(null);
+            }
+
+            _isDisposed = true;
+        }
+
+        ~DryIocServiceLocator()
+        {
+            Dispose(true);
         }
 
         public IEnumerable<object> GetAllInstances(Type serviceType) =>
@@ -98,7 +119,7 @@ namespace DryIocEpi
             SetStack(stack);
         }
 
-        private static Stack<IResolverContext> GetStack() => _stack.Value;
+        private static Stack<IResolverContext> GetStack() => _stack.Value?.StackContext;
 
         private static void SetStack(Stack<IResolverContext> stack)
         {
@@ -106,7 +127,12 @@ namespace DryIocEpi
             {
                 _stack.Value = null;
             }
-            _stack.Value = stack;
+            _stack.Value = new StackHolder { StackContext = stack };
+        }
+
+        private class StackHolder
+        {
+            public Stack<IResolverContext> StackContext;
         }
     }
 }

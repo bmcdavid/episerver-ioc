@@ -17,10 +17,11 @@ namespace DryIocEpi
         {
             var rules = Rules.Default 
                 .WithAutoConcreteTypeResolution()
-                .With(FactoryMethod.ConstructorWithResolvableArgumentsIncludingNonPublic)
+                .With(FactoryMethod.ConstructorWithResolvableArguments)
                 .WithoutThrowIfDependencyHasShorterReuseLifespan()
                 .WithFactorySelector(Rules.SelectLastRegisteredFactory())
                 .WithTrackingDisposableTransients()
+                .WithCaptureContainerDisposeStackTrace()
                 //.With(propertiesAndFields: InjectedProperties)
                 //.WithFuncAndLazyWithoutRegistration()
 
@@ -62,7 +63,7 @@ namespace DryIocEpi
         {
             var dsl = new DryIocServiceLocator(_container);
             _container.
-                RegisterInstance(typeof(IServiceLocator), dsl, IfAlreadyRegistered.Replace);
+                UseInstance(typeof(IServiceLocator), dsl, ifAlreadyRegistered: IfAlreadyRegistered.Replace);
             return dsl;
         }
 

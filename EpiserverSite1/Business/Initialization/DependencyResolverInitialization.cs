@@ -1,3 +1,4 @@
+using EPiServer.DataAbstraction;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.Framework.Serialization;
@@ -10,56 +11,39 @@ using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Web.Mvc;
 
 namespace EpiserverSite1.Business.Initialization
 {
-    public class AppContractResolver :
-        //DefaultContractResolver
-        EPiServer.Framework.Serialization.Json.Internal.DefaultNewtonsoftContractResolver
-    {
-        protected static Type[] IgnoredPropertyTypes =
-        {
-            typeof(ServiceLocationHelper)
-        };
-
-        protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
-        {
-            var propertyType = (member as PropertyInfo)?.PropertyType;
-            if (member.MemberType == MemberTypes.Property
-                && IgnoredPropertyTypes.Contains(propertyType))
-            {
-                return new JsonProperty { ItemReferenceLoopHandling = ReferenceLoopHandling.Ignore };
-            }
-
-            return base.CreateProperty(member, memberSerialization);
-        }
-    }
-
     internal class AppSerializer : IObjectSerializer
     {
-        private readonly IObjectSerializer _existing;
+        EPiServer.Framework.Serialization.Json.Internal.JsonObjectSerializer _epi;
 
-        public AppSerializer(IObjectSerializer existing) => _existing = existing;
+        public AppSerializer(IEnumerable<JsonConverter> converters, IContractResolver resolver)//IEnumerable<JsonConverter> converters
+        {
+            //var test2 = serviceLocator.GetInstance<EPiServer.Construction.Internal.ContentDataFactory<EPiServer.Core.BlockData>>();
+            //var test3 = serviceLocator.GetInstance<EPiServer.Construction.IContentDataBuilder>();
+            //var test4 = serviceLocator.GetInstance<IContentTypeRepository<BlockType>>();
+            //var test = serviceLocator.GetInstance<EPiServer.Cms.Shell.Json.Internal.BlockDataConverter>();
+            //var converters = serviceLocator.GetAllInstances<JsonConverter>();
+            _epi = new EPiServer.Framework.Serialization.Json.Internal.JsonObjectSerializer(converters, resolver);
+        }
 
-        public IEnumerable<string> HandledContentTypes => _existing.HandledContentTypes;
+        public IEnumerable<string> HandledContentTypes => _epi.HandledContentTypes;
 
-        public object Deserialize(TextReader reader, Type objectType) =>
-            _existing.Deserialize(reader, objectType);
+        public object Deserialize(TextReader reader, Type objectType) => _epi.Deserialize(reader, objectType);
 
-        public T Deserialize<T>(TextReader reader) => _existing.Deserialize<T>(reader);
+        public T Deserialize<T>(TextReader reader) => _epi.Deserialize<T>(reader);
 
         public void Serialize(TextWriter textWriter, object value)
         {
             try
             {
-                _existing.Serialize(textWriter, value);
+                _epi.Serialize(textWriter, value);
             }
             catch (Exception e)
             {
-                // EPiServer.Cms.Shell.UI.ObjectEditing.InternalMetadata.ExpireBlock
+
             }
         }
     }
@@ -70,10 +54,12 @@ namespace EpiserverSite1.Business.Initialization
     {
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
-            //EPiServer.Framework.Serialization.Json.Internal.JsonObjectSerializer
-            context.Services.AddTransient<IContractResolver,AppContractResolver>();
-            context.Services.Intercept<IObjectSerializer>(
-                (locator, existing) => new AppSerializer(existing));
+            context.Services.AddSingleton<IContentTypeRepository<BlockType>, BlockTypeRepository>();            
+            context.Services.AddSingleton<IObjectSerializer, AppSerializer>();
+
+
+            //context.Services.Intercept<IObjectSerializer>(
+            //    (locator, existing) => new AppSerializer(existing));
             // context.Services
             //// project specific
             //.AddSingleton<StandardResolution>()

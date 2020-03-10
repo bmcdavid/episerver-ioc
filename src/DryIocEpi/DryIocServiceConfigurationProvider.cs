@@ -46,11 +46,6 @@ namespace DryIocEpi
         {
             if(implementationFactory is null) { throw new ArgumentNullException(nameof(implementationFactory)); }
 
-            if(implementationFactory.Method.Name.StartsWith("<Forward"))
-            {
-
-            }
-
             Inspector?.Invoke(serviceType, implementationFactory.GetType(), lifetime);
 
             object checkedDelegate(IResolverContext r)
@@ -62,8 +57,8 @@ namespace DryIocEpi
 
                     var lf = lifetime;
                 }
-                return obj
-                    .ThrowIfNotInstanceOf(serviceType, Error.RegisteredDelegateResultIsNotOfServiceType, r);
+                return obj;//
+                    //.ThrowIfNotInstanceOf(serviceType, Error.RegisteredDelegateResultIsNotOfServiceType, r);
             }
 
 
@@ -92,7 +87,7 @@ namespace DryIocEpi
         {
 
             Inspector?.Invoke(serviceType, instance.GetType(), ServiceInstanceScope.Singleton);
-            Container.RegisterInstance(serviceType, instance);
+            Container.UseInstance(serviceType, instance);
             _latestType = serviceType;
 
             return this;

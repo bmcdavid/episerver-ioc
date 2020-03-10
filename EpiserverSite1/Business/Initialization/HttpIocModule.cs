@@ -19,20 +19,20 @@ namespace EpiserverSite1.Business.Initialization
         public void InitializeHttpEvents(HttpApplication application)
         {
             application.BeginRequest += Application_BeginRequest;
-            application.EndRequest += Application_EndRequest;
+            application.PreSendRequestContent += Application_EndRequest;
         }
 
         private void Application_EndRequest(object sender, EventArgs e)
         {
             var app = sender as HttpApplication;
-            (app.Context.Items[itemKey] as IDisposable)?.Dispose();
+            //(app.Context.Items[itemKey] as IDisposable)?.Dispose();
         }
 
         private void Application_BeginRequest(object sender, EventArgs e)
         {
             var app = sender as HttpApplication;
             app.Context.Items[itemKey] =
-                (serviceLocator as IServiceLocatorCreateScope).CreateScope();
+                (serviceLocator as IServiceLocatorCreateScope)?.CreateScope();
         }
 
         public void Uninitialize(InitializationEngine context)

@@ -7,9 +7,9 @@ namespace Example
         /// <summary>
         /// Run pre start code
         /// </summary>
-        public void Start()
+        public static void Start()
         {
-            throw new System.Exception("here");            
+            //throw new System.Exception("here");            
         }
     }
 }
