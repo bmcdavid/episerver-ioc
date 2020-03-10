@@ -1,10 +1,7 @@
+using EPiServer.ServiceLocation;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using EPiServer.ServiceLocation;
-using EpiserverSite1.Business.Initialization;
 
 namespace EpiserverSite1.Business
 {
@@ -31,7 +28,7 @@ namespace EpiserverSite1.Business
             try
             {
                 // Can't use TryGetInstance here because it won’t create concrete types
-                return ResolveLocator().GetInstance(serviceType);
+                return _serviceLocator.GetInstance(serviceType);
             }
             catch (ActivationException)
             {
@@ -42,18 +39,12 @@ namespace EpiserverSite1.Business
         private object GetInterfaceService(Type serviceType)
         {
             object instance;
-            return ResolveLocator().TryGetExistingInstance(serviceType, out instance) ? instance : null;
+            return _serviceLocator.TryGetExistingInstance(serviceType, out instance) ? instance : null;
         }
 
         public IEnumerable<object> GetServices(Type serviceType)
         {
-            return ResolveLocator().GetAllInstances(serviceType).Cast<object>();
-        }
-
-        private IServiceLocator ResolveLocator()
-        {
-            return HttpContext.Current.Items[nameof(HttpIocModule)] as IServiceLocator ??
-                _serviceLocator;
+            return _serviceLocator.GetAllInstances(serviceType);
         }
     }
 }

@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
+[assembly: ServiceLocatorFactory(typeof(DryIocEpi.DryIocLocatorFactory))]
+
 namespace DryIocEpi
 {
     public class DryIocLocatorFactory : IServiceLocatorFactory
@@ -32,7 +34,27 @@ namespace DryIocEpi
 
         public DryIocLocatorFactory(IContainer container) => _container = container;
 
-        public static IEnumerable<PropertyOrFieldServiceInfo> InjectedProperties(Type type)
+        public IServiceLocator CreateLocator()
+        {
+            var dsl = new DryIocServiceLocator(_container);
+            _container.
+                UseInstance(typeof(IServiceLocator), dsl, ifAlreadyRegistered: IfAlreadyRegistered.Replace);
+            return dsl;
+        }
+
+        public IServiceConfigurationProvider CreateProvider() => new DryIocServiceConfigurationProvider(_container);
+
+        private static bool GetInjected(Type fieldInfo)
+        {
+            if (!fieldInfo.IsGenericType) { return false; }
+
+            var genericInfo = fieldInfo.GetGenericTypeDefinition();
+            if (genericInfo == typeof(Injected<>)) { return true; }
+
+            return genericInfo == typeof(InjectedCollection<>);
+        }
+
+        private static IEnumerable<PropertyOrFieldServiceInfo> InjectedProperties(Type type)
         {
             if (_props.TryGetValue(type, out var list)) { return list; }
 
@@ -58,27 +80,6 @@ namespace DryIocEpi
 
             return all;
         }
-
-        public IServiceLocator CreateLocator()
-        {
-            var dsl = new DryIocServiceLocator(_container);
-            _container.
-                UseInstance(typeof(IServiceLocator), dsl, ifAlreadyRegistered: IfAlreadyRegistered.Replace);
-            return dsl;
-        }
-
-        public IServiceConfigurationProvider CreateProvider() => new DryIocServiceConfigurationProvider(_container);
-
-        private static bool GetInjected(Type fieldInfo)
-        {
-            if (!fieldInfo.IsGenericType) { return false; }
-
-            var genericInfo = fieldInfo.GetGenericTypeDefinition();
-            if (genericInfo == typeof(Injected<>)) { return true; }
-
-            return genericInfo == typeof(InjectedCollection<>);
-        }
-
         private static IEnumerable<PropertyOrFieldServiceInfo> InjectedProperties(Request request) =>
             InjectedProperties(request.ImplementationType ?? request.ServiceType);
     }

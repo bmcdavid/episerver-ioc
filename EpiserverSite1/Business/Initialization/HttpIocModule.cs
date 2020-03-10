@@ -25,7 +25,7 @@ namespace EpiserverSite1.Business.Initialization
         private void Application_EndRequest(object sender, EventArgs e)
         {
             var app = sender as HttpApplication;
-            //(app.Context.Items[itemKey] as IDisposable)?.Dispose();
+            (app.Context.Items[itemKey] as IDisposable)?.Dispose();
         }
 
         private void Application_BeginRequest(object sender, EventArgs e)
