@@ -1,33 +1,67 @@
-using EPiServer;
-using EPiServer.Core;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
+using EPiServer.Framework.Serialization;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Mvc;
 using EPiServer.Web.Mvc.Html;
-using EpiserverSite1.Business.Channels;
 using EpiserverSite1.Business.Rendering;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Web.Mvc;
 
 namespace EpiserverSite1.Business.Initialization
 {
-    public static class TestExt
+    public class AppContractResolver :
+        //DefaultContractResolver
+        EPiServer.Framework.Serialization.Json.Internal.DefaultNewtonsoftContractResolver
     {
-        /// <summary>
-        /// Register <typeparamref name="T2" /> as a service where actual instance is delegated to <typeparamref name="T1" /></summary>
-        /// <typeparam name="T1">An existing service</typeparam>
-        /// <typeparam name="T2">An additional service</typeparam>
-        /// <param name="services">The service provider that is extended</param>
-        /// <returns>The service configuration provider</returns>
-        public static IRegisteredService Forward2<T1, T2>(
-          this IServiceConfigurationProvider services)
-          where T1 : class, T2
-          where T2 : class
+        protected static Type[] IgnoredPropertyTypes =
         {
-            return services.AddTransient<T2>((Func<IServiceLocator, T2>)(s => (object)s.GetInstance<T1>() as T2));
-        }
+            typeof(ServiceLocationHelper)
+        };
 
+        protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
+        {
+            var propertyType = (member as PropertyInfo)?.PropertyType;
+            if (member.MemberType == MemberTypes.Property
+                && IgnoredPropertyTypes.Contains(propertyType))
+            {
+                return new JsonProperty { ItemReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+            }
+
+            return base.CreateProperty(member, memberSerialization);
+        }
+    }
+
+    internal class AppSerializer : IObjectSerializer
+    {
+        private readonly IObjectSerializer _existing;
+
+        public AppSerializer(IObjectSerializer existing) => _existing = existing;
+
+        public IEnumerable<string> HandledContentTypes => _existing.HandledContentTypes;
+
+        public object Deserialize(TextReader reader, Type objectType) =>
+            _existing.Deserialize(reader, objectType);
+
+        public T Deserialize<T>(TextReader reader) => _existing.Deserialize<T>(reader);
+
+        public void Serialize(TextWriter textWriter, object value)
+        {
+            try
+            {
+                _existing.Serialize(textWriter, value);
+            }
+            catch (Exception e)
+            {
+                // EPiServer.Cms.Shell.UI.ObjectEditing.InternalMetadata.ExpireBlock
+            }
+        }
     }
 
     [InitializableModule]
@@ -36,28 +70,30 @@ namespace EpiserverSite1.Business.Initialization
     {
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
-            context.ConfigurationComplete += Context_ConfigurationComplete;
+            //EPiServer.Framework.Serialization.Json.Internal.JsonObjectSerializer
+            context.Services.AddTransient<IContractResolver,AppContractResolver>();
+            context.Services.Intercept<IObjectSerializer>(
+                (locator, existing) => new AppSerializer(existing));
+            // context.Services
+            //// project specific
+            //.AddSingleton<StandardResolution>()
+            //.AddSingleton<IpadHorizontalResolution>()
+            //.AddSingleton<IphoneVerticalResolution>()
+            //.AddSingleton<AndroidVerticalResolution>()
+            //.AddSingleton<PageContextActionFilter>()
+            //.AddSingleton<PageViewContextFactory>()
+            //.AddSingleton<WebChannel>()
+            //.AddSingleton<MobileChannel>()
 
-            context.Services
-                // project specific
-                .AddSingleton<StandardResolution>()
-                .AddSingleton<IpadHorizontalResolution>()
-                .AddSingleton<IphoneVerticalResolution>()
-                .AddSingleton<AndroidVerticalResolution>()
-                .AddSingleton<PageContextActionFilter>()
-                .AddSingleton<PageViewContextFactory>()
-                .AddSingleton<WebChannel>()
-                .AddSingleton<MobileChannel>()
-
-                  // Epi specific
-                  .AddEpiInternalType(ServiceInstanceScope.Singleton, "EPiServer.Cms.Shell.UI.Approvals.Notifications.UserNotificationFormatter")
-                  .AddEpiInternalType(ServiceInstanceScope.Singleton, ("EPiServer.Cms.Shell.UI.Approvals.Notifications.ApprovalViewModelFactory"))
-                  .AddEpiInternalType(ServiceInstanceScope.Singleton, ("EPiServer.Cms.Shell.UI.Approvals.Notifications.EmailViewModelFactory"))
-                  .AddEpiInternalType(ServiceInstanceScope.Singleton, "EPiServer.Cms.Shell.PropertyListItemsDefinitionsLoader")
-                  .AddTransient<EPiServer.Cms.Shell.UI.ObjectEditing.Internal.FileExtensionsResolver>()
-                  .AddTransient<EPiServer.Security.CreatorRole>()
-                  .AddTransient<EPiServer.Security.MappedRole>()
-              ;
+            //// Epi specific
+            //.AddEpiInternalType(ServiceInstanceScope.Singleton, "EPiServer.Cms.Shell.UI.Approvals.Notifications.UserNotificationFormatter")
+            //.AddEpiInternalType(ServiceInstanceScope.Singleton, ("EPiServer.Cms.Shell.UI.Approvals.Notifications.ApprovalViewModelFactory"))
+            //.AddEpiInternalType(ServiceInstanceScope.Singleton, ("EPiServer.Cms.Shell.UI.Approvals.Notifications.EmailViewModelFactory"))
+            //.AddEpiInternalType(ServiceInstanceScope.Singleton, "EPiServer.Cms.Shell.PropertyListItemsDefinitionsLoader")
+            //.AddTransient<EPiServer.Cms.Shell.UI.ObjectEditing.Internal.FileExtensionsResolver>()
+            //.AddTransient<EPiServer.Security.CreatorRole>()
+            //.AddTransient<EPiServer.Security.MappedRole>()
+            // ;
 
             context.ConfigurationComplete += (o, e) =>
             {
@@ -66,16 +102,6 @@ namespace EpiserverSite1.Business.Initialization
                     .AddTransient<IContentRenderer, ErrorHandlingContentRenderer>()
                     .AddTransient<ContentAreaRenderer, AlloyContentAreaRenderer>();
             };
-        }
-
-        private void Context_ConfigurationComplete(object sender, ServiceConfigurationEventArgs e)
-        {
-            //            e.Services.AddSingleton<EPiServer.Web.ITemplateResolverEvents>(locator => locator.GetInstance<EPiServer.Web.Internal.DefaultTemplateResolver>()
-            //as EPiServer.Web.ITemplateResolverEvents);
-
-            e.Services.RemoveAll<EPiServer.Web.ITemplateResolverEvents>();
-            e.Services
-                .Forward<EPiServer.Web.Internal.DefaultTemplateResolver,EPiServer.Web.ITemplateResolverEvents>();
         }
 
         public void Initialize(InitializationEngine context)

@@ -9,6 +9,7 @@ namespace DryIocEpi
         private Type _latestType;
 
         public static Action<Type, Type, ServiceInstanceScope> Inspector { get; set; }
+
         public DryIocServiceConfigurationProvider(IContainer container) => Container = container;
 
         public IContainer Container { get; }
@@ -43,17 +44,24 @@ namespace DryIocEpi
 
         public IRegisteredService Add(Type serviceType, Func<IServiceLocator, object> implementationFactory, ServiceInstanceScope lifetime)
         {
+            if(implementationFactory is null) { throw new ArgumentNullException(nameof(implementationFactory)); }
+
+            if(implementationFactory.Method.Name.StartsWith("<Forward"))
+            {
+
+            }
 
             Inspector?.Invoke(serviceType, implementationFactory.GetType(), lifetime);
 
             object checkedDelegate(IResolverContext r)
             {                
-                var obj = implementationFactory(r.Resolve<IServiceLocator>());
+                var obj = (object)implementationFactory(r.Resolve<IServiceLocator>());
                 if (obj == null)
                 {
+                    
+
                     var lf = lifetime;
                 }
-                // todo: how do Forwards work..... Brad
                 return obj
                     .ThrowIfNotInstanceOf(serviceType, Error.RegisteredDelegateResultIsNotOfServiceType, r);
             }
@@ -122,7 +130,10 @@ namespace DryIocEpi
             {
                 case ServiceInstanceScope.Singleton:
                     return Reuse.Singleton;
+#pragma warning disable CS0618 // Type or member is obsolete
+                case ServiceInstanceScope.Unique:
                 case ServiceInstanceScope.PerRequest:
+#pragma warning restore CS0618 // Type or member is obsolete
                 case ServiceInstanceScope.Transient:
                     return Reuse.Transient;
                 case ServiceInstanceScope.HttpContext:

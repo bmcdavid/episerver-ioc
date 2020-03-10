@@ -1,28 +1,9 @@
-﻿using EPiServer.ServiceLocation;
-using System;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace EpiserverSite1
 {
-    public class EPiServerApplication : HttpApplication// EPiServer.Global
+    public class EPiServerApplication : EPiServer.Global
     {
-        private readonly EPiServer.Global _;
-        public EPiServerApplication()
-        {
-            DryIocEpi.DryIocServiceConfigurationProvider.Inspector =
-                (service, concrete, lifetime) =>
-                {
-
-                    if (service == typeof(EPiServer.Web.ITemplateResolverEvents))
-                    {
-
-                    }
-                };
-
-            _ = new EPiServer.Global();           
-        }
-
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();

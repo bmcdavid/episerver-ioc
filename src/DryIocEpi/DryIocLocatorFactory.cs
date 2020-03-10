@@ -12,17 +12,17 @@ namespace DryIocEpi
     {
         private static readonly Dictionary<Type, List<PropertyOrFieldServiceInfo>> _props = new Dictionary<Type, List<PropertyOrFieldServiceInfo>>();
         private readonly IContainer _container;
-        private DryIocServiceConfigurationProvider _provider;
 
         public DryIocLocatorFactory()
         {
-            var rules = Rules.Default                
-                .With(propertiesAndFields: InjectedProperties)
+            var rules = Rules.Default 
+                .WithAutoConcreteTypeResolution()
                 .With(FactoryMethod.ConstructorWithResolvableArgumentsIncludingNonPublic)
                 .WithoutThrowIfDependencyHasShorterReuseLifespan()
                 .WithFactorySelector(Rules.SelectLastRegisteredFactory())
                 .WithTrackingDisposableTransients()
-                .WithFuncAndLazyWithoutRegistration()
+                //.With(propertiesAndFields: InjectedProperties)
+                //.WithFuncAndLazyWithoutRegistration()
 
                 ; //used in transient delegate cases
 
@@ -61,14 +61,12 @@ namespace DryIocEpi
         public IServiceLocator CreateLocator()
         {
             var dsl = new DryIocServiceLocator(_container);
-            _provider.Add(typeof(IServiceLocator), dsl);
+            _container.
+                RegisterInstance(typeof(IServiceLocator), dsl, IfAlreadyRegistered.Replace);
             return dsl;
         }
 
-        public IServiceConfigurationProvider CreateProvider()
-        {
-            return _provider = new DryIocServiceConfigurationProvider(_container);            
-        }
+        public IServiceConfigurationProvider CreateProvider() => new DryIocServiceConfigurationProvider(_container);
 
         private static bool GetInjected(Type fieldInfo)
         {
