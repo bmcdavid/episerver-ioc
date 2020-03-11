@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-[assembly: ServiceLocatorFactory(typeof(DryIocEpi.DryIocLocatorFactory))]
+//[assembly: ServiceLocatorFactory(typeof(DryIocEpi.DryIocLocatorFactory))]
 
 namespace DryIocEpi
 {
@@ -25,7 +25,7 @@ namespace DryIocEpi
                 .WithTrackingDisposableTransients()
                 .WithCaptureContainerDisposeStackTrace()
                 //.With(propertiesAndFields: InjectedProperties)
-                //.WithFuncAndLazyWithoutRegistration()
+                .WithFuncAndLazyWithoutRegistration()
 
                 ; //used in transient delegate cases
 
