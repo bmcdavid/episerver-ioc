@@ -10,7 +10,7 @@ using System.Web.Mvc;
 namespace EpiserverSite1.Business.Initialization
 {
     [InitializableModule]
-    [ModuleDependency(typeof(ServiceContainerInitialization))]
+    [ModuleDependency(typeof(ServiceContainerInitialization))]    
     public class DependencyResolverInitialization : IConfigurableModule
     {
         public void ConfigureContainer(ServiceConfigurationContext context)

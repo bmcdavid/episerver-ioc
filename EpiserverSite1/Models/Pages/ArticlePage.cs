@@ -1,3 +1,6 @@
+using EPiServer.DataAbstraction;
+using EPiServer.DataAnnotations;
+
 namespace EpiserverSite1.Models.Pages
 {
     /// <summary>
@@ -7,6 +10,9 @@ namespace EpiserverSite1.Models.Pages
         GroupName = Global.GroupNames.News,
         GUID = "AEECADF2-3E89-4117-ADEB-F8D43565D2F4")]
     [SiteImageUrl(Global.StaticGraphicsFolderPath + "page-type-thumbnail-article.png")]
+    [AvailableContentTypes(
+        Availability.Specific,
+        IncludeOn = new[] { typeof(StartPage) })]
     public class ArticlePage : StandardPage
     {
 
