@@ -7,7 +7,6 @@ using MicrosoftServiceDescriptor = Microsoft.Extensions.DependencyInjection.Serv
 
 namespace AbstractEpiserverIoc.Core
 {
-    // todo needs event to broadcast registrations past configuration complete since some things do utilize this....
     public class ServiceConfigurationProvider : IServiceConfigurationProvider, IRegisteredService, IInterceptorRegister
     {
         private readonly IServiceCollectionExtended _serviceCollection;
@@ -15,41 +14,44 @@ namespace AbstractEpiserverIoc.Core
 
         public ServiceConfigurationProvider(IServiceCollectionExtended serviceCollection) => _serviceCollection = serviceCollection;
 
-        public IRegisteredService Add(Type serviceType, Type implementationType, ServiceInstanceScope lifetime)
+        public virtual IRegisteredService Add(Type serviceType, Type implementationType, ServiceInstanceScope lifetime)
         {
             var descriptor = new MicrosoftServiceDescriptor(serviceType, implementationType, ConvertLifeTime(lifetime));
 
             return AddInternal(descriptor);
         }
 
-        public IRegisteredService Add(Type serviceType, Func<IServiceLocator, object> implementationFactory, ServiceInstanceScope lifetime)
+        public virtual IRegisteredService Add(Type serviceType, Func<IServiceLocator, object> implementationFactory, ServiceInstanceScope lifetime)
         {
             var descriptor = new MicrosoftServiceDescriptor(serviceType, provider => implementationFactory(provider as IServiceLocator), ConvertLifeTime(lifetime));
 
             return AddInternal(descriptor);
         }
 
-        public IRegisteredService Add(Type serviceType, object instance)
+        public virtual IRegisteredService Add(Type serviceType, object instance)
         {
             var descriptor = new MicrosoftServiceDescriptor(serviceType, instance);
 
             return AddInternal(descriptor);
         }
 
-        public IServiceConfigurationProvider AddServiceAccessor()
+        public virtual IServiceConfigurationProvider AddServiceAccessor()
         {
             ReflectiveServiceConfigurationHelper.RegisterServiceAccessorDelegates(this, _latestType);
 
             return this;
         }
 
-        public bool Contains(Type serviceType) => _serviceCollection.Any(sd => sd.ServiceType == serviceType);
+        public virtual bool Contains(Type serviceType) => _serviceCollection.Any(sd => sd.ServiceType == serviceType);
 
-        public void Intercept<T>(Func<IServiceLocator, T, T> interceptorFactory) where T : class => _serviceCollection.AddInterceptor(interceptorFactory);
-
-        public IServiceConfigurationProvider RemoveAll(Type serviceType)
+        public void Intercept<T>(Func<IServiceLocator, T, T> interceptorFactory) where T : class
         {
-            if (serviceType is null) { throw new ArgumentNullException(nameof(serviceType)); }            
+            _serviceCollection.Decorate<T>((existing, provider) => interceptorFactory(provider as IServiceLocator, existing));
+        }
+
+        public virtual IServiceConfigurationProvider RemoveAll(Type serviceType)
+        {
+            if (serviceType is null) { throw new ArgumentNullException(nameof(serviceType)); }
 
             var toRemove = _serviceCollection.Where(sd => serviceType == sd.ServiceType);
 
@@ -59,10 +61,24 @@ namespace AbstractEpiserverIoc.Core
 
                 if (_serviceCollection.IsConfigured)
                 {
-                    _serviceCollection.AfterConfigurationRemovedDescriptor?.Invoke(serviceToRemove);
+                    var args = new ServiceCollectionChangedArgs(serviceToRemove, isRemove: true);
+                    _serviceCollection.ServiceCollectionChanged?.Invoke(args);
                 }
             }
 
+            return this;
+        }
+
+        protected virtual IRegisteredService AddInternal(MicrosoftServiceDescriptor descriptor)
+        {
+            if (_serviceCollection.IsConfigured)
+            {
+                var args = new ServiceCollectionChangedArgs(descriptor, isRemove: false);
+                _serviceCollection.ServiceCollectionChanged?.Invoke(args);
+            }
+
+            _serviceCollection.Add(descriptor);
+            _latestType = descriptor.ServiceType;
             return this;
         }
 
@@ -84,18 +100,6 @@ namespace AbstractEpiserverIoc.Core
             }
 
             throw new NotSupportedException(lifetime.ToString() + " is not supported!");
-        }
-
-        private IRegisteredService AddInternal(MicrosoftServiceDescriptor descriptor)
-        {
-            if (_serviceCollection.IsConfigured)
-            {
-                _serviceCollection.AfterConfigurationAddedDescriptor?.Invoke(descriptor);
-            }
-
-            _serviceCollection.Add(descriptor);
-            _latestType = descriptor.ServiceType;
-            return this;
         }
     }
 }

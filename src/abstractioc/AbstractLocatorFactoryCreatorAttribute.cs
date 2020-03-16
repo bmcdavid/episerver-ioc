@@ -1,10 +1,7 @@
 ﻿using System;
 
 namespace AbstractEpiserverIoc.Core
-{
-    public delegate EPiServer.ServiceLocation.IServiceLocator BuildServiceLocator(IServiceCollectionExtended serviceCollection);
-
-    // Add assembly attr to disable exception of registering after configuration complete
+{   // Add assembly attr to disable exception of registering after configuration complete
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false)]
     public class AbstractLocatorFactoryCreatorAttribute : Attribute
@@ -12,11 +9,8 @@ namespace AbstractEpiserverIoc.Core
         public Type CreatorType { get; }
 
         /// <summary>
-        /// Must be static and return an IServiceLocator given an IServiceCollection
+        /// Must be static method with no args that returns an IServiceLocator that implements IServiceLocatorWireupCollection.
         /// </summary>
-        /// <example>
-        /// public static IServiceLocator CreateServiceLocator(IServiceCollectionExtended services){}
-        /// </example>
         public string MethodName { get; set; }
 
         public AbstractLocatorFactoryCreatorAttribute(Type creatorType, string methodName)

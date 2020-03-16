@@ -7,10 +7,6 @@ namespace AbstractEpiserverIoc.Core
     {
         bool IsConfigured { get; }
 
-        void AddInterceptor<T>(Func<EPiServer.ServiceLocation.IServiceLocator, T,T> interceptor) where T : class;
-
-        Action<ServiceDescriptor> AfterConfigurationAddedDescriptor { get; set; }
-
-        Action<ServiceDescriptor> AfterConfigurationRemovedDescriptor { get; set; }
+        Action<ServiceCollectionChangedArgs> ServiceCollectionChanged { get; set; }
     }
 }

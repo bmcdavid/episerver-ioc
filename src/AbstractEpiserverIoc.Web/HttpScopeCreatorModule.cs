@@ -1,20 +1,20 @@
-﻿using DryIocEpi;
+﻿using AbstractEpiserverIoc.Core;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
 using System;
 using System.Web;
 
-namespace EpiserverSite1.Business.Initialization
+namespace AbstractEpiserverIoc.Web
 {
     [InitializableModule]
-    public class HttpIocModule : IInitializableHttpModule
+    public class HttpScopeCreatorModule : IInitializableHttpModule
     {
-        private IServiceLocator serviceLocator;
-        private const string itemKey = "servicelocator";
+        private IServiceLocator _serviceLocator;
+        private const string _itemKey = "servicelocator";
 
         public void Initialize(InitializationEngine context) =>
-            serviceLocator = context.Locate.Advanced;
+            _serviceLocator = context.Locate.Advanced;
 
         public void InitializeHttpEvents(HttpApplication application)
         {
@@ -25,18 +25,16 @@ namespace EpiserverSite1.Business.Initialization
         private void Application_EndRequest(object sender, EventArgs e)
         {
             var app = sender as HttpApplication;
-            (app.Context.Items[itemKey] as IDisposable)?.Dispose();
+            (app.Context.Items[_itemKey] as IDisposable)?.Dispose();
         }
 
         private void Application_BeginRequest(object sender, EventArgs e)
         {
             var app = sender as HttpApplication;
-            app.Context.Items[itemKey] =
-                (serviceLocator as IServiceLocatorCreateScope)?.CreateScope();
+            app.Context.Items[_itemKey] =
+                (_serviceLocator as IServiceLocatorCreateScope)?.CreateScope();
         }
 
-        public void Uninitialize(InitializationEngine context)
-        {
-        }
+        public void Uninitialize(InitializationEngine context) { }
     }
 }

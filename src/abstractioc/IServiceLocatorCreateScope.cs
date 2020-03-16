@@ -1,6 +1,8 @@
-﻿namespace AbstractEpiserverIoc.Core
+﻿using EPiServer.ServiceLocation;
+
+namespace AbstractEpiserverIoc.Core
 {
-    public interface IServiceLocatorCreateScope
+    public interface IServiceLocatorCreateScope : IServiceLocator
     {
         IServiceLocatorScoped CreateScope();
     }
