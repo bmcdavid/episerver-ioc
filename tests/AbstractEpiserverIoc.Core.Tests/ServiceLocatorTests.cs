@@ -33,23 +33,24 @@ namespace AbstractEpiserverIoc.Core.Tests
     [TestClass]
     public class ServiceLocatorTests
     {
+        [DataRow("dryioc")]
+        [DataRow("grace")]
         [TestMethod]
-        public void ShouldDecorateServiceFoo()
+        public void ShouldDecorateServiceFoo(string key)
         {
             var collection = new ExtendedServiceCollection();
-            var factory = new ServiceLocatorFactory(TestServiceLocatorFactory.CreateServiceLocator, collection);
+            var factory = new ServiceLocatorFactory(() => TestServiceLocatorFactory.CreateServiceLocator(key), collection);
             var serviceProviderRegistration = factory.CreateProvider();
 
             collection.AddSingleton<IFoo, Foo>();
             collection.Decorate<IFoo>(existing => new Foo2(existing));
             collection.Decorate<IFoo>(existing => new Foo3(existing));
-
             var locator = factory.CreateLocator();
-            var sut = locator.GetInstance<IFoo>();
+            Assert.IsFalse(collection.Count != 2, key);
 
-            Assert.IsTrue(sut is Foo3 fo && fo.Foo is Foo2 f2 && f2.Foo is Foo);
-            Assert.AreSame(sut, locator.GetInstance<IFoo>());
-            Assert.IsTrue(collection.Count == 2);
+            var sut = locator.GetInstance<IFoo>();
+            Assert.IsTrue(sut is Foo3 fo && fo.Foo is Foo2 f2 && f2.Foo is Foo, key);
+            Assert.AreSame(sut, locator.GetInstance<IFoo>(), key);
         }
     }
 }

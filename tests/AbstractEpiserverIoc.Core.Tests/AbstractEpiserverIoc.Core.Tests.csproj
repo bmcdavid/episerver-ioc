@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\AbstractEpiserverIoc.DryIoc\AbstractEpiserverIoc.DryIoc.csproj" />
+    <ProjectReference Include="..\..\src\AbstractEpiserverIoc.Grace\AbstractEpiserverIoc.Grace.csproj" />
     <ProjectReference Include="..\..\src\abstractioc\AbstractEpiserverIoc.Core.csproj" />
   </ItemGroup>
 
