@@ -1,11 +1,12 @@
 ﻿using AbstractEpiserverIoc.Core.Exceptions;
 using EPiServer.ServiceLocation;
 using EPiServer.ServiceLocation.AutoDiscovery;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using MicrosoftServiceDescriptor = Microsoft.Extensions.DependencyInjection.ServiceDescriptor;
 
 [assembly: ServiceLocatorFactory(typeof(AbstractEpiserverIoc.Core.ServiceLocatorFactory))]
 
@@ -41,6 +42,8 @@ namespace AbstractEpiserverIoc.Core
             return info.Invoke(null, null) as IServiceLocator;
         }
 
+        private static readonly Type _serviceLocatorType = typeof(IServiceLocator);
+
         public IServiceLocator CreateLocator()
         {
             if (_serviceCollection is ExtendedServiceCollection es) { es.IsConfigured = true; }
@@ -49,12 +52,14 @@ namespace AbstractEpiserverIoc.Core
             if (!(locator is IServiceLocatorWireupCollection serviceLocatorWireup)) { throw new UnableToWirewupServiceCollectionException(); }
 
             var ambientLocator = new AmbientServiceLocator(locator);
-            (_serviceCollection as IServiceCollectionExtended).Add(new MicrosoftServiceDescriptor(typeof(IServiceLocator), ambientLocator));
+            _serviceCollection.RemoveAll(_serviceLocatorType);
+            _serviceCollection.AddSingleton(_serviceLocatorType, ambientLocator);
             serviceLocatorWireup.WireupServices(_serviceCollection);
 
             return ambientLocator;
         }
 
-        public IServiceConfigurationProvider CreateProvider() => new ServiceConfigurationProvider(_serviceCollection);
+        public IServiceConfigurationProvider CreateProvider() =>
+            new ServiceConfigurationProvider(_serviceCollection);
     }
 }

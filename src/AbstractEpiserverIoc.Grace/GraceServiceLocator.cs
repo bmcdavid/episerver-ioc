@@ -1,4 +1,5 @@
 ﻿using AbstractEpiserverIoc.Core;
+using AbstractEpiserverIoc.GraceEpi;
 using EPiServer.ServiceLocation;
 using Grace.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;

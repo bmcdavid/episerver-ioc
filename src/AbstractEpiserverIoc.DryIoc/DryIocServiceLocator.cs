@@ -22,13 +22,13 @@ namespace AbstractEpiserverIoc.DryIocEpi
 
         public object GetInstance(Type serviceType) => _container.Resolve(serviceType, IfUnresolved.Throw);
 
-        public TService GetInstance<TService>() => (TService)GetInstance(typeof(TService));
+        public TService GetInstance<TService>() => _container.Resolve<TService>(ifUnresolved: IfUnresolved.Throw);
 
         public object GetService(Type serviceType) => GetInstance(serviceType);
 
         public bool TryGetExistingInstance(Type serviceType, out object instance)
         {
-            instance = _container.Resolve(serviceType, ifUnresolvedReturnDefault: true);
+            instance = _container.Resolve(serviceType, ifUnresolved: IfUnresolved.ReturnDefaultIfNotRegistered);
 
             return instance is object;
         }

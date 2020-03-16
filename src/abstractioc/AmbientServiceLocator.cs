@@ -36,7 +36,7 @@ namespace AbstractEpiserverIoc.Core
 
         public TService GetInstance<TService>() => AmbientContext().GetInstance<TService>();
 
-        public object GetService(Type serviceType) => AmbientContext().GetInstance(serviceType);
+        public object GetService(Type serviceType) => AmbientContext().GetService(serviceType);
 
         public bool TryGetExistingInstance(Type serviceType, out object instance)
         {

@@ -1,5 +1,9 @@
-﻿using DryIoc;
+﻿using AbstractEpiserverIoc.Core;
+using AbstractEpiserverIoc.DryIocEpi;
+using DryIoc;
 using EPiServer.ServiceLocation;
+
+[assembly: AbstractLocatorFactoryCreator(typeof(DryIocContainerFactory), nameof(DryIocContainerFactory.Create))]
 
 namespace AbstractEpiserverIoc.DryIocEpi
 {
