@@ -49,7 +49,7 @@ namespace DryIocEpi
 
         public IRegisteredService Add(Type serviceType, object instance)
         {
-            Container.UseInstance(serviceType, instance);
+            Container.RegisterInstance(serviceType, instance);
             _latestType = serviceType;
 
             return this;

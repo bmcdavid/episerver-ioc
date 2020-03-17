@@ -24,7 +24,7 @@ namespace AbstractEpiserverIoc.DryIocEpi
 
         public TService GetInstance<TService>() => _container.Resolve<TService>(ifUnresolved: IfUnresolved.Throw);
 
-        public object GetService(Type serviceType) => GetInstance(serviceType);
+        public object GetService(Type serviceType) => _container.Resolve(serviceType, IfUnresolved.Throw);
 
         public bool TryGetExistingInstance(Type serviceType, out object instance)
         {
@@ -36,12 +36,12 @@ namespace AbstractEpiserverIoc.DryIocEpi
         public void WireupServices(IServiceCollectionExtended services)
         {
             if (_isWiredUp) { return; }
-            services.ServiceCollectionChanged = HandleCollectionChanges;            
+            services.ServiceCollectionChanged = HandleCollectionChanges;
 
             foreach (var service in services)
             {
                 HandleServiceRegistration(service);
-            }            
+            }
 
             _isWiredUp = true;
         }
@@ -89,6 +89,12 @@ namespace AbstractEpiserverIoc.DryIocEpi
         {
             if (serviceType is null) { throw new ArgumentNullException(nameof(serviceType)); }
             if (implementationType is null) { throw new ArgumentNullException(nameof(implementationType), $"{serviceType?.FullName ?? "no service type"} was not given an implementation type!"); }
+
+            if (serviceType == implementationType)
+            {
+                _container.Register(serviceType, lifetime);
+                return;
+            }
 
             _container.Register(serviceType, implementationType, lifetime);
         }

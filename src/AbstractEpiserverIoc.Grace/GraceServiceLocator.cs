@@ -1,5 +1,4 @@
 ﻿using AbstractEpiserverIoc.Core;
-using AbstractEpiserverIoc.GraceEpi;
 using EPiServer.ServiceLocation;
 using Grace.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,9 +21,9 @@ namespace AbstractEpiserverIoc.GraceEpi
 
         public object GetInstance(Type serviceType) => _container.Locate(serviceType);
 
-        public TService GetInstance<TService>() => (TService)GetInstance(typeof(TService));
+        public TService GetInstance<TService>() => _container.Locate<TService>();
 
-        public object GetService(Type serviceType) => GetInstance(serviceType);
+        public object GetService(Type serviceType) => _container.Locate(serviceType);
 
         public bool TryGetExistingInstance(Type serviceType, out object instance) => _container.TryLocate(serviceType, out instance);
 

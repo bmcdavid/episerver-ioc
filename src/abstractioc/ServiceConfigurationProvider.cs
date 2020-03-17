@@ -44,9 +44,17 @@ namespace AbstractEpiserverIoc.Core
 
         public virtual bool Contains(Type serviceType) => _serviceCollection.Any(sd => sd.ServiceType == serviceType);
 
+        static readonly Type _serviceLocator = typeof(IServiceLocator);
         public void Intercept<T>(Func<IServiceLocator, T, T> interceptorFactory) where T : class
         {
-            _serviceCollection.Decorate<T>((existing, provider) => interceptorFactory(provider as IServiceLocator, existing));
+            _serviceCollection.Decorate<T>((existing, provider) => ResolveDecorator(provider, existing, interceptorFactory));
+        }
+
+        private static T ResolveDecorator<T>(IServiceProvider serviceProvider, T existing, Func<IServiceLocator, T, T> interceptorFactory)
+        {
+            var locator = serviceProvider.GetRequiredService(_serviceLocator);
+
+            return interceptorFactory(locator as IServiceLocator, existing);
         }
 
         public virtual IServiceConfigurationProvider RemoveAll(Type serviceType)

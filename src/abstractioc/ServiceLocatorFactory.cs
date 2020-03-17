@@ -17,6 +17,7 @@ namespace AbstractEpiserverIoc.Core
     {
         private readonly IServiceCollectionExtended _serviceCollection;
         private readonly Func<IServiceLocator> _serviceLocatorFactory;
+        private static readonly Type _serviceLocatorType = typeof(IServiceLocator);
 
         public ServiceLocatorFactory() : this(null, null) { }
 
@@ -41,8 +42,6 @@ namespace AbstractEpiserverIoc.Core
 
             return info.Invoke(null, null) as IServiceLocator;
         }
-
-        private static readonly Type _serviceLocatorType = typeof(IServiceLocator);
 
         public IServiceLocator CreateLocator()
         {
