@@ -57,8 +57,6 @@ namespace AbstractEpiserverIoc.Core
             _serviceCollection.AddSingleton(_serviceLocatorType, ambientLocator);
             _serviceCollection.AddOptions();
 
-            var t = _serviceCollection.FirstOrDefault(f => f.ServiceType.FullName == "EPiServer.Web.IDisplayChannelService");
-
             serviceLocatorWireup.WireupServices(_serviceCollection);
 
             return ambientLocator;
