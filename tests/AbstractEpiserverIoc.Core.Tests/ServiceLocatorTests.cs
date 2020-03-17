@@ -1,80 +1,22 @@
 using EPiServer.ServiceLocation;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics.CodeAnalysis;
 using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace AbstractEpiserverIoc.Core.Tests
 {
-    public interface IFoo { }
-
-    public class Foo : IFoo { }
-
-    public class Foo2 : IFoo
-    {
-        public Foo2(IFoo foo)
-        {
-            Foo = foo;
-        }
-
-        public IFoo Foo { get; }
-    }
-
-    public class Foo3 : IFoo
-    {
-        public Foo3(IFoo foo)
-        {
-            Foo = foo;
-        }
-
-        public IFoo Foo { get; }
-    }
-
-    public class Options
-    {
-        public bool IsSet { get; set; }
-
-        public List<string> Strings { get; set; } = new List<string>();
-    }
-
     [ExcludeFromCodeCoverage]
     [TestClass]
     public class ServiceLocatorTests
     {
-        [DataRow("dryioc")]
-        [DataRow("grace")]
         [TestMethod]
-        public void ShouldDecorateServiceFoo(string key)
+        public void ShouldConfigureOptions()
         {
-            var collection = new ExtendedServiceCollection();
-            var factory = new ServiceLocatorFactory(() => TestServiceLocatorFactory.CreateServiceLocator(key), collection);
-            var serviceProviderRegistration = factory.CreateProvider();
-
-            collection.AddSingleton<IFoo, Foo>();
-            collection.Decorate<IFoo>(existing => new Foo2(existing));
-            collection.Decorate<IFoo>(existing => new Foo3(existing));
-            var locator = factory.CreateLocator();
-            Assert.IsFalse(collection.Count != 2, key);
-
-            var sut = locator.GetInstance<IFoo>();
-            Assert.IsTrue(sut is Foo3 fo && fo.Foo is Foo2 f2 && f2.Foo is Foo, key);
-            Assert.AreSame(sut, locator.GetInstance<IFoo>(), key);
-        }
-
-        [DataRow("dryioc")]
-        [DataRow("grace")]
-        [TestMethod]
-        public void ShouldConfigureOptions(string key)
-        {
-            var collection = new ExtendedServiceCollection();
-            var factory = new ServiceLocatorFactory(() => TestServiceLocatorFactory.CreateServiceLocator(key), collection);
-            var serviceProviderRegistration = factory.CreateProvider();
+            PrepareTest(out var collection, out var factory, out var serviceProviderRegistration);
 
             serviceProviderRegistration.AddSingleton<Options>();
-            Assert.IsTrue(collection.Count == 1);
-
-            serviceProviderRegistration.Configure2<Options>(opt =>
+            serviceProviderRegistration.Configure<Options>(opt =>
             {
                 opt.IsSet = true;
                 opt.Strings.Add("Hello");
@@ -82,7 +24,43 @@ namespace AbstractEpiserverIoc.Core.Tests
 
             var locator = factory.CreateLocator();
 
-            Assert.IsTrue(locator.GetInstance<Options>().IsSet);
+            Assert.IsTrue(locator.GetInstance<IServiceLocator>() is object);
+            Assert.IsTrue(locator.GetInstance<Options>().Strings.Count == 1, TestServiceLocatorFactory.LocatorName);
+            Assert.AreSame(locator.GetInstance<Options>(), locator.GetInstance<Options>(), TestServiceLocatorFactory.LocatorName);
+        }
+
+        [TestMethod]
+        public void ShouldForwardService()
+        {
+            PrepareTest(out var collection, out var factory, out var epiProvider);
+
+            epiProvider.AddTransient<ConcreteTest>();
+            epiProvider.Forward<ConcreteTest, BaseTest>();
+            var locator = factory.CreateLocator();
+
+            Assert.IsTrue(locator.GetInstance<BaseTest>() is object);
+        }
+
+        [TestMethod]
+        public void ShouldDecorateServiceFoo()
+        {            
+            PrepareTest(out var collection, out var factory, out var _);
+
+            collection.AddSingleton<IFoo, Foo>();
+            collection.Decorate<IFoo>(existing => new Foo2(existing));
+            collection.Decorate<IFoo>(existing => new Foo3(existing));
+            var locator = factory.CreateLocator();
+
+            var sut = locator.GetInstance<IFoo>();
+            Assert.IsTrue(sut is Foo3 fo && fo.Foo is Foo2 f2 && f2.Foo is Foo, TestServiceLocatorFactory.LocatorName);
+            Assert.AreSame(sut, locator.GetInstance<IFoo>(), TestServiceLocatorFactory.LocatorName);
+        }
+
+        private static void PrepareTest(out ExtendedServiceCollection collection, out ServiceLocatorFactory factory, out IServiceConfigurationProvider serviceProviderRegistration)
+        {
+            collection = new ExtendedServiceCollection();
+            factory = new ServiceLocatorFactory(() => TestServiceLocatorFactory.CreateServiceLocator(), collection);
+            serviceProviderRegistration = factory.CreateProvider();
         }
     }
 

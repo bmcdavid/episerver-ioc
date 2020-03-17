@@ -1,4 +1,4 @@
-@using System.Web.Optimization
+﻿@using System.Web.Optimization
 @using EPiServer.Framework.Web.Mvc.Html
 @using EpiserverSite1.Business
 @model IPageViewModel<SitePageData>
@@ -45,5 +45,9 @@
             }
         </div>
         @Html.RequiredClientResources("Footer")
+        <!--
+            
+        @(EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<EPiServer.Web.IDisplayChannelService>().GetType().FullName)
+        -->
     </body>
 </html>

@@ -1,4 +1,4 @@
-﻿using AbstractEpiserverIoc.Core;
+﻿using AbstractEpiserverIoc.Abstractions;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
@@ -25,14 +25,18 @@ namespace AbstractEpiserverIoc.Web
         private void Application_EndRequest(object sender, EventArgs e)
         {
             var app = sender as HttpApplication;
-            (app.Context.Items[_itemKey] as IDisposable)?.Dispose();
+            var scope = app.Context.Items[_itemKey];
+            (scope as IDisposable)?.Dispose();
+            // todo: EPiServer.Framework.Web.Resources.ClientResources.RenderResources in UI Admin throws null reference exception
+            //  [ServiceConfiguration(Lifecycle = ServiceInstanceScope.Hybrid, ServiceType = typeof (IClientResourceService))] // called from a static.....
+            //public class ClientResourceService : IClientResourceService
         }
 
         private void Application_BeginRequest(object sender, EventArgs e)
         {
             var app = sender as HttpApplication;
             app.Context.Items[_itemKey] =
-                (_serviceLocator as IServiceLocatorCreateScope)?.CreateScope();
+                (_serviceLocator as IServiceLocatorCreateScope).CreateScope();
         }
 
         public void Uninitialize(InitializationEngine context) { }

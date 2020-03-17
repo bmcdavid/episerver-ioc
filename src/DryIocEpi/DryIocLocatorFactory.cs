@@ -38,7 +38,7 @@ namespace DryIocEpi
         {
             var dsl = new DryIocServiceLocator(_container);
             _container.
-                UseInstance(typeof(IServiceLocator), dsl, ifAlreadyRegistered: IfAlreadyRegistered.Replace);
+                RegisterInstance(typeof(IServiceLocator), dsl, ifAlreadyRegistered: IfAlreadyRegistered.Replace);
             return dsl;
         }
 

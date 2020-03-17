@@ -1,7 +1,7 @@
 ﻿using EPiServer.ServiceLocation;
 using System;
 
-namespace AbstractEpiserverIoc.Core
+namespace AbstractEpiserverIoc.Abstractions
 {
     public interface IServiceLocatorScoped : IServiceLocator, IServiceLocatorCreateScope, IDisposable
     {

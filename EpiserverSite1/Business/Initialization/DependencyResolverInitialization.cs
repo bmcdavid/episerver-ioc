@@ -15,8 +15,10 @@ namespace EpiserverSite1.Business.Initialization
     {
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
-            context.Services.AddSingleton<IContentTypeRepository<BlockType>, BlockTypeRepository>();            
-            //context.Services.AddTransient<IObjectSerializer, AppSerializer>();
+#pragma warning disable CS0618 // Type or member is obsolete
+            context.Services.AddSingleton<IContentTypeRepository<BlockType>, BlockTypeRepository>();
+#pragma warning restore CS0618 // Type or member is obsolete
+            context.Services.AddSingleton<EPiServer.Web.IDisplayChannelService, EPiServer.Web.Internal.DefaultDisplayChannelService>();
 
             context.ConfigurationComplete += (o, e) =>
             {

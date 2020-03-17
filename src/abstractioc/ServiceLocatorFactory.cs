@@ -15,15 +15,16 @@ namespace AbstractEpiserverIoc.Core
     // https://github.com/moattarwork/foil/blob/master/src/Foil/ServiceCollectionExtensions.cs
     public class ServiceLocatorFactory : IServiceLocatorFactory
     {
+        private static readonly Type _serviceLocatorType = typeof(IServiceLocator);
         private readonly IServiceCollectionExtended _serviceCollection;
         private readonly Func<IServiceLocator> _serviceLocatorFactory;
-        private static readonly Type _serviceLocatorType = typeof(IServiceLocator);
+        private ServiceConfigurationProvider _provider;
 
         public ServiceLocatorFactory() : this(null, null) { }
 
         public ServiceLocatorFactory(Func<IServiceLocator> serviceLocatorFactory, IServiceCollectionExtended serviceDescriptors)
         {
-            _serviceCollection = serviceDescriptors ?? new ExtendedServiceCollection();
+            _serviceCollection = serviceDescriptors ?? new ExtendedServiceCollection();            
             _serviceLocatorFactory = serviceLocatorFactory;
         }
 
@@ -51,14 +52,19 @@ namespace AbstractEpiserverIoc.Core
             if (!(locator is IServiceLocatorWireupCollection serviceLocatorWireup)) { throw new UnableToWirewupServiceCollectionException(); }
 
             var ambientLocator = new AmbientServiceLocator(locator);
+            _provider.InternalServiceLocator = ambientLocator;
             _serviceCollection.RemoveAll(_serviceLocatorType);
             _serviceCollection.AddSingleton(_serviceLocatorType, ambientLocator);
+            _serviceCollection.AddOptions();
+
+            var t = _serviceCollection.FirstOrDefault(f => f.ServiceType.FullName == "EPiServer.Web.IDisplayChannelService");
+
             serviceLocatorWireup.WireupServices(_serviceCollection);
 
             return ambientLocator;
         }
 
-        public IServiceConfigurationProvider CreateProvider() =>
-            new ServiceConfigurationProvider(_serviceCollection);
+        public IServiceConfigurationProvider CreateProvider() => _provider = new ServiceConfigurationProvider(_serviceCollection);
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using AbstractEpiserverIoc.Core;
+﻿using AbstractEpiserverIoc.Abstractions;
+using AbstractEpiserverIoc.Core;
 using Grace.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace AbstractEpiserverIoc.GraceEpi
             if (_resolverContext is null) { return; }
 
             _resolverContext.Dispose();
+            AmbientServiceLocator.ClearScope();
         }
 
         public IEnumerable<object> GetAllInstances(Type serviceType) => _resolverContext.LocateAll(serviceType);//.ToList();

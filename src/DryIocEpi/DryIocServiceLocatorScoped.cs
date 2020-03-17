@@ -1,11 +1,10 @@
 ﻿using AbstractEpiserverIoc.Abstractions;
-using AbstractEpiserverIoc.Core;
 using DryIoc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AbstractEpiserverIoc.DryIocEpi
+namespace DryIocEpi
 {
     public class DryIocServiceLocatorScoped : IServiceLocatorScoped
     {
@@ -26,7 +25,7 @@ namespace AbstractEpiserverIoc.DryIocEpi
             if (_resolverContext is null || _resolverContext.IsDisposed) { return; }
 
             _resolverContext.Dispose();
-            AmbientServiceLocator.ClearScope();
+            DryIocServiceLocator.ClearAmbientScope();
         }
 
         public IEnumerable<object> GetAllInstances(Type serviceType) => _resolverContext.ResolveMany(serviceType).ToList();

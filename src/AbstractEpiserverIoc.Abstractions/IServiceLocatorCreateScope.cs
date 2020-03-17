@@ -1,6 +1,6 @@
 ﻿using EPiServer.ServiceLocation;
 
-namespace AbstractEpiserverIoc.Core
+namespace AbstractEpiserverIoc.Abstractions
 {
     public interface IServiceLocatorCreateScope : IServiceLocator
     {

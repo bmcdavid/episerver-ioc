@@ -1,4 +1,5 @@
-﻿using AbstractEpiserverIoc.Core;
+﻿using AbstractEpiserverIoc.Abstractions;
+using AbstractEpiserverIoc.Core;
 using DryIoc;
 using EPiServer.ServiceLocation;
 using Microsoft.Extensions.DependencyInjection;
@@ -112,18 +113,18 @@ namespace AbstractEpiserverIoc.DryIocEpi
 
         private void HandleServiceRegistration(MicrosoftServiceDescriptor service)
         {
-            if (service.ImplementationType is object)
-            {
-                AddType(service.ServiceType, service.ImplementationType, ConvertLifeTime(service.Lifetime));
-                return;
-            }
-
             if (service.ImplementationInstance is object)
             {
                 AddInstance(service.ServiceType, service.ImplementationInstance);
                 return;
             }
 
+            if (service.ImplementationType is object)
+            {
+                AddType(service.ServiceType, service.ImplementationType, ConvertLifeTime(service.Lifetime));
+                return;
+            }
+            
             AddDelegate(service.ServiceType, service.ImplementationFactory, ConvertLifeTime(service.Lifetime));
         }
     }

@@ -1,4 +1,5 @@
-﻿using DryIoc;
+﻿using AbstractEpiserverIoc.Abstractions;
+using DryIoc;
 using EPiServer.ServiceLocation;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading;
 
 namespace DryIocEpi
 {
-    public class DryIocServiceLocator : IServiceLocator, IDisposable, IServiceLocatorCreateScope
+    public class DryIocServiceLocator : IServiceLocator, IServiceLocatorCreateScope
     {
         // For Ambient Async State
         private static readonly AsyncLocal<Stack<IResolverContext>> _stack = new AsyncLocal<Stack<IResolverContext>>();
@@ -28,19 +29,19 @@ namespace DryIocEpi
             return scoped ?? _resolveContext;
         }
 
-        public IServiceLocator CreateScope()
+        public IServiceLocatorScoped CreateScope()
         {
             var scope = AmbientContext().OpenScope();
             AddScope(scope);
 
-            return new DryIocServiceLocator(scope);
+            return new DryIocServiceLocatorScoped(scope, null);
         }
 
         public void Dispose()
         {
             if (_resolveContext is null || _resolveContext.IsDisposed) { return; }
             _resolveContext.Dispose();
-            SetStack(null);
+            AddScope(null);
         }
 
         public IEnumerable<object> GetAllInstances(Type serviceType) =>
@@ -48,34 +49,23 @@ namespace DryIocEpi
 
         public object GetInstance(Type serviceType)
         {
-            return AmbientContext().Resolve(serviceType, ifUnresolvedReturnDefault: false);
-            //try
-            //{
-            //}
-            //catch (Exception e)
-            //{
-            //    var issues = (AmbientContext() as IContainer)?
-            //        .Validate();
-            //    var issueList = issues
-            //        .Select(kvp => kvp.Key.ToString() + " = " + kvp.Value.ToString())
-            //        .ToList();
-
-            //    throw new Exception("Unable to resolve: " + serviceType.FullName, e);
-            //}
+            return AmbientContext().Resolve(serviceType, ifUnresolved: IfUnresolved.ReturnDefaultIfNotRegistered);
         }
 
         public TService GetInstance<TService>() =>
             (TService)GetInstance(typeof(TService));
 
         public object GetService(Type serviceType) =>
-            AmbientContext().Resolve(serviceType, IfUnresolved.Throw);
+            AmbientContext().Resolve(serviceType, IfUnresolved.ReturnDefaultIfNotRegistered);
 
         public bool TryGetExistingInstance(Type serviceType, out object instance)
         {
-            instance = AmbientContext().Resolve(serviceType, ifUnresolvedReturnDefault: true);
+            instance = AmbientContext().Resolve(serviceType, IfUnresolved.ReturnDefaultIfNotRegistered);
 
             return instance is object;
         }
+
+        internal static void ClearAmbientScope() => AddScope(null);
 
         private static void AddScope(IResolverContext scopedLocator)
         {

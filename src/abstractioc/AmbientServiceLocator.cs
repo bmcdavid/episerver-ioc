@@ -1,4 +1,5 @@
-﻿using EPiServer.ServiceLocation;
+﻿using AbstractEpiserverIoc.Abstractions;
+using EPiServer.ServiceLocation;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -27,7 +28,7 @@ namespace AbstractEpiserverIoc.Core
             if (ReferenceEquals(ambientContext, UnScopedContext)) { return; } // would need a special processing
             if (ambientContext is null) { return; }
             (ambientContext as IServiceLocatorScoped).Dispose();
-            SetStack(null);
+            AddScope(null);
         }
 
         public IEnumerable<object> GetAllInstances(Type serviceType) => AmbientContext().GetAllInstances(serviceType);
@@ -48,7 +49,9 @@ namespace AbstractEpiserverIoc.Core
             return false;
         }
 
-        protected void AddScope(IServiceLocator scopeContext)
+        public static void ClearScope() => AddScope(null);
+
+        private static void AddScope(IServiceLocator scopeContext)
         {
             var stack = GetStack();
             if (stack is null)
@@ -62,7 +65,7 @@ namespace AbstractEpiserverIoc.Core
             SetStack(stack);
         }
 
-        protected IServiceLocator AmbientContext()
+        public IServiceLocator AmbientContext()
         {
             var stack = GetStack();
             var scoped = stack?.Count > 0 ? stack.Peek() : null;

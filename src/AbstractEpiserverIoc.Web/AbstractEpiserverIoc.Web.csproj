@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\abstractioc\AbstractEpiserverIoc.Core.csproj" />
+    <ProjectReference Include="..\AbstractEpiserverIoc.Abstractions\AbstractEpiserverIoc.Abstractions.csproj" />
   </ItemGroup>
 
   <ItemGroup>

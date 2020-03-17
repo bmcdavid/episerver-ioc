@@ -452,9 +452,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\AbstractEpiserverIoc.DryIoc\AbstractEpiserverIoc.DryIoc.csproj">
-      <Project>{3c937f3e-9820-473f-ba30-6a12c9f770f7}</Project>
-      <Name>AbstractEpiserverIoc.DryIoc</Name>
+    <ProjectReference Include="..\src\AbstractEpiserverIoc.Abstractions\AbstractEpiserverIoc.Abstractions.csproj">
+      <Project>{e05b026e-c18c-41a6-932c-56d95b82e170}</Project>
+      <Name>AbstractEpiserverIoc.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\AbstractEpiserverIoc.Stashbox\AbstractEpiserverIoc.Stashbox.csproj">
+      <Project>{4e3db151-1218-41b5-8de2-1053e902cb0c}</Project>
+      <Name>AbstractEpiserverIoc.Stashbox</Name>
     </ProjectReference>
     <ProjectReference Include="..\src\AbstractEpiserverIoc.Web\AbstractEpiserverIoc.Web.csproj">
       <Project>{90d20599-7ec4-4836-a016-e8a887b08287}</Project>
