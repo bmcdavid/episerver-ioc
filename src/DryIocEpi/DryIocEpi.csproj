@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DryIoc" Version="4.1.2" />
+    <PackageReference Include="DryIoc.dll" Version="4.1.2" />
     <PackageReference Include="EPiServer.Framework" Version="11.1.0" />
   </ItemGroup>
 

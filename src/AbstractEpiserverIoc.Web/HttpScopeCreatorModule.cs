@@ -8,7 +8,7 @@ using System.Web;
 namespace AbstractEpiserverIoc.Web
 {
     [InitializableModule]
-    public class HttpScopeCreatorModule : IInitializableHttpModule
+    public class HttpScopeCreatorModule : IInitializableHttpModule, IConfigurableModule
     {
         internal const string _itemKey = nameof(HttpScopeCreatorModule);// "servicelocator";
         private static IServiceLocator _serviceLocator;
@@ -17,6 +17,14 @@ namespace AbstractEpiserverIoc.Web
         {
             EpiserverEnvironment.EnvironmentNameProvider =
                 () => System.Web.Configuration.WebConfigurationManager.AppSettings["episerver:EnvironmentName"];
+        }
+
+        public void ConfigureContainer(ServiceConfigurationContext context)
+        {
+            if (context.Services is IServiceConfigurationProviderWithEnvironment env && env.Environment is object)
+            {
+                context.Services.Add(typeof(IEpiserverEnvironment), env.Environment);
+            }
         }
 
         public void Initialize(InitializationEngine context)

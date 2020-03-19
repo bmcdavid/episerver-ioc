@@ -6,6 +6,7 @@ using EPiServer.Web.Mvc;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using EPiServer.ServiceLocation;
+using AbstractEpiserverIoc.Abstractions;
 
 namespace EpiserverSite1.Controllers
 {
@@ -19,7 +20,7 @@ namespace EpiserverSite1.Controllers
     {
         private readonly ScopeTest _scopeTest;
 
-        public StartPageController(ScopeTest scopeTest)
+        public StartPageController(ScopeTest scopeTest, IEpiserverEnvironment episerverEnvironment)
         {
             _scopeTest = scopeTest;
             _scopeTest.ListTest.Add(nameof(StartPageController));
