@@ -4,14 +4,11 @@ using EPiServer.ServiceLocation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 
 namespace DryIocEpi
 {
     public class DryIocServiceLocator : IServiceLocator, IServiceLocatorCreateScope
     {
-        // For Ambient Async State
-        private static readonly AsyncLocal<Stack<IResolverContext>> _stack = new AsyncLocal<Stack<IResolverContext>>();
         private readonly IResolverContext _resolveContext;
 
         public DryIocServiceLocator(IResolverContext context) => _resolveContext = context;
@@ -81,15 +78,33 @@ namespace DryIocEpi
             SetStack(stack);
         }
 
+#if NETFULLFRAMEWORK
+        private const string _key = nameof(DryIocServiceLocator);
+
+        private static Stack<IResolverContext> GetStack()
+        {
+            return System.Runtime.Remoting.Messaging.CallContext.GetData(_key) as Stack<IResolverContext>;
+        }
+
+        private static void SetStack(Stack<IResolverContext> stack)
+        {
+            System.Runtime.Remoting.Messaging.CallContext.SetData(_key, stack);
+        }
+#else
+        // For Ambient Async State
+        private static readonly System.Threading.AsyncLocal<Stack<IResolverContext>> _stack =
+            new System.Threading.AsyncLocal<Stack<IResolverContext>>();
+
         private static Stack<IResolverContext> GetStack() => _stack.Value;
 
         private static void SetStack(Stack<IResolverContext> stack)
         {
-            //if (stack is object)
-            //{
-            //    _stack.Value = null;
-            //}
+            if (stack is object)
+            {
+                _stack.Value = null;
+            }
             _stack.Value = stack;
         }
+#endif
     }
 }

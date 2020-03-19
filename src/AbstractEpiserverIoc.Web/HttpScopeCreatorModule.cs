@@ -3,7 +3,6 @@ using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
 using System;
-using System.Collections;
 using System.Web;
 
 namespace AbstractEpiserverIoc.Web
@@ -22,9 +21,6 @@ namespace AbstractEpiserverIoc.Web
         {
             application.BeginRequest += Application_BeginRequest;
             application.EndRequest += Application_EndRequest;
-            //application.PreRequestHandlerExecute += Application_PreRequestHandlerExecute;
-            //application.MapRequestHandler += Application_MapRequestHandler;
-            //System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute
         }
 
         public void Uninitialize(InitializationEngine context) { }
@@ -32,7 +28,11 @@ namespace AbstractEpiserverIoc.Web
         private void Application_BeginRequest(object sender, EventArgs e)
         {
             var app = sender as HttpApplication;
-            CreateRequestScope(app.Context.Items, nameof(HttpApplication.BeginRequest));
+            if (!(app.Context.Items[_itemKey] is IServiceLocatorScoped))
+            {
+                app.Context.Items[_itemKey] =
+                    (_serviceLocator as IServiceLocatorCreateScope).CreateScope();
+            }
         }
 
         private void Application_EndRequest(object sender, EventArgs e)
@@ -40,15 +40,6 @@ namespace AbstractEpiserverIoc.Web
             var app = sender as HttpApplication;
             var scope = app.Context.Items[_itemKey];
             (scope as IServiceLocatorScoped)?.Dispose();
-        }
-
-        private void CreateRequestScope(IDictionary httpContextItem, string _)
-        {
-            if (!(httpContextItem[_itemKey] is IServiceLocatorScoped))
-            {
-                httpContextItem[_itemKey] =
-                    (_serviceLocator as IServiceLocatorCreateScope).CreateScope();
-            }
         }
     }
 }
