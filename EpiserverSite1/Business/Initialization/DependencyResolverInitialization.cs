@@ -1,3 +1,4 @@
+using AbstractEpiserverIoc.Abstractions;
 using EPiServer.DataAbstraction;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
@@ -10,11 +11,21 @@ using System.Web.Mvc;
 namespace EpiserverSite1.Business.Initialization
 {
     [InitializableModule]
-    [ModuleDependency(typeof(ServiceContainerInitialization))]    
+    [ModuleDependency(typeof(ServiceContainerInitialization))]
     public class DependencyResolverInitialization : IConfigurableModule
     {
+        public static string EnvironmentName { get; private set; } = "notset";
+
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
+            EnvironmentName = context.Services.EnvironmentName();
+
+            if (context.Services.IsIntegrationEnvironment())
+            {
+                // could do something specific to integration here...
+            }
+
+
 #pragma warning disable CS0618 // Type or member is obsolete
             context.Services.AddSingleton<IContentTypeRepository<BlockType>, BlockTypeRepository>();
 #pragma warning restore CS0618 // Type or member is obsolete

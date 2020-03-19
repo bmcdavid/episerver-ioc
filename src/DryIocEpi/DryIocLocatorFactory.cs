@@ -1,4 +1,5 @@
-﻿using DryIoc;
+﻿using AbstractEpiserverIoc.Abstractions;
+using DryIoc;
 using EPiServer.ServiceLocation;
 using EPiServer.ServiceLocation.AutoDiscovery;
 using System;
@@ -14,10 +15,11 @@ namespace DryIocEpi
     {
         private static readonly Dictionary<Type, List<PropertyOrFieldServiceInfo>> _props = new Dictionary<Type, List<PropertyOrFieldServiceInfo>>();
         private readonly IContainer _container;
+        private readonly IEpiserverEnvironment _episerverEnvironment;
 
         public DryIocLocatorFactory()
         {
-            var rules = Rules.Default 
+            var rules = Rules.Default
                 .WithAutoConcreteTypeResolution()
                 .With(FactoryMethod.ConstructorWithResolvableArguments)
                 .WithoutThrowIfDependencyHasShorterReuseLifespan()
@@ -30,6 +32,7 @@ namespace DryIocEpi
                 ; //used in transient delegate cases
 
             _container = new Container(rules);
+            _episerverEnvironment = new EpiserverEnvironment(EpiserverEnvironment.EnvironmentNameProvider?.Invoke());
         }
 
         public DryIocLocatorFactory(IContainer container) => _container = container;
@@ -42,7 +45,7 @@ namespace DryIocEpi
             return dsl;
         }
 
-        public IServiceConfigurationProvider CreateProvider() => new DryIocServiceConfigurationProvider(_container);
+        public IServiceConfigurationProvider CreateProvider() => new DryIocServiceConfigurationProvider(_container, _episerverEnvironment);
 
         private static bool GetInjected(Type fieldInfo)
         {

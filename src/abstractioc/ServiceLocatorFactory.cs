@@ -1,4 +1,5 @@
-﻿using AbstractEpiserverIoc.Core.Exceptions;
+﻿using AbstractEpiserverIoc.Abstractions;
+using AbstractEpiserverIoc.Core.Exceptions;
 using EPiServer.ServiceLocation;
 using EPiServer.ServiceLocation.AutoDiscovery;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +20,7 @@ namespace AbstractEpiserverIoc.Core
         private readonly IServiceCollectionExtended _serviceCollection;
         private readonly Func<IServiceLocator> _serviceLocatorFactory;
         private ServiceConfigurationProvider _provider;
+        private readonly IEpiserverEnvironment _episerverEnvironment;
 
         public ServiceLocatorFactory() : this(null, null) { }
 
@@ -26,6 +28,7 @@ namespace AbstractEpiserverIoc.Core
         {
             _serviceCollection = serviceDescriptors ?? new ExtendedServiceCollection();            
             _serviceLocatorFactory = serviceLocatorFactory;
+            _episerverEnvironment = new EpiserverEnvironment(EpiserverEnvironment.EnvironmentNameProvider?.Invoke());
         }
 
         public static Func<IEnumerable<Assembly>> AssembliesProvider { get; set; } = () => AppDomain.CurrentDomain.GetAssemblies();
@@ -62,7 +65,8 @@ namespace AbstractEpiserverIoc.Core
             return ambientLocator;
         }
 
-        public IServiceConfigurationProvider CreateProvider() => _provider = new ServiceConfigurationProvider(_serviceCollection);
+        public IServiceConfigurationProvider CreateProvider() =>
+            _provider = new ServiceConfigurationProvider(_serviceCollection, _episerverEnvironment);
 
     }
 }

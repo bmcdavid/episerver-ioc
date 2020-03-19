@@ -1,16 +1,23 @@
-﻿using DryIoc;
+﻿using AbstractEpiserverIoc.Abstractions;
+using DryIoc;
 using EPiServer.ServiceLocation;
 using System;
 
 namespace DryIocEpi
 {
-    public class DryIocServiceConfigurationProvider : IServiceConfigurationProvider, IRegisteredService, EPiServer.ServiceLocation.Internal.IInterceptorRegister // todo: internal
+    public class DryIocServiceConfigurationProvider : IServiceConfigurationProviderWithEnvironment, IRegisteredService, EPiServer.ServiceLocation.Internal.IInterceptorRegister // todo: internal
     {
         private Type _latestType;
 
-        public DryIocServiceConfigurationProvider(IContainer container) => Container = container;
+        public DryIocServiceConfigurationProvider(IContainer container, IEpiserverEnvironment episerverEnvironment)
+        {
+            Container = container;
+            Environment = episerverEnvironment;
+        }
 
         public IContainer Container { get; }
+
+        public IEpiserverEnvironment Environment { get; }
 
         public IRegisteredService Add(Type serviceType, Type implementationType, ServiceInstanceScope lifetime)
         {
@@ -25,14 +32,14 @@ namespace DryIocEpi
 
         public IRegisteredService Add(Type serviceType, Func<IServiceLocator, object> implementationFactory, ServiceInstanceScope lifetime)
         {
-            if(implementationFactory is null) { throw new ArgumentNullException(nameof(implementationFactory)); }
+            if (implementationFactory is null) { throw new ArgumentNullException(nameof(implementationFactory)); }
 
             object checkedDelegate(IResolverContext r)
-            {                
+            {
                 var obj = (object)implementationFactory(r.Resolve<IServiceLocator>());
                 if (obj == null)
                 {
-                    
+
 
                     var lf = lifetime;
                 }
@@ -64,10 +71,7 @@ namespace DryIocEpi
             return this;
         }
 
-        public void Verify()
-        {
-            (Container as Container).Validate();
-        }
+        public void Verify() => (Container as Container).Validate();
 
         public bool Contains(Type serviceType) => Container.IsRegistered(serviceType);
 

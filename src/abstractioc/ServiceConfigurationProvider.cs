@@ -1,4 +1,5 @@
-﻿using EPiServer.Framework.Cache;
+﻿using AbstractEpiserverIoc.Abstractions;
+using EPiServer.Framework.Cache;
 using EPiServer.ServiceLocation;
 using EPiServer.ServiceLocation.Internal; // todo: requires internal
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +12,7 @@ using MicrosoftServiceDescriptor = Microsoft.Extensions.DependencyInjection.Serv
 
 namespace AbstractEpiserverIoc.Core
 {
-    public class ServiceConfigurationProvider : IServiceConfigurationProvider, IRegisteredService, IInterceptorRegister
+    public class ServiceConfigurationProvider : IServiceConfigurationProviderWithEnvironment, IRegisteredService, IInterceptorRegister
     {
         private static readonly Dictionary<int, MethodInfo> _refectedMethods = new Dictionary<int, MethodInfo>(4);
         private static readonly Type _serviceLocatorType = typeof(IServiceLocator);
@@ -19,9 +20,15 @@ namespace AbstractEpiserverIoc.Core
         private MethodInfo _funcFactory = typeof(FuncFactory).GetMethod("Get");
         private MicrosoftServiceDescriptor _latestType;
 
-        public ServiceConfigurationProvider(IServiceCollectionExtended serviceCollection) => _serviceCollection = serviceCollection;
+        public ServiceConfigurationProvider(IServiceCollectionExtended serviceCollection, IEpiserverEnvironment episerverEnvironment)
+        {
+            _serviceCollection = serviceCollection;
+            Environment = episerverEnvironment;
+        }
 
         internal IServiceLocator InternalServiceLocator { get; set; }
+
+        public IEpiserverEnvironment Environment { get; }
 
         public virtual IRegisteredService Add(Type serviceType, Type implementationType, ServiceInstanceScope lifetime)
         {
@@ -208,7 +215,7 @@ namespace AbstractEpiserverIoc.Core
             {
                 var paramLength = isFunc ? 2 : 1;
                 var methodName = lifetime == ServiceInstanceScope.Hybrid ? "AddHttpContextOrThreadScoped" : "AddHttpContextScoped";
-                method = typeof(ServiceConfigurationProviderExtensions).GetMethods()
+                method = typeof(EPiServer.ServiceLocation.ServiceConfigurationProviderExtensions).GetMethods()
                         .Single(m => m.Name.Equals(methodName) && m.GetParameters().Length == paramLength);
 
                 _refectedMethods[key] = method;

@@ -9,7 +9,8 @@ namespace Example
         /// </summary>
         public static void Start()
         {
-            //throw new System.Exception("here");            
+        //    AbstractEpiserverIoc.Abstractions.EpiserverEnvironment.EnvironmentNameProvider =
+        //        () => System.Web.Configuration.WebConfigurationManager.AppSettings["episerver:environment"];
         }
     }
 }

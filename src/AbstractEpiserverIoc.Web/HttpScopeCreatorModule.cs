@@ -10,12 +10,24 @@ namespace AbstractEpiserverIoc.Web
     [InitializableModule]
     public class HttpScopeCreatorModule : IInitializableHttpModule
     {
-        private const string _itemKey = nameof(HttpScopeCreatorModule);
-        private IServiceLocator _serviceLocator;
-        // "servicelocator";
+        internal const string _itemKey = nameof(HttpScopeCreatorModule);// "servicelocator";
+        private static IServiceLocator _serviceLocator;
 
-        public void Initialize(InitializationEngine context) =>
+        public HttpScopeCreatorModule()
+        {
+            EpiserverEnvironment.EnvironmentNameProvider =
+                () => System.Web.Configuration.WebConfigurationManager.AppSettings["episerver:EnvironmentName"];
+        }
+
+        public void Initialize(InitializationEngine context)
+        {
             _serviceLocator = context.Locate.Advanced;
+
+            if (_serviceLocator is IServiceLocatorAmbientPreferredStorage preferred)
+            {
+                preferred.SetStorage(() => HttpContext.Current?.Items);
+            }
+        }
 
         public void InitializeHttpEvents(HttpApplication application)
         {
@@ -25,9 +37,9 @@ namespace AbstractEpiserverIoc.Web
 
         public void Uninitialize(InitializationEngine context) { }
 
-        private void Application_BeginRequest(object sender, EventArgs e)
+        private static void Application_BeginRequest(object sender, EventArgs e)
         {
-            var app = sender as HttpApplication;
+            if (!(sender is HttpApplication app)) { return; }
             if (!(app.Context.Items[_itemKey] is IServiceLocatorScoped))
             {
                 app.Context.Items[_itemKey] =
@@ -35,9 +47,10 @@ namespace AbstractEpiserverIoc.Web
             }
         }
 
-        private void Application_EndRequest(object sender, EventArgs e)
+        private static void Application_EndRequest(object sender, EventArgs e)
         {
-            var app = sender as HttpApplication;
+            if (!(sender is HttpApplication app)) { return; }
+
             var scope = app.Context.Items[_itemKey];
             (scope as IServiceLocatorScoped)?.Dispose();
         }

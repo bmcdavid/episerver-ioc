@@ -10,7 +10,10 @@ namespace AbstractEpiserverIoc.Core
     {
         private static readonly AsyncLocal<Stack<IServiceLocator>> _stack = new AsyncLocal<Stack<IServiceLocator>>();
 
-        public AmbientServiceLocator(IServiceLocator unscopedContext) => UnScopedContext = unscopedContext;
+        public AmbientServiceLocator(IServiceLocator unscopedContext)
+        {
+            UnScopedContext = unscopedContext;
+        }
 
         protected IServiceLocator UnScopedContext { get; }
 

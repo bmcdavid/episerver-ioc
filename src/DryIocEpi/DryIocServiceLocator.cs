@@ -2,21 +2,25 @@
 using DryIoc;
 using EPiServer.ServiceLocation;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DryIocEpi
 {
-    public class DryIocServiceLocator : IServiceLocator, IServiceLocatorCreateScope
+    public class DryIocServiceLocator : IServiceLocator, IServiceLocatorCreateScope, IServiceLocatorAmbientPreferredStorage
     {
+        private const string _storageKey = nameof(IServiceLocatorAmbientPreferredStorage);
+        // For Ambient Async State
+        private static readonly System.Threading.AsyncLocal<Stack<IResolverContext>> _stack =
+            new System.Threading.AsyncLocal<Stack<IResolverContext>>();
+        private static Func<IDictionary> _storageGetter;
         private readonly IResolverContext _resolveContext;
 
-        public DryIocServiceLocator(IResolverContext context) => _resolveContext = context;
-
-        public ICollection<string> Debug() => (AmbientContext() as Container)?
-            .GetServiceRegistrations()
-            .Select(x => x.ServiceType.FullName + " " + x.ImplementationType?.FullName ?? "n/a" + " " + x.Factory.Reuse.GetType().FullName)
-            .ToList();
+        public DryIocServiceLocator(IResolverContext context)
+        {
+            _resolveContext = context;
+        }
 
         public IResolverContext AmbientContext()
         {
@@ -34,35 +38,28 @@ namespace DryIocEpi
             return new DryIocServiceLocatorScoped(scope, null);
         }
 
-        public void Dispose()
-        {
-            if (_resolveContext is null || _resolveContext.IsDisposed) { return; }
-            _resolveContext.Dispose();
-            AddScope(null);
-        }
+        public ICollection<string> Debug() => (AmbientContext() as Container)?
+            .GetServiceRegistrations()
+            .Select(x => x.ServiceType.FullName + " " + x.ImplementationType?.FullName ?? "n/a" + " " + x.Factory.Reuse.GetType().FullName)
+            .ToList();
 
         public IEnumerable<object> GetAllInstances(Type serviceType) =>
             AmbientContext().ResolveMany(serviceType).ToList();
 
-        public object GetInstance(Type serviceType)
-        {
-            return AmbientContext().Resolve(serviceType, ifUnresolved: IfUnresolved.Throw);
-        }
+        public object GetInstance(Type serviceType) => AmbientContext().Resolve(serviceType, ifUnresolved: IfUnresolved.Throw);
 
-        public TService GetInstance<TService>() =>
-            (TService)GetInstance(typeof(TService));
+        public TService GetInstance<TService>() => (TService)GetInstance(typeof(TService));
 
         public object GetService(Type serviceType) =>
             AmbientContext().Resolve(serviceType, IfUnresolved.Throw);
 
+        public void SetStorage(Func<IDictionary> storageGetter) => _storageGetter = storageGetter;
         public bool TryGetExistingInstance(Type serviceType, out object instance)
         {
             instance = AmbientContext().Resolve(serviceType, IfUnresolved.ReturnDefaultIfNotRegistered);
 
             return instance is object;
         }
-
-        internal static void ClearAmbientScope() => AddScope(null);
 
         internal static void AddScope(IResolverContext scopedLocator)
         {
@@ -78,33 +75,32 @@ namespace DryIocEpi
             SetStack(stack);
         }
 
-#if NETFULLFRAMEWORK
-        private const string _key = nameof(DryIocServiceLocator);
+        internal static void ClearAmbientScope() => AddScope(null);
 
         private static Stack<IResolverContext> GetStack()
         {
-            return System.Runtime.Remoting.Messaging.CallContext.GetData(_key) as Stack<IResolverContext>;
+            var preferredStorage = _storageGetter?.Invoke();
+            if (preferredStorage is null) { return _stack.Value; }
+
+            return preferredStorage[_storageKey] as Stack<IResolverContext>;
         }
 
         private static void SetStack(Stack<IResolverContext> stack)
         {
-            System.Runtime.Remoting.Messaging.CallContext.SetData(_key, stack);
-        }
-#else
-        // For Ambient Async State
-        private static readonly System.Threading.AsyncLocal<Stack<IResolverContext>> _stack =
-            new System.Threading.AsyncLocal<Stack<IResolverContext>>();
+            var preferredStorage = _storageGetter?.Invoke();
 
-        private static Stack<IResolverContext> GetStack() => _stack.Value;
+            if (preferredStorage is object)
+            {
+                preferredStorage[_storageKey] = stack;
 
-        private static void SetStack(Stack<IResolverContext> stack)
-        {
+                return;
+            }
+
             if (stack is object)
             {
                 _stack.Value = null;
             }
             _stack.Value = stack;
         }
-#endif
     }
 }
