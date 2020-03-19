@@ -18,7 +18,13 @@ namespace DryIocEpi
 
         public IServiceLocatorScoped ParentScope { get; }
 
-        public IServiceLocatorScoped CreateScope() => new DryIocServiceLocatorScoped(_resolverContext.OpenScope(), this);
+        public IServiceLocatorScoped CreateScope()
+        {
+            var scope = _resolverContext.OpenScope();
+            DryIocServiceLocator.AddScope(scope);
+
+            return new DryIocServiceLocatorScoped(scope, this);
+        }
 
         public void Dispose()
         {

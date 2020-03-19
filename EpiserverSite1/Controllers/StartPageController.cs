@@ -3,13 +3,32 @@ using EpiserverSite1.Models.Pages;
 using EpiserverSite1.Models.ViewModels;
 using EPiServer.Web;
 using EPiServer.Web.Mvc;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using EPiServer.ServiceLocation;
 
 namespace EpiserverSite1.Controllers
 {
+    [ServiceConfiguration(typeof(ScopeTest), Lifecycle = ServiceInstanceScope.HttpContext)]
+    public class ScopeTest
+    {
+        public List<string> ListTest { get; set; } = new List<string>();
+    }
+
     public class StartPageController : PageControllerBase<StartPage>
     {
-        public ActionResult Index(StartPage currentPage)
+        private readonly ScopeTest _scopeTest;
+
+        public StartPageController(ScopeTest scopeTest)
         {
+            _scopeTest = scopeTest;
+            _scopeTest.ListTest.Add(nameof(StartPageController));
+        }
+
+        public async Task<ActionResult> Index(StartPage currentPage)
+        {
+            var c = await Task.FromResult(0);
+            if (_scopeTest.ListTest.Count != 1) { throw new System.Exception("Bad"); }
             var model = PageViewModel.Create(currentPage);
 
             if (SiteDefinition.Current.StartPage.CompareToIgnoreWorkID(currentPage.ContentLink)) // Check if it is the StartPage or just a page of the StartPage type.

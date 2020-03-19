@@ -49,14 +49,14 @@ namespace DryIocEpi
 
         public object GetInstance(Type serviceType)
         {
-            return AmbientContext().Resolve(serviceType, ifUnresolved: IfUnresolved.ReturnDefaultIfNotRegistered);
+            return AmbientContext().Resolve(serviceType, ifUnresolved: IfUnresolved.Throw);
         }
 
         public TService GetInstance<TService>() =>
             (TService)GetInstance(typeof(TService));
 
         public object GetService(Type serviceType) =>
-            AmbientContext().Resolve(serviceType, IfUnresolved.ReturnDefaultIfNotRegistered);
+            AmbientContext().Resolve(serviceType, IfUnresolved.Throw);
 
         public bool TryGetExistingInstance(Type serviceType, out object instance)
         {
@@ -67,7 +67,7 @@ namespace DryIocEpi
 
         internal static void ClearAmbientScope() => AddScope(null);
 
-        private static void AddScope(IResolverContext scopedLocator)
+        internal static void AddScope(IResolverContext scopedLocator)
         {
             var stack = GetStack();
             if (stack is null)
@@ -85,10 +85,10 @@ namespace DryIocEpi
 
         private static void SetStack(Stack<IResolverContext> stack)
         {
-            if (stack is object)
-            {
-                _stack.Value = null;
-            }
+            //if (stack is object)
+            //{
+            //    _stack.Value = null;
+            //}
             _stack.Value = stack;
         }
     }

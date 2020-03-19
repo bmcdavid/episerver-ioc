@@ -3,6 +3,7 @@ using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
 using System;
+using System.Collections;
 using System.Web;
 
 namespace AbstractEpiserverIoc.Web
@@ -10,8 +11,9 @@ namespace AbstractEpiserverIoc.Web
     [InitializableModule]
     public class HttpScopeCreatorModule : IInitializableHttpModule
     {
+        private const string _itemKey = nameof(HttpScopeCreatorModule);
         private IServiceLocator _serviceLocator;
-        private const string _itemKey = "servicelocator";
+        // "servicelocator";
 
         public void Initialize(InitializationEngine context) =>
             _serviceLocator = context.Locate.Advanced;
@@ -20,25 +22,33 @@ namespace AbstractEpiserverIoc.Web
         {
             application.BeginRequest += Application_BeginRequest;
             application.EndRequest += Application_EndRequest;
+            //application.PreRequestHandlerExecute += Application_PreRequestHandlerExecute;
+            //application.MapRequestHandler += Application_MapRequestHandler;
+            //System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute
+        }
+
+        public void Uninitialize(InitializationEngine context) { }
+
+        private void Application_BeginRequest(object sender, EventArgs e)
+        {
+            var app = sender as HttpApplication;
+            CreateRequestScope(app.Context.Items, nameof(HttpApplication.BeginRequest));
         }
 
         private void Application_EndRequest(object sender, EventArgs e)
         {
             var app = sender as HttpApplication;
             var scope = app.Context.Items[_itemKey];
-            (scope as IDisposable)?.Dispose();
-            // todo: EPiServer.Framework.Web.Resources.ClientResources.RenderResources in UI Admin throws null reference exception
-            //  [ServiceConfiguration(Lifecycle = ServiceInstanceScope.Hybrid, ServiceType = typeof (IClientResourceService))] // called from a static.....
-            //public class ClientResourceService : IClientResourceService
+            (scope as IServiceLocatorScoped)?.Dispose();
         }
 
-        private void Application_BeginRequest(object sender, EventArgs e)
+        private void CreateRequestScope(IDictionary httpContextItem, string _)
         {
-            var app = sender as HttpApplication;
-            app.Context.Items[_itemKey] =
-                (_serviceLocator as IServiceLocatorCreateScope).CreateScope();
+            if (!(httpContextItem[_itemKey] is IServiceLocatorScoped))
+            {
+                httpContextItem[_itemKey] =
+                    (_serviceLocator as IServiceLocatorCreateScope).CreateScope();
+            }
         }
-
-        public void Uninitialize(InitializationEngine context) { }
     }
 }
