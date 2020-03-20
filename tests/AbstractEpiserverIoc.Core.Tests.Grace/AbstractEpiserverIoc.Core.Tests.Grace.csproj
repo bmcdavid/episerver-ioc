@@ -23,7 +23,6 @@
   <ItemGroup>
 	<Compile Include="..\AbstractEpiserverIoc.Core.Tests\**\*.cs" />
     <ProjectReference Include="..\..\src\AbstractEpiserverIoc.Grace\AbstractEpiserverIoc.Grace.csproj" />
-    <ProjectReference Include="..\..\src\abstractioc\AbstractEpiserverIoc.Core.csproj" />
   </ItemGroup>
 
 </Project>

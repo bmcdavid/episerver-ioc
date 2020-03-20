@@ -4,7 +4,7 @@
     <TargetFrameworks>net472;netcoreapp3.1</TargetFrameworks>
     <IsPackable>false</IsPackable>
     <Namespace>AbstractEpiserverIoc.Core.Tests</Namespace>
-    <DefineConstants>$(DefineConstants);STASHBOX_LOCATOR;</DefineConstants>
+    <DefineConstants>$(DefineConstants);MICROSOFT_LOCATOR;</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,9 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-	<Compile Include="..\AbstractEpiserverIoc.Core.Tests\**\*.cs" />
-    <ProjectReference Include="..\..\src\AbstractEpiserverIoc.Stashbox\AbstractEpiserverIoc.Stashbox.csproj" />
-    <ProjectReference Include="..\..\src\abstractioc\AbstractEpiserverIoc.Core.csproj" />
+    <Compile Include="..\AbstractEpiserverIoc.Core.Tests\**\*.cs" />
+    <ProjectReference Include="..\..\src\AbstractEpiserverIoc.Core\AbstractEpiserverIoc.Core.csproj" />
+    <ProjectReference Include="..\..\src\AbstractEpiserverIoc.Microsoft\AbstractEpiserverIoc.MicrosoftEpi.csproj" />
   </ItemGroup>
 
 </Project>

@@ -16,7 +16,8 @@ namespace AbstractEpiserverIoc.GraceEpi
 
         public GraceServiceLocator(DependencyInjectionContainer rootContainer) => _container = rootContainer;
 
-        public IServiceLocatorScoped CreateScope() => new GraceServiceLocatorScoped(_container.BeginLifetimeScope(), null);
+        public IServiceLocatorScoped CreateScope() =>
+            new GraceServiceLocatorScoped(_container.BeginLifetimeScope(), null);
 
         public IEnumerable<object> GetAllInstances(Type serviceType) => _container.LocateAll(serviceType);//.ToList();
 

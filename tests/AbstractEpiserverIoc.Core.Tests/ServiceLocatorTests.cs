@@ -35,15 +35,15 @@ namespace AbstractEpiserverIoc.Core.Tests
             PrepareTest(out var collection, out var factory, out var epiProvider);
 
             epiProvider.AddTransient<ConcreteTest>();
-            epiProvider.Forward<ConcreteTest, BaseTest>();
+            epiProvider.Forward<ConcreteTest, IForwardTest>();
             var locator = factory.CreateLocator();
 
-            Assert.IsTrue(locator.GetInstance<BaseTest>() is object);
+            Assert.IsTrue(locator.GetInstance<IForwardTest>() is object);
         }
 
         [TestMethod]
         public void ShouldDecorateServiceFoo()
-        {            
+        {
             PrepareTest(out var collection, out var factory, out var _);
 
             collection.AddSingleton<IFoo, Foo>();

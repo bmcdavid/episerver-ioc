@@ -18,7 +18,13 @@ namespace AbstractEpiserverIoc.GraceEpi
 
         public IServiceLocatorScoped ParentScope { get; }
 
-        public IServiceLocatorScoped CreateScope() => new GraceServiceLocatorScoped(_resolverContext.BeginLifetimeScope(), this);
+        public IServiceLocatorScoped CreateScope()
+        {
+            var scoped = new GraceServiceLocatorScoped(_resolverContext.BeginLifetimeScope(), this);
+            AmbientServiceLocator.AddScope(scoped);
+
+            return scoped;
+        }
 
         public void Dispose()
         {

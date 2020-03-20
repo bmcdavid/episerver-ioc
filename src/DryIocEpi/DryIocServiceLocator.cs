@@ -11,9 +11,11 @@ namespace DryIocEpi
     public class DryIocServiceLocator : IServiceLocator, IServiceLocatorCreateScope, IServiceLocatorAmbientPreferredStorage
     {
         private const string _storageKey = nameof(IServiceLocatorAmbientPreferredStorage);
+
         // For Ambient Async State
         private static readonly System.Threading.AsyncLocal<Stack<IResolverContext>> _stack =
             new System.Threading.AsyncLocal<Stack<IResolverContext>>();
+
         private static Func<IDictionary> _storageGetter;
         private readonly IResolverContext _resolveContext;
 
@@ -54,6 +56,7 @@ namespace DryIocEpi
             AmbientContext().Resolve(serviceType, IfUnresolved.Throw);
 
         public void SetStorage(Func<IDictionary> storageGetter) => _storageGetter = storageGetter;
+
         public bool TryGetExistingInstance(Type serviceType, out object instance)
         {
             instance = AmbientContext().Resolve(serviceType, IfUnresolved.ReturnDefaultIfNotRegistered);

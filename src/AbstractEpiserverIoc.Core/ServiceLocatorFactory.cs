@@ -22,11 +22,13 @@ namespace AbstractEpiserverIoc.Core
         private ServiceConfigurationProvider _provider;
         private readonly IEpiserverEnvironment _episerverEnvironment;
 
-        public ServiceLocatorFactory() : this(null, null) { }
+        public ServiceLocatorFactory() : this(null, null)
+        {
+        }
 
         public ServiceLocatorFactory(Func<IServiceLocator> serviceLocatorFactory, IServiceCollectionExtended serviceDescriptors)
         {
-            _serviceCollection = serviceDescriptors ?? new ExtendedServiceCollection();            
+            _serviceCollection = serviceDescriptors ?? new ExtendedServiceCollection();
             _serviceLocatorFactory = serviceLocatorFactory;
             _episerverEnvironment = new EpiserverEnvironment(EpiserverEnvironment.EnvironmentNameProvider?.Invoke());
         }
@@ -58,6 +60,7 @@ namespace AbstractEpiserverIoc.Core
             _provider.InternalServiceLocator = ambientLocator;
             _serviceCollection.RemoveAll(_serviceLocatorType);
             _serviceCollection.AddSingleton(_serviceLocatorType, ambientLocator);
+            _serviceCollection.AddSingleton(typeof(IServiceProvider), ambientLocator);
             _serviceCollection.AddOptions();
 
             serviceLocatorWireup.WireupServices(_serviceCollection);
@@ -67,6 +70,5 @@ namespace AbstractEpiserverIoc.Core
 
         public IServiceConfigurationProvider CreateProvider() =>
             _provider = new ServiceConfigurationProvider(_serviceCollection, _episerverEnvironment);
-
     }
 }

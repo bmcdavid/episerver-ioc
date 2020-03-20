@@ -17,7 +17,8 @@ namespace AbstractEpiserverIoc.DryIocEpi
 
         public DryIocServiceLocator(IContainer rootContainer) => _container = rootContainer as Container;
 
-        public IServiceLocatorScoped CreateScope() => new DryIocServiceLocatorScoped(_container.OpenScope(), null);
+        public IServiceLocatorScoped CreateScope() => 
+            new DryIocServiceLocatorScoped(_container.OpenScope(), null);
 
         public IEnumerable<object> GetAllInstances(Type serviceType) => _container.ResolveMany(serviceType).ToList();
 
@@ -124,7 +125,7 @@ namespace AbstractEpiserverIoc.DryIocEpi
                 AddType(service.ServiceType, service.ImplementationType, ConvertLifeTime(service.Lifetime));
                 return;
             }
-            
+
             AddDelegate(service.ServiceType, service.ImplementationFactory, ConvertLifeTime(service.Lifetime));
         }
     }

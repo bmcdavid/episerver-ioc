@@ -2,7 +2,6 @@
 
 namespace AbstractEpiserverIoc.Core
 {   // Add assembly attr to disable exception of registering after configuration complete
-
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false)]
     public class AbstractLocatorFactoryCreatorAttribute : Attribute
     {

@@ -43,7 +43,9 @@ namespace AbstractEpiserverIoc.Web
             application.EndRequest += Application_EndRequest;
         }
 
-        public void Uninitialize(InitializationEngine context) { }
+        public void Uninitialize(InitializationEngine context)
+        {
+        }
 
         private static void Application_BeginRequest(object sender, EventArgs e)
         {

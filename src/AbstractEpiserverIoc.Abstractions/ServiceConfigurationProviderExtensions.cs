@@ -38,6 +38,7 @@ namespace AbstractEpiserverIoc.Abstractions
 
             return env.Environment.IsProduction;
         }
+
         public static bool IsUnitTestEnvironment(this IServiceConfigurationProvider services)
         {
             if (!(services is IServiceConfigurationProviderWithEnvironment env)) { return false; }

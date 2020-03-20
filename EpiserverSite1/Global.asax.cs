@@ -6,6 +6,8 @@ namespace EpiserverSite1
     {
         protected void Application_Start()
         {
+            // todo: violation of options, needs empty constructor
+            // Microsoft.Extensions.Options.IOptions<EPiServer.Cms.TinyMce.Core.TinyMceConfiguration> a = null;
             AreaRegistration.RegisterAllAreas();
             //Tip: Want to call the EPiServer API on startup? Add an initialization module instead (Add -> New Item.. -> EPiServer -> Initialization Module)
         }

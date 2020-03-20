@@ -39,8 +39,6 @@ namespace DryIocEpi
                 var obj = (object)implementationFactory(r.Resolve<IServiceLocator>());
                 if (obj == null)
                 {
-
-
                     var lf = lifetime;
                 }
                 return obj
@@ -97,6 +95,7 @@ namespace DryIocEpi
 #pragma warning restore CS0618 // Type or member is obsolete
                 case ServiceInstanceScope.Transient:
                     return Reuse.Transient;
+
                 case ServiceInstanceScope.HttpContext:
                 case ServiceInstanceScope.Hybrid:
                     return Reuse.Scoped;

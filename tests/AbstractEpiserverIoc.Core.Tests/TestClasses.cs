@@ -26,7 +26,14 @@ namespace AbstractEpiserverIoc.Core.Tests
         public IFoo Foo { get; }
     }
 
-    public abstract class BaseTest { protected BaseTest() { } }
+    public interface IForwardTest { }
+
+    public abstract class BaseTest : IForwardTest
+    {
+        protected BaseTest()
+        {
+        }
+    }
 
     public class ConcreteTest : BaseTest { }
 
@@ -37,5 +44,4 @@ namespace AbstractEpiserverIoc.Core.Tests
 
         public List<string> Strings { get; set; } = new List<string>();
     }
-
 }

@@ -1,13 +1,12 @@
 ﻿using AbstractEpiserverIoc.Abstractions;
-using EPiServer.Framework.Cache;
 using EPiServer.ServiceLocation;
 using EPiServer.ServiceLocation.Internal; // todo: requires internal
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Threading;
 using MicrosoftServiceDescriptor = Microsoft.Extensions.DependencyInjection.ServiceDescriptor;
 
 namespace AbstractEpiserverIoc.Core
@@ -37,23 +36,25 @@ namespace AbstractEpiserverIoc.Core
             //    ValidateOptionUsage(serviceType, implementationType, lifetime);
 
             //    var optionsType = typeof(IOptions<>).MakeGenericType(serviceType);
-            //    _serviceCollection.Add(_latestType = new MicrosoftServiceDescriptor(serviceType, s => (s.GetService(optionsType) as IOptions<object>).Value,
-            //       ConvertLifeTime(lifetime)));
+            //    _latestType = new MicrosoftServiceDescriptor(serviceType, s => (s.GetService(optionsType) as IOptions<object>).Value,
+            //       ConvertLifeTime(lifetime));
+
+            //    _serviceCollection.Add(_latestType);
             //}
             //else
-            if (lifetime == ServiceInstanceScope.Hybrid || lifetime == ServiceInstanceScope.HttpContext)
-            {
-                var genericMethod = GetMethodInfo(lifetime, isFunc: false).MakeGenericMethod(serviceType, implementationType);
-                genericMethod.Invoke(null, new object[] { this });
-            }
-            else
+            //if (lifetime == ServiceInstanceScope.Hybrid || lifetime == ServiceInstanceScope.HttpContext)
+            //{
+            //    var genericMethod = GetMethodInfo(lifetime, isFunc: false).MakeGenericMethod(serviceType, implementationType);
+            //    genericMethod.Invoke(null, new object[] { this });
+            //}
+            //else
             {
                 var descriptor = new MicrosoftServiceDescriptor(serviceType, implementationType, ConvertLifeTime(lifetime));
 
                 return AddInternal(descriptor);
             }
 
-            return this;
+            //return this;
         }
 
         public virtual IRegisteredService Add(Type serviceType, Func<IServiceLocator, object> implementationFactory, ServiceInstanceScope lifetime)
@@ -62,20 +63,33 @@ namespace AbstractEpiserverIoc.Core
             {
                 throw new ArgumentException("Types decorated with options can not be registered with a factory");
             }
-            else if (lifetime == ServiceInstanceScope.Hybrid || lifetime == ServiceInstanceScope.HttpContext)
-            {
-                var genericMethod = GetMethodInfo(lifetime, isFunc: true).MakeGenericMethod(serviceType);
-                var funcFactoryMethod = _funcFactory.MakeGenericMethod(serviceType);
-                genericMethod.Invoke(null, new object[] { this, funcFactoryMethod.Invoke(null, new object[] { implementationFactory }) });
-            }
+            //else if (lifetime == ServiceInstanceScope.Hybrid || lifetime == ServiceInstanceScope.HttpContext)
+            //{
+            //    var genericMethod = GetMethodInfo(lifetime, isFunc: true).MakeGenericMethod(serviceType);
+            //    var funcFactoryMethod = _funcFactory.MakeGenericMethod(serviceType);
+            //    genericMethod.Invoke(null, new object[] { this, funcFactoryMethod.Invoke(null, new object[] { implementationFactory }) });
+            //}
             else
             {
-                var descriptor = new MicrosoftServiceDescriptor(serviceType, provider => implementationFactory(provider as IServiceLocator), ConvertLifeTime(lifetime));
+                var descriptor = new MicrosoftServiceDescriptor(serviceType, provider =>
+                {
+                    var ambient = GetAmbientLocator(provider);
+                    return implementationFactory(ambient);
+                },
+                ConvertLifeTime(lifetime));
 
                 return AddInternal(descriptor);
             }
+        }
 
-            return this;
+        private static AmbientServiceLocator GetAmbientLocator(IServiceProvider provider)
+        {
+            if (!(provider is AmbientServiceLocator ambient))
+            {
+                ambient = provider.GetService<IServiceLocator>() as AmbientServiceLocator;
+            }
+
+            return ambient;
         }
 
         public virtual IRegisteredService Add(Type serviceType, object instance)
@@ -108,32 +122,32 @@ namespace AbstractEpiserverIoc.Core
 
             foreach (var index in toBeReplacedIndexes)
             {
-                var previous = index > 1 ? _serviceCollection[index - 1] : null;
-                if (previous?.ServiceType == typeof(HybridHttpOrThreadLocal<T>))
-                {
-                    HybridHttpOrThreadLocal<T> hybridAccessor(IServiceProvider s) =>
-                        ((HybridHttpOrThreadLocal<T>)GetDefaultFactory(typeof(HybridHttpOrThreadLocal<T>), previous).Invoke(s));
-                    var decorated = new MicrosoftServiceDescriptor(
-                      previous.ServiceType,
-                      s => new HybridHttpOrThreadLocal<T>(hybridAccessor(s).UniqueId, () => interceptorFactory(s as IServiceLocator, hybridAccessor(s).Value), s.GetService<EPiServer.Framework.Cache.IRequestCache>()),
-                      previous.Lifetime);
-                    _serviceCollection[index - 1] = decorated;
-                }
-                else if (previous?.ServiceType == typeof(RequestOrFactory<T>))
-                {
-                    RequestOrFactory<T> valueAccessor(IServiceProvider s) => ((RequestOrFactory<T>)GetDefaultFactory(typeof(RequestOrFactory<T>), previous).Invoke(s));
-                    var decorated = new MicrosoftServiceDescriptor(
-                      previous.ServiceType,
-                      s => new RequestOrFactory<T>(valueAccessor(s).UniqueId, () => interceptorFactory(s as IServiceLocator, valueAccessor(s).Value), s.GetService<EPiServer.Framework.Cache.IRequestCache>()),
-                      previous.Lifetime);
-                    _serviceCollection[index - 1] = decorated;
-                }
-                else
+                //var previous = index > 1 ? _serviceCollection[index - 1] : null;
+                //if (previous?.ServiceType == typeof(HybridHttpOrThreadLocal<T>))
+                //{
+                //    HybridHttpOrThreadLocal<T> hybridAccessor(IServiceProvider s) =>
+                //        ((HybridHttpOrThreadLocal<T>)GetDefaultFactory(typeof(HybridHttpOrThreadLocal<T>), previous).Invoke(s));
+                //    var decorated = new MicrosoftServiceDescriptor(
+                //      previous.ServiceType,
+                //      s => new HybridHttpOrThreadLocal<T>(hybridAccessor(s).UniqueId, () => interceptorFactory(s as IServiceLocator, hybridAccessor(s).Value), s.GetService<EPiServer.Framework.Cache.IRequestCache>()),
+                //      previous.Lifetime);
+                //    _serviceCollection[index - 1] = decorated;
+                //}
+                //else if (previous?.ServiceType == typeof(RequestOrFactory<T>))
+                //{
+                //    RequestOrFactory<T> valueAccessor(IServiceProvider s) => ((RequestOrFactory<T>)GetDefaultFactory(typeof(RequestOrFactory<T>), previous).Invoke(s));
+                //    var decorated = new MicrosoftServiceDescriptor(
+                //      previous.ServiceType,
+                //      s => new RequestOrFactory<T>(valueAccessor(s).UniqueId, () => interceptorFactory(s as IServiceLocator, valueAccessor(s).Value), s.GetService<EPiServer.Framework.Cache.IRequestCache>()),
+                //      previous.Lifetime);
+                //    _serviceCollection[index - 1] = decorated;
+                //}
+                //else
                 {
                     var existing = _serviceCollection[index];
                     var decorated = new MicrosoftServiceDescriptor(
                         existing.ServiceType,
-                        s => interceptorFactory(s as IServiceLocator, (T)GetDefaultFactory(typeof(T), existing).Invoke(s)),
+                        s => interceptorFactory(GetAmbientLocator(s), (T)GetDefaultFactory(typeof(T), existing).Invoke(s)),
                         existing.Lifetime);
                     _serviceCollection[index] = decorated;
                 }
@@ -190,6 +204,7 @@ namespace AbstractEpiserverIoc.Core
 #pragma warning restore CS0618 // Type or member is obsolete
                 case ServiceInstanceScope.Transient:
                     return ServiceLifetime.Transient;
+
                 case ServiceInstanceScope.HttpContext:
                 case ServiceInstanceScope.Hybrid:
                     return ServiceLifetime.Scoped;
@@ -227,7 +242,7 @@ namespace AbstractEpiserverIoc.Core
         private static bool HasOptionAttribute(Type serviceType)
         {
             return serviceType.CustomAttributes.Any(a => a.AttributeType.Name.Equals(typeof(OptionsAttribute).Name));
-            // && a.AttributeType.Assembly.FullName.StartsWith("EPiServer"));
+             //&& a.AttributeType.Assembly.FullName.StartsWith("EPiServer"));
         }
 
         private static T ResolveDecorator<T>(IServiceProvider serviceProvider, T existing, Func<IServiceLocator, T, T> interceptorFactory)
@@ -248,6 +263,7 @@ namespace AbstractEpiserverIoc.Core
             //if (serviceType.GetConstructor(Type.EmptyTypes) == null)
             //    throw new ArgumentException($"Classes decorated as Options must have a default constuctor, {serviceType.FullName}");
         }
+
         private Func<IServiceProvider, object> GetDefaultFactory(Type _, MicrosoftServiceDescriptor descriptor)
         {
             // https://github.com/dotnet/extensions/blob/5bcbaa2cd1b54da4d919841df815820185189a5c/src/Shared/src/ActivatorUtilities/ActivatorUtilities.cs
@@ -258,7 +274,8 @@ namespace AbstractEpiserverIoc.Core
                 {
                     // todo: show to Jeff
                     //return ActivatorUtilities.GetServiceOrCreateInstance(s, descriptor.ImplementationType); // recursive and bad
-                    return ActivatorUtilities.CreateInstance(s, descriptor.ImplementationType); //not recursive and goode
+                    
+                    return ActivatorUtilities.CreateInstance(s, descriptor.ImplementationType); //not recursive and good
                 };
             else
                 return s => descriptor.ImplementationFactory(s);
@@ -274,89 +291,4 @@ namespace AbstractEpiserverIoc.Core
             return (s) => (TService)untyped(s);
         }
     }
-    /// <summary>Unsupported INTERNAL API! Not covered by semantic versioning; might change without notice. Helper class to store variables that should be cached either on HTTP context or on thread local storage
-    /// </summary>
-    /// <typeparam name="T">
-    /// </typeparam>
-    /// <exclude />
-    public class HybridHttpOrThreadLocal2<T> : IDisposable
-    {
-        private readonly Guid _uniqueId;
-        private ThreadLocal<T> _threadLocal;
-        private readonly Func<T> _valueFactory;
-        private readonly IRequestCache _requestCache;
-        private string _name;
-
-        /// <summary>Unsupported INTERNAL API! Not covered by semantic versioning; might change without notice. Creates new instance of <see cref="T:EPiServer.ServiceLocation.Internal.HybridHttpOrThreadLocal`1" /></summary>
-        /// <param name="uniqueId">The unique id for this instance</param>
-        /// <param name="valueFactory">The factory to get not cached value</param>
-        /// <param name="requestCache">The request cache to use</param>
-        /// <exclude />
-        public HybridHttpOrThreadLocal2(Guid uniqueId, Func<T> valueFactory, IRequestCache requestCache)
-        {
-            //Validator.ThrowIfNull(nameof(valueFactory), (object)valueFactory);
-            //Validator.ThrowIfNull(nameof(requestCache), (object)requestCache);
-            if (uniqueId == Guid.Empty)
-                throw new ArgumentException("uniqueId must be set");
-            this._uniqueId = uniqueId;
-            this._name = uniqueId.ToString("N");
-            this._valueFactory = valueFactory;
-            this._threadLocal = new ThreadLocal<T>(valueFactory);
-            this._requestCache = requestCache;
-        }
-
-        /// <summary>Unsupported INTERNAL API! Not covered by semantic versioning; might change without notice. The unique id for this instance
-        /// </summary>
-        /// <exclude />
-        public Guid UniqueId
-        {
-            get
-            {
-                return this._uniqueId;
-            }
-        }
-
-        /// <summary>Unsupported INTERNAL API! Not covered by semantic versioning; might change without notice. Accessor to get value from cache or factory (if not cached)
-        /// </summary>
-        /// <exclude />
-        public T Value
-        {
-            get
-            {
-                if (!this._requestCache.IsActive)
-                    return this._threadLocal.Value;
-                T x = this._requestCache.Get<T>(this._name);
-                if (EqualityComparer<T>.Default.Equals(x, default(T)))
-                {
-                    x = this._valueFactory();
-                    this._requestCache.Set<T>(this._name, x);
-                }
-                return x;
-            }
-        }
-
-        /// <summary>Unsupported INTERNAL API! Not covered by semantic versioning; might change without notice.</summary>
-        /// <inheritdoc />
-        /// <exclude />
-        public void Dispose()
-        {
-            this.Dispose(true);
-            GC.SuppressFinalize((object)this);
-        }
-
-        /// <summary>Unsupported INTERNAL API! Not covered by semantic versioning; might change without notice. Dispose implementation
-        /// </summary>
-        /// <param name="disposing">indicate if disposing</param>
-        /// <exclude />
-        protected virtual void Dispose(bool disposing)
-        {
-            if (this._threadLocal == null)
-                return;
-            if (this._threadLocal.IsValueCreated)
-                ((object)this._threadLocal.Value as IDisposable)?.Dispose();
-            this._threadLocal.Dispose();
-            this._threadLocal = (ThreadLocal<T>)null;
-        }
-    }
-
 }

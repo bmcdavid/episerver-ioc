@@ -19,7 +19,13 @@ namespace AbstractEpiserverIoc.DryIocEpi
 
         public IServiceLocatorScoped ParentScope { get; }
 
-        public IServiceLocatorScoped CreateScope() => new DryIocServiceLocatorScoped(_resolverContext.OpenScope(), this);
+        public IServiceLocatorScoped CreateScope()
+        {
+            var scoped = new DryIocServiceLocatorScoped(_resolverContext.OpenScope(), this);
+            AmbientServiceLocator.AddScope(scoped);
+
+            return scoped;
+        }
 
         public void Dispose()
         {

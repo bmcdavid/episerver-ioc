@@ -14,9 +14,9 @@ namespace AbstractEpiserverIoc.Core.Tests
 #elif DRYIOC_LOCATOR
             LocatorName = nameof(DryIocEpi);
             return DryIocEpi.DryIocContainerFactory.Create();
-#elif STASHBOX_LOCATOR
-            LocatorName = nameof(StashboxEpi);
-            return StashboxEpi.StashboxContainerFactory.Create();
+#elif MICROSOFT_LOCATOR
+            LocatorName = nameof(MicrosoftEpi);
+            return MicrosoftEpi.MicrosoftContainerFactory.Create();
 #else
             throw new System.InvalidOperationException();
 #endif

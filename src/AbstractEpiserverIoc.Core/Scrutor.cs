@@ -20,7 +20,6 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection Decorate<TService, TDecorator>(this IServiceCollection services)
             where TDecorator : TService
         {
-            
             return services.DecorateDescriptors(typeof(TService), x => x.Decorate(typeof(TDecorator)));
         }
 
@@ -33,7 +32,6 @@ namespace Microsoft.Extensions.DependencyInjection
         public static bool TryDecorate<TService, TDecorator>(this IServiceCollection services)
             where TDecorator : TService
         {
-            
             return services.TryDecorateDescriptors(typeof(TService), out _, x => x.Decorate(typeof(TDecorator)));
         }
 
@@ -49,7 +47,6 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <paramref name="serviceType"/> or <paramref name="decoratorType"/> arguments are <c>null</c>.</exception>
         public static IServiceCollection Decorate(this IServiceCollection services, Type serviceType, Type decoratorType)
         {
-            
             if (serviceType.GetType().IsGenericTypeDefinition && decoratorType.GetType().IsGenericTypeDefinition)
             {
                 return services.DecorateOpenGeneric(serviceType, decoratorType);
@@ -69,7 +66,6 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <paramref name="serviceType"/> or <paramref name="decoratorType"/> arguments are <c>null</c>.</exception>
         public static bool TryDecorate(this IServiceCollection services, Type serviceType, Type decoratorType)
         {
-            
             if (serviceType.GetType().IsGenericTypeDefinition && decoratorType.GetType().IsGenericTypeDefinition)
             {
                 return services.TryDecorateOpenGeneric(serviceType, decoratorType, out _);
@@ -118,7 +114,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <exception cref="ArgumentNullException">If either the <paramref name="services"/>
         /// or <paramref name="decorator"/> arguments are <c>null</c>.</exception>
         public static IServiceCollection Decorate<TService>(this IServiceCollection services, Func<TService, TService> decorator)
-        {   
+        {
             return services.DecorateDescriptors(typeof(TService), x => x.Decorate(decorator));
         }
 
@@ -133,7 +129,6 @@ namespace Microsoft.Extensions.DependencyInjection
         /// or <paramref name="decorator"/> arguments are <c>null</c>.</exception>
         public static bool TryDecorate<TService>(this IServiceCollection services, Func<TService, TService> decorator)
         {
-            
             return services.TryDecorateDescriptors(typeof(TService), out _, x => x.Decorate(decorator));
         }
 
@@ -149,7 +144,6 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <paramref name="serviceType"/> or <paramref name="decorator"/> arguments are <c>null</c>.</exception>
         public static IServiceCollection Decorate(this IServiceCollection services, Type serviceType, Func<object, IServiceProvider, object> decorator)
         {
-            
             return services.DecorateDescriptors(serviceType, x => x.Decorate(decorator));
         }
 
@@ -164,7 +158,6 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <paramref name="serviceType"/> or <paramref name="decorator"/> arguments are <c>null</c>.</exception>
         public static bool TryDecorate(this IServiceCollection services, Type serviceType, Func<object, IServiceProvider, object> decorator)
         {
-            
             return services.TryDecorateDescriptors(serviceType, out _, x => x.Decorate(decorator));
         }
 
@@ -180,7 +173,6 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <paramref name="serviceType"/> or <paramref name="decorator"/> arguments are <c>null</c>.</exception>
         public static IServiceCollection Decorate(this IServiceCollection services, Type serviceType, Func<object, object> decorator)
         {
-            
             return services.DecorateDescriptors(serviceType, x => x.Decorate(decorator));
         }
 
@@ -195,7 +187,6 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <paramref name="serviceType"/> or <paramref name="decorator"/> arguments are <c>null</c>.</exception>
         public static bool TryDecorate(this IServiceCollection services, Type serviceType, Func<object, object> decorator)
         {
-            
             return services.TryDecorateDescriptors(serviceType, out _, x => x.Decorate(decorator));
         }
 
@@ -317,7 +308,8 @@ namespace Microsoft.Extensions.DependencyInjection
 
         private static object GetServiceOrCreateInstance(this IServiceProvider provider, Type type)
         {
-            return ActivatorUtilities.GetServiceOrCreateInstance(provider, type);
+            //return ActivatorUtilities.GetServiceOrCreateInstance(provider, type);
+            return ActivatorUtilities.CreateInstance(provider, type);
         }
 
         private static object CreateInstance(this IServiceProvider provider, Type type, params object[] arguments)
