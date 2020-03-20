@@ -53,7 +53,7 @@ namespace AbstractEpiserverIoc.Web
             if (!(app.Context.Items[_itemKey] is IServiceLocatorScoped))
             {
                 app.Context.Items[_itemKey] =
-                    (_serviceLocator as IServiceLocatorCreateScope).CreateScope();
+                    (_serviceLocator as IServiceLocatorCreateScope)?.CreateScope();
             }
         }
 

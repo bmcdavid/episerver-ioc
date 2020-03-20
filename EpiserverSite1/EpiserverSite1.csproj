@@ -88,6 +88,9 @@
     <Reference Include="EPiServer.Data.Cache, Version=11.14.2.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\packages\EPiServer.Framework.11.14.2\lib\net461\EPiServer.Data.Cache.dll</HintPath>
     </Reference>
+    <Reference Include="EPiServer.DeveloperTools, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.DeveloperTools.3.5.0\lib\net472\EPiServer.DeveloperTools.dll</HintPath>
+    </Reference>
     <Reference Include="EPiServer.Enterprise, Version=11.14.2.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\packages\EPiServer.CMS.Core.11.14.2\lib\net461\EPiServer.Enterprise.dll</HintPath>
     </Reference>
@@ -166,6 +169,9 @@
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="N1990.Episerver.Cms.Audit, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\N1990.Episerver.Cms.Audit.1.5.1\lib\net47\N1990.Episerver.Cms.Audit.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -368,6 +374,7 @@
     <Content Include="ClientResources\Styles\LayoutIcons.css" />
     <Content Include="ClientResources\Styles\Styles.css" />
     <Content Include="favicon.ico" />
+    <Content Include="readme.txt" />
     <Content Include="Resources\LanguageFiles\ContentTypeNames.xml" />
     <Content Include="Resources\LanguageFiles\Display.xml" />
     <Content Include="Resources\LanguageFiles\EditorHints.xml" />
@@ -427,6 +434,33 @@
     <Content Include="modules\_protected\Shell\Shell.zip" />
     <Content Include="modules\_protected\CMS\web.config" />
     <Content Include="modules\_protected\CMS\CMS.zip" />
+    <Content Include="modules\_protected\EPiServer.DeveloperTools\Web.config" />
+    <Content Include="modules\_protected\EPiServer.DeveloperTools\Views\ViewEngineLocations\Index.cshtml" />
+    <Content Include="modules\_protected\EPiServer.DeveloperTools\Views\TimeMeters\Index.cshtml" />
+    <Content Include="modules\_protected\EPiServer.DeveloperTools\Views\Templates\Index.cshtml" />
+    <Content Include="modules\_protected\EPiServer.DeveloperTools\Views\Shared\DevToolsMaster.cshtml" />
+    <Content Include="modules\_protected\EPiServer.DeveloperTools\Views\Routes\Index.cshtml" />
+    <Content Include="modules\_protected\EPiServer.DeveloperTools\Views\RevertToDefault\Index.cshtml" />
+    <Content Include="modules\_protected\EPiServer.DeveloperTools\Views\RemoteEvent\Index.cshtml" />
+    <Content Include="modules\_protected\EPiServer.DeveloperTools\Views\ModuleDependencies\Index.cshtml" />
+    <Content Include="modules\_protected\EPiServer.DeveloperTools\Views\MemoryDump\Index.cshtml" />
+    <Content Include="modules\_protected\EPiServer.DeveloperTools\Views\LogViewer\Show.cshtml" />
+    <Content Include="modules\_protected\EPiServer.DeveloperTools\Views\LocalObjectCache\Index.cshtml" />
+    <Content Include="modules\_protected\EPiServer.DeveloperTools\Views\LoadedAssemblies\Index.cshtml" />
+    <Content Include="modules\_protected\EPiServer.DeveloperTools\Views\IOC\Index.cshtml" />
+    <Content Include="modules\_protected\EPiServer.DeveloperTools\Views\ContentTypeAnalyzer\Index.cshtml" />
+    <Content Include="modules\_protected\EPiServer.DeveloperTools\module.config" />
+    <Content Include="modules\_protected\CmsAudit\Views\web.config" />
+    <Content Include="modules\_protected\CmsAudit\Views\VisitorGroups\Index.cshtml" />
+    <Content Include="modules\_protected\CmsAudit\Views\Shared\_layout.cshtml" />
+    <Content Include="modules\_protected\CmsAudit\Views\Shared\RenderUsage.cshtml" />
+    <Content Include="modules\_protected\CmsAudit\Views\PageTypes\PageTypeAudit.cshtml" />
+    <Content Include="modules\_protected\CmsAudit\Views\PageTypes\Index.cshtml" />
+    <Content Include="modules\_protected\CmsAudit\Views\CmsAudit\IndexSiteAudit.cshtml" />
+    <Content Include="modules\_protected\CmsAudit\Views\CmsAudit\Index.cshtml" />
+    <Content Include="modules\_protected\CmsAudit\Views\BlockTypes\Index.cshtml" />
+    <Content Include="modules\_protected\CmsAudit\Views\BlockTypes\BlockTypeAudit.cshtml" />
+    <Content Include="modules\_protected\CmsAudit\module.config" />
     <None Include="packages.config" />
     <Content Include="Views\_viewstart.cshtml" />
     <Content Include="Views\VideoFile\Index.cshtml" />

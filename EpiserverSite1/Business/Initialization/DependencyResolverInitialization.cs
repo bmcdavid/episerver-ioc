@@ -8,7 +8,6 @@ using EPiServer.Framework;
 using EPiServer.Framework.Cache;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
-using EPiServer.ServiceLocation.Internal;
 using EPiServer.Web.Mvc;
 using EPiServer.Web.Mvc.Html;
 using EpiserverSite1.Business.Rendering;
@@ -21,11 +20,10 @@ namespace EpiserverSite1.Business.Initialization
 {
     public class HybridHttpOrThreadLocal2<T> : IDisposable
     {
-        private readonly Guid _uniqueId;
         private ThreadLocal<T> _threadLocal;
         private readonly Func<T> _valueFactory;
         private readonly IRequestCache _requestCache;
-        private string _name;
+        private readonly string _name;
 
         /// <summary>Unsupported INTERNAL API! Not covered by semantic versioning; might change without notice. Creates new instance of <see cref="T:EPiServer.ServiceLocation.Internal.HybridHttpOrThreadLocal`1" /></summary>
         /// <param name="uniqueId">The unique id for this instance</param>
@@ -36,23 +34,17 @@ namespace EpiserverSite1.Business.Initialization
         {
             if (uniqueId == Guid.Empty)
                 throw new ArgumentException("uniqueId must be set");
-            this._uniqueId = uniqueId;
-            this._name = uniqueId.ToString("N");
-            this._valueFactory = valueFactory;
-            this._threadLocal = new ThreadLocal<T>(valueFactory);
-            this._requestCache = requestCache;
+            UniqueId = uniqueId;
+            _name = uniqueId.ToString("N");
+            _valueFactory = valueFactory;
+            _threadLocal = new ThreadLocal<T>(valueFactory);
+            _requestCache = requestCache;
         }
 
         /// <summary>Unsupported INTERNAL API! Not covered by semantic versioning; might change without notice. The unique id for this instance
         /// </summary>
         /// <exclude />
-        public Guid UniqueId
-        {
-            get
-            {
-                return this._uniqueId;
-            }
-        }
+        public Guid UniqueId { get; }
 
         /// <summary>Unsupported INTERNAL API! Not covered by semantic versioning; might change without notice. Accessor to get value from cache or factory (if not cached)
         /// </summary>
@@ -60,16 +52,15 @@ namespace EpiserverSite1.Business.Initialization
         public T Value
         {
             get
-            {
-                
-                if (!this._requestCache.IsActive && this._threadLocal is object)
-                    return this._threadLocal.Value;
+            {   
+                if (!_requestCache.IsActive && _threadLocal is object)
+                    return _threadLocal.Value;
 
-                T x = this._requestCache.Get<T>(this._name);
+                T x = _requestCache.Get<T>(_name);
                 if (EqualityComparer<T>.Default.Equals(x, default(T)))
                 {
-                    x = this._valueFactory();
-                    this._requestCache.Set<T>(this._name, x);
+                    x = _valueFactory();
+                    _requestCache.Set<T>(_name, x);
                 }
                 return x;
             }
@@ -80,8 +71,8 @@ namespace EpiserverSite1.Business.Initialization
         /// <exclude />
         public void Dispose()
         {
-            this.Dispose(true); 
-            GC.SuppressFinalize((object)this);
+            Dispose(true); 
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>Unsupported INTERNAL API! Not covered by semantic versioning; might change without notice. Dispose implementation
@@ -90,12 +81,12 @@ namespace EpiserverSite1.Business.Initialization
         /// <exclude />
         protected virtual void Dispose(bool disposing)
         {
-            if (this._threadLocal == null)
+            if (_threadLocal == null)
                 return;
-            if (this._threadLocal.IsValueCreated)
-                ((object)this._threadLocal.Value as IDisposable)?.Dispose();
-            this._threadLocal.Dispose();
-            this._threadLocal = (ThreadLocal<T>)null;
+            if (_threadLocal.IsValueCreated)
+                (_threadLocal.Value as IDisposable)?.Dispose();
+            _threadLocal.Dispose();
+            _threadLocal = null;
         }
     }
 
@@ -119,57 +110,40 @@ namespace EpiserverSite1.Business.Initialization
           IDatabaseConnectionResolver databaseConnectionResolver,
           DataAccessOptions dataAccessOptions)
         {
-            this._contextCache = contextCache;
-            this._databaseModeService = databaseModeService;
-            this._currentHandler = new HybridHttpOrThreadLocal2<IDatabaseExecutor>(Guid.NewGuid(), (Func<IDatabaseExecutor>)(() => this.CreateDefaultHandler()), requestCache);
-            this._dataAccessOptions = dataAccessOptions;
-            this._databaseConnectionResolver = databaseConnectionResolver;
+            _contextCache = contextCache;
+            _databaseModeService = databaseModeService;
+            _currentHandler = new HybridHttpOrThreadLocal2<IDatabaseExecutor>(Guid.NewGuid(), () => CreateDefaultHandler(), requestCache);
+            _dataAccessOptions = dataAccessOptions;
+            _databaseConnectionResolver = databaseConnectionResolver;
         }
 
         /// <summary>Unsupported INTERNAL API! Not covered by semantic versioning; might change without notice.</summary>
         /// <internal-api />
         /// <exclude />
-        public IDatabaseExecutor CurrentHandler 
-        {
-            get
-            {
-                return this._currentHandler.Value;
-            }
-        }
+        public IDatabaseExecutor CurrentHandler => _currentHandler.Value;
 
         /// <summary>Unsupported INTERNAL API! Not covered by semantic versioning; might change without notice.</summary>
         /// <internal-api />
         /// <exclude />
-        public IDatabaseExecutor CreateDefaultHandler()
-        {
-            return this.Create(this._databaseConnectionResolver.Resolve());
-        }
+        public IDatabaseExecutor CreateDefaultHandler() => Create(_databaseConnectionResolver.Resolve());
 
         /// <summary>Unsupported INTERNAL API! Not covered by semantic versioning; might change without notice.</summary>
         /// <internal-api />
         /// <exclude />
         public IDatabaseExecutor CreateHandler(
-          ConnectionStringOptions connectionStringOption)
-        {
-            return this.Create(connectionStringOption);
-        }
+          ConnectionStringOptions connectionStringOption) => Create(connectionStringOption);
 
         private IDatabaseExecutor Create(ConnectionStringOptions connectionStringOption)
         {
-            if (this._databaseModeService.DatabaseMode != DatabaseMode.ReadOnly)
-                return (IDatabaseExecutor)new SqlDatabaseExecutor(this._contextCache, connectionStringOption, this._dataAccessOptions.Retries, this._dataAccessOptions.RetryDelay, this._dataAccessOptions.DatabaseQueryTimeout);
-            return (IDatabaseExecutor)new ReadOnlySqlDatabaseExecutor(this._contextCache, connectionStringOption, this._dataAccessOptions.Retries, this._dataAccessOptions.RetryDelay, this._dataAccessOptions.DatabaseQueryTimeout);
+            if (_databaseModeService.DatabaseMode != DatabaseMode.ReadOnly)
+                return new SqlDatabaseExecutor(_contextCache, connectionStringOption, _dataAccessOptions.Retries, _dataAccessOptions.RetryDelay, _dataAccessOptions.DatabaseQueryTimeout);
+
+            return new ReadOnlySqlDatabaseExecutor(_contextCache, connectionStringOption, _dataAccessOptions.Retries, _dataAccessOptions.RetryDelay, _dataAccessOptions.DatabaseQueryTimeout);
         }
 
-        public void Dispose()
-        {
-            this._currentHandler.Dispose();
-        }
+        public void Dispose() => _currentHandler.Dispose();
 
-        IAsyncDatabaseExecutor IAsyncDatabaseExecutorFactory.CreateDefaultHandler()
-        {
-            return this.CreateDefaultHandler() as IAsyncDatabaseExecutor;
-        }
+        IAsyncDatabaseExecutor IAsyncDatabaseExecutorFactory.CreateDefaultHandler() => CreateDefaultHandler() as IAsyncDatabaseExecutor;
     }
 
     [InitializableModule]
@@ -181,6 +155,7 @@ namespace EpiserverSite1.Business.Initialization
 
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
+            // todo for Grace
             var services = context.Services;
             services.RemoveAll<IDatabaseExecutorFactory>();
             services.RemoveAll<ServiceAccessor<IDatabaseExecutorFactory>>();
@@ -193,6 +168,7 @@ namespace EpiserverSite1.Business.Initialization
             services.AddTransient(s => (ServiceAccessor<IDatabaseExecutor>)(() => s.GetInstance<IDatabaseExecutor>()));
             services.AddTransient(s => s.GetInstance<IAsyncDatabaseExecutorFactory>().CreateDefaultHandler());
             services.AddTransient(s => (ServiceAccessor<IAsyncDatabaseExecutor>)(() => s.GetInstance<IAsyncDatabaseExecutor>()));
+            // end for Grace
 
             EnvironmentName = context.Services.EnvironmentName();
 
@@ -201,11 +177,12 @@ namespace EpiserverSite1.Business.Initialization
                 // could do something specific to integration here...
             }
 
-
+            // for DryIoc
 #pragma warning disable CS0618 // Type or member is obsolete
             context.Services.AddSingleton<IContentTypeRepository<BlockType>, BlockTypeRepository>();
 #pragma warning restore CS0618 // Type or member is obsolete
-            context.Services.AddSingleton<EPiServer.Web.IDisplayChannelService, EPiServer.Web.Internal.DefaultDisplayChannelService>();
+            // end for DryIoc
+
 
             context.ConfigurationComplete += (o, e) =>
             {

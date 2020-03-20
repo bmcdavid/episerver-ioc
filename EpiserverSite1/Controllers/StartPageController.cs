@@ -20,7 +20,7 @@ namespace EpiserverSite1.Controllers
     {
         private readonly ScopeTest _scopeTest;
 
-        public StartPageController(ScopeTest scopeTest, IEpiserverEnvironment episerverEnvironment)
+        public StartPageController(ScopeTest scopeTest)//, IEpiserverEnvironment episerverEnvironment)
         {
             _scopeTest = scopeTest;
             _scopeTest.ListTest.Add(nameof(StartPageController));
