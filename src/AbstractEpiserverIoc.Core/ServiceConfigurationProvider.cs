@@ -163,7 +163,9 @@ namespace AbstractEpiserverIoc.Core
         {
             if (serviceType is null) { throw new ArgumentNullException(nameof(serviceType)); }
 
-            var toRemove = _serviceCollection.Where(sd => serviceType == sd.ServiceType);
+            var toRemove = _serviceCollection
+                .Where(sd => serviceType == sd.ServiceType)
+                .ToList();
 
             foreach (var serviceToRemove in toRemove)
             {

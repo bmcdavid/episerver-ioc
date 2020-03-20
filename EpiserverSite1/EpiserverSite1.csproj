@@ -482,9 +482,9 @@
       <Project>{273de733-4360-4c09-99d3-365e7c9197b4}</Project>
       <Name>AbstractEpiserverIoc.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\src\AbstractEpiserverIoc.Microsoft\AbstractEpiserverIoc.MicrosoftEpi.csproj">
-      <Project>{be80ac4f-2412-4ed7-9850-974eda9f66d0}</Project>
-      <Name>AbstractEpiserverIoc.MicrosoftEpi</Name>
+    <ProjectReference Include="..\src\AbstractEpiserverIoc.Grace\AbstractEpiserverIoc.Grace.csproj">
+      <Project>{43f311e8-b772-47e2-971e-22486f909adf}</Project>
+      <Name>AbstractEpiserverIoc.Grace</Name>
     </ProjectReference>
     <ProjectReference Include="..\src\AbstractEpiserverIoc.Web\AbstractEpiserverIoc.Web.csproj">
       <Project>{90d20599-7ec4-4836-a016-e8a887b08287}</Project>
