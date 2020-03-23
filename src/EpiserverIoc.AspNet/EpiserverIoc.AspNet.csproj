@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPiServer.CMS.AspNet" Version="11.1.0" />
+    <ProjectReference Include="..\EpiserverIoc.Abstractions\EpiserverIoc.Abstractions.csproj" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+
+</Project>
