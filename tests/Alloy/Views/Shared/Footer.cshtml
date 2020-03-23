@@ -38,4 +38,6 @@
         </div>
     </div>
 </div>
-<!-- Locator = @EPiServer.ServiceLocation.ServiceLocator.Current.GetType().FullName, EnvTest = @EpiserverSite1.Business.Initialization.DependencyResolverInitialization.EnvironmentName -->
+<!-- Locator = @EPiServer.ServiceLocation.ServiceLocator.Current.GetType().FullName,
+    Inner type If Ambient @((EPiServer.ServiceLocation.ServiceLocator.Current as EpiserverIoc.Core.AmbientServiceLocator)?.RootLocatorType.FullName ?? "n/a")
+    EnvTest = @Alloy.Business.Initialization.DependencyResolverInitialization.EnvironmentName -->

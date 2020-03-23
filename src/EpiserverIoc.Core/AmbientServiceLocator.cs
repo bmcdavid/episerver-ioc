@@ -13,36 +13,17 @@ namespace EpiserverIoc.Core
         private static readonly AsyncLocal<Stack<IServiceLocatorScoped>> _stack = new AsyncLocal<Stack<IServiceLocatorScoped>>();
         private static Func<IDictionary> _storageGetter;
 
-        public AmbientServiceLocator(IServiceLocator rootLocator) =>
+        public AmbientServiceLocator(IServiceLocator rootLocator)
+        {
             RootLocator = rootLocator;
+            RootLocatorType = rootLocator?.GetType();
+        }
 
         public bool IsScoped => AmbientContext() is IServiceLocatorScoped;
 
+        public Type RootLocatorType { get; }
+
         protected IServiceLocator RootLocator { get; }
-
-        internal static void AddScope(IServiceLocatorScoped scopeContext)
-        {
-            var stack = GetStack();
-            if (stack is null)
-            {
-                stack = new Stack<IServiceLocatorScoped>();
-            }
-            // clears on scope disposing
-            if (scopeContext is null && stack.Count > 0) { stack.Pop(); }
-            // push newest scope to top
-            else if (scopeContext is object) { stack.Push(scopeContext); }
-            SetStack(stack);
-        }
-
-        internal static void ClearScope() => AddScope(null);
-
-        public IServiceLocator AmbientContext()
-        {
-            var stack = GetStack();
-            var scoped = stack?.Count > 0 ? stack.Peek() : null;
-
-            return scoped ?? RootLocator;
-        }
 
         public IServiceLocatorScoped CreateScope()
         {
@@ -72,6 +53,22 @@ namespace EpiserverIoc.Core
             return false;
         }
 
+        internal static void AddScope(IServiceLocatorScoped scopeContext)
+        {
+            var stack = GetStack();
+            if (stack is null)
+            {
+                stack = new Stack<IServiceLocatorScoped>();
+            }
+            // clears on scope disposing
+            if (scopeContext is null && stack.Count > 0) { stack.Pop(); }
+            // push newest scope to top
+            else if (scopeContext is object) { stack.Push(scopeContext); }
+            SetStack(stack);
+        }
+
+        internal static void ClearScope() => AddScope(null);
+
         private static Stack<IServiceLocatorScoped> GetStack()
         {
             var preferredStorage = _storageGetter?.Invoke();
@@ -95,6 +92,14 @@ namespace EpiserverIoc.Core
                 _stack.Value = null;
             }
             _stack.Value = stack;
+        }
+
+        private IServiceLocator AmbientContext()
+        {
+            var stack = GetStack();
+            var scoped = stack?.Count > 0 ? stack.Peek() : null;
+
+            return scoped ?? RootLocator;
         }
     }
 }
