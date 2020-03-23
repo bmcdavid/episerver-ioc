@@ -53,7 +53,7 @@ namespace EpiserverSite1.Business.Initialization
         {
             get
             {   
-                if (!_requestCache.IsActive && _threadLocal is object)
+                if (!_requestCache.IsActive)// && _threadLocal is object)
                     return _threadLocal.Value;
 
                 T x = _requestCache.Get<T>(_name);
@@ -97,11 +97,6 @@ namespace EpiserverSite1.Business.Initialization
         private readonly IDatabaseConnectionResolver _databaseConnectionResolver;
         private readonly DataAccessOptions _dataAccessOptions;
         private readonly ContextCache _contextCache;
-
-        public SqlDatabaseExecutorFactory2()
-          : this(ServiceLocator.Current.GetInstance<ContextCache>(), ServiceLocator.Current.GetInstance<IRequestCache>(), ServiceLocator.Current.GetInstance<IDatabaseMode>(), ServiceLocator.Current.GetInstance<IDatabaseConnectionResolver>(), ServiceLocator.Current.GetInstance<DataAccessOptions>())
-        {
-        }
 
         public SqlDatabaseExecutorFactory2(
           ContextCache contextCache,
@@ -157,18 +152,18 @@ namespace EpiserverSite1.Business.Initialization
         {
             // todo for Grace
             var services = context.Services;
-            services.RemoveAll<IDatabaseExecutorFactory>();
-            services.RemoveAll<ServiceAccessor<IDatabaseExecutorFactory>>();
+            //services.RemoveAll<IDatabaseExecutorFactory>();
+            //services.RemoveAll<ServiceAccessor<IDatabaseExecutorFactory>>();
             services.RemoveAll<IAsyncDatabaseExecutorFactory>();
             services.RemoveAll<ServiceAccessor<IAsyncDatabaseExecutorFactory>>();
+            //services.AddSingleton<SqlDatabaseExecutorFactory2>();
+            //services.AddSingleton(s => (IDatabaseExecutorFactory)new SqlDatabaseDelegatorFactory(s.GetInstance<SqlDatabaseExecutorFactory2>()));
 
-            services.AddSingleton(s => (IDatabaseExecutorFactory)new SqlDatabaseDelegatorFactory(new SqlDatabaseExecutorFactory2()));
-            services.Forward<IDatabaseExecutorFactory, IAsyncDatabaseExecutorFactory>();
-            services.AddTransient(s => s.GetInstance<IDatabaseExecutorFactory>().CurrentHandler);
-            services.AddTransient(s => (ServiceAccessor<IDatabaseExecutor>)(() => s.GetInstance<IDatabaseExecutor>()));
+            services.AddSingleton<IAsyncDatabaseExecutorFactory>(locator => (IAsyncDatabaseExecutorFactory)locator.GetInstance<IDatabaseExecutorFactory>());
+            //services.Forward<IDatabaseExecutorFactory, IAsyncDatabaseExecutorFactory>();
             services.AddTransient(s => s.GetInstance<IAsyncDatabaseExecutorFactory>().CreateDefaultHandler());
             services.AddTransient(s => (ServiceAccessor<IAsyncDatabaseExecutor>)(() => s.GetInstance<IAsyncDatabaseExecutor>()));
-            // end for Grace
+            //// end for Grace
 
             EnvironmentName = context.Services.EnvironmentName();
 
