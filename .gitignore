@@ -88,3 +88,7 @@ src/Foundation.CommerceManager/connectionStrings.config
 src/Foundation.CommerceManager/App_Data/ImportExport/*
 rebuild.cmd
 resetup.cmd
+*.mdf
+*.ldf
+*.log
+/tests/Alloy/App_Data/blobs
