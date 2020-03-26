@@ -70,3 +70,46 @@ public void ConfigureContainer(ServiceConfigurationContext context)
 }
 
 ```
+
+## Commonly Needed Registrations
+
+```cs
+context.Services.AddSingleton<IContentTypeRepository<BlockType>, BlockTypeRepository>();
+
+services.AddSingleton<IUrlResolver, EPiServer.Web.Routing.Internal.DefaultUrlResolver>();
+
+context.Services.AddSingleton<IServiceProvider>(locator => locator);
+```
+
+```cs
+services.AddSingleton<IServiceScopeFactory>((locator) => new CustomServiceScopeFactory(locator));
+
+internal class CustomServiceScopeFactory : IServiceScopeFactory
+{
+    private readonly IServiceLocatorCreateScope _serviceLocator;
+
+    public CustomServiceScopeFactory(IServiceLocator serviceLocator)
+    {
+        _serviceLocator = serviceLocator as IServiceLocatorCreateScope;
+    }
+
+    public IServiceScope CreateScope() => new ServiceScope(_serviceLocator.CreateScope());
+
+    private class ServiceScope : IServiceScope
+    {
+        private readonly IServiceLocator _scopedLocator;
+
+        public ServiceScope(IServiceLocator scopedLocator)
+        {
+            _scopedLocator = scopedLocator;
+        }
+
+        public IServiceProvider ServiceProvider => _scopedLocator;
+
+        public void Dispose()
+        {
+            (_scopedLocator as IDisposable).Dispose();
+        }
+    }
+}
+```
