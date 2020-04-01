@@ -73,16 +73,15 @@ public void ConfigureContainer(ServiceConfigurationContext context)
 
 ## Commonly Needed Registrations
 
+Grace Registration Dependency Issues Resolved
+
 ```cs
+context.Services.ResolveGraceDependencyIssues();
 context.Services.AddSingleton<IContentTypeRepository<BlockType>, BlockTypeRepository>();
-
-services.AddSingleton<IUrlResolver, EPiServer.Web.Routing.Internal.DefaultUrlResolver>();
-
-context.Services.AddSingleton<IServiceProvider>(locator => locator);
-```
-
-```cs
+context.Services.AddSingleton<IUrlResolver, EPiServer.Web.Routing.Internal.DefaultUrlResolver>();
+context.Services.AddSingleton<IServiceScopeFactory>((locator) => new CustomServiceScopeFactory(locator));
 services.AddSingleton<IServiceScopeFactory>((locator) => new CustomServiceScopeFactory(locator));
+// end of configure services
 
 internal class CustomServiceScopeFactory : IServiceScopeFactory
 {
