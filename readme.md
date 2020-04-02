@@ -70,3 +70,25 @@ public void ConfigureContainer(ServiceConfigurationContext context)
 }
 
 ```
+
+## Commonly Needed Registrations
+
+Grace Registration Dependency Issues Resolved
+```cs
+context.Services.ResolveGraceDependencyIssues();
+```
+
+Adding necessary registration using DryIoc.
+```cs
+context.Services.AddSingleton<IContentTypeRepository<BlockType>, BlockTypeRepository>();
+
+context.Services.AddSingleton<IUrlResolver, EPiServer.Web.Routing.Internal.DefaultUrlResolver>();
+
+context.Services.AddSingleton<IServiceProvider>(locator => locator);
+```
+
+Implementing Microsoft.Extensions.DependencyInjection.IServiceScopeFactory.
+EpiserverServiceScopeFactory exists within EpiserverIoc.Core.
+```cs
+context.Services.AddSingleton<IServiceScopeFactory>((locator) => new EpiserverServiceScopeFactory(locator));
+```
