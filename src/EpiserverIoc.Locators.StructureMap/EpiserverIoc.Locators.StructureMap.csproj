@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPiServer.Framework" Version="11.1.0" />
+    <PackageReference Include="structuremap" Version="4.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EpiserverIoc.Core\EpiserverIoc.Core.csproj" />
+  </ItemGroup>
+
+</Project>
