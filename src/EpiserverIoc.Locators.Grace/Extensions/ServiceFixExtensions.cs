@@ -7,6 +7,10 @@ namespace EpiserverIoc.Locators.Grace.Extensions
 {
     public static class ServiceFixExtensions
     {
+        /// <summary>
+        /// Resolves common dependency issues specific to Grace DI container.
+        /// </summary>
+        /// <param name="services"></param>
         public static void ResolveGraceDependencyIssues(this IServiceConfigurationProvider services)
         {
             services.RemoveAll<IAsyncDatabaseExecutorFactory>();

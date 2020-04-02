@@ -74,41 +74,21 @@ public void ConfigureContainer(ServiceConfigurationContext context)
 ## Commonly Needed Registrations
 
 Grace Registration Dependency Issues Resolved
-
 ```cs
 context.Services.ResolveGraceDependencyIssues();
+```
+
+Adding necessary registration using DryIoc.
+```cs
 context.Services.AddSingleton<IContentTypeRepository<BlockType>, BlockTypeRepository>();
+
 context.Services.AddSingleton<IUrlResolver, EPiServer.Web.Routing.Internal.DefaultUrlResolver>();
-context.Services.AddSingleton<IServiceScopeFactory>((locator) => new CustomServiceScopeFactory(locator));
-services.AddSingleton<IServiceScopeFactory>((locator) => new CustomServiceScopeFactory(locator));
-// end of configure services
 
-internal class CustomServiceScopeFactory : IServiceScopeFactory
-{
-    private readonly IServiceLocatorCreateScope _serviceLocator;
+context.Services.AddSingleton<IServiceProvider>(locator => locator);
+```
 
-    public CustomServiceScopeFactory(IServiceLocator serviceLocator)
-    {
-        _serviceLocator = serviceLocator as IServiceLocatorCreateScope;
-    }
-
-    public IServiceScope CreateScope() => new ServiceScope(_serviceLocator.CreateScope());
-
-    private class ServiceScope : IServiceScope
-    {
-        private readonly IServiceLocator _scopedLocator;
-
-        public ServiceScope(IServiceLocator scopedLocator)
-        {
-            _scopedLocator = scopedLocator;
-        }
-
-        public IServiceProvider ServiceProvider => _scopedLocator;
-
-        public void Dispose()
-        {
-            (_scopedLocator as IDisposable).Dispose();
-        }
-    }
-}
+Implementing Microsoft.Extensions.DependencyInjection.IServiceScopeFactory.
+EpiserverServiceScopeFactory exists within EpiserverIoc.Core.
+```cs
+context.Services.AddSingleton<IServiceScopeFactory>((locator) => new EpiserverServiceScopeFactory(locator));
 ```
